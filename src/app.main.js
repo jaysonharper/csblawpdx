@@ -127,21 +127,44 @@ function setupAttorneyCards() {
         "Personal Injury",
       ],
       education: [
-        "B.A., Economics, Lewis and Clark College (1981)",
-        "J.D., University of Oregon (1990)",
+        "University of Oregon Law School, Eugene, Oregon J.D.; Managing Board Editor, Oregon Law Review (1990)",
+        "Lewis and Clark College, Portland, Oregon B.A. Economics; Four-Year Varsity Soccer (1981)",
       ],
       memberships: [
-        "Multnomah County and Washington State Bar Associations",
         "Oregon State Bar",
+        "Washington State Bar",
+        "Multnomah County Bar Association",
+        "Oregon Trial Lawyers Association",
       ],
       admissions: [
-        "Oregon (1991)",
-        "Washington (1992)",
-        "U.S. District Court (1993)",
-        "District of Oregon",
+        "Oregon",
+        "Washington",
+        "U.S. District Court, District of Oregon",
       ],
       biography:
         "Managing Board Editor, University of Oregon Law Review (1989-1990).",
+    },
+    "Jakob Seegmuller": {
+      specialties: [
+        "Estate Plans",
+        "Estate Settlement",
+        "Conservatorships",
+        "Real Estate",
+      ],
+      education: [
+        "Southern Oregon University B.A. Cum Laude",
+        "Seattle University School of Law J.D.",
+      ],
+      memberships: [
+        "Multnomah Bar Association",
+        "Clark County Bar Association",
+      ],
+      admissions: [
+        "Oregon State Bar Association",
+        "Washington State Bar Association",
+      ],
+      biography:
+        "Jakob Seegmuller helps individuals and families plan for the future and navigate the loss of a loved one through thoughtful estate planning and administration. He began his legal career in Vancouver, Washington, focusing on probate and estate settlement before expanding his practice to include estate planning. Today, he serves clients throughout Oregon and Washington from his hometown of Portland. The most rewarding part of Jakob’s practice is helping families move through difficult transitions with clarity and confidence rather than confusion and frustration. He believes estate settlement and planning is ultimately about people, values, and the stories that connect generations. Outside the office, Jakob and his wife, Alexandra, enjoy traveling to destinations near and far, from Italy to Vietnam to Peru. Whenever he’s near the water, he’s likely searching for a local SCUBA shop and the next dive opportunity. At home, he enjoys gathering with friends for Dungeons & Dragons or settling in for an episode—or two—of Star Trek. His love of storytelling serves him well in helping clients shape estate plans that reflect their unique family histories, goals, and legacies.",
     },
   };
 

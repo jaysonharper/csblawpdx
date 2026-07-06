@@ -408,12 +408,20 @@ export class FlowAttorneyCard extends LitElement {
             <h3>${this.name}</h3>
           </div>
 
-          ${this.education?.length > 0
+          ${this.biography
             ? html`
                 <div class="bio-section">
-                  <h4>Education</h4>
+                  <h4>Biography</h4>
+                  <p>${this.biography}</p>
+                </div>
+              `
+            : ""}
+          ${this.admissions?.length > 0
+            ? html`
+                <div class="bio-section">
+                  <h4>Bar Admissions</h4>
                   <ul>
-                    ${this.education.map((item) => html`<li>${item}</li>`)}
+                    ${this.admissions.map((item) => html`<li>${item}</li>`)}
                   </ul>
                 </div>
               `
@@ -428,21 +436,13 @@ export class FlowAttorneyCard extends LitElement {
                 </div>
               `
             : ""}
-          ${this.admissions?.length > 0
+          ${this.education?.length > 0
             ? html`
                 <div class="bio-section">
-                  <h4>Bar Admissions</h4>
+                  <h4>Education</h4>
                   <ul>
-                    ${this.admissions.map((item) => html`<li>${item}</li>`)}
+                    ${this.education.map((item) => html`<li>${item}</li>`)}
                   </ul>
-                </div>
-              `
-            : ""}
-          ${this.biography
-            ? html`
-                <div class="bio-section">
-                  <h4>Biography</h4>
-                  <p>${this.biography}</p>
                 </div>
               `
             : ""}
