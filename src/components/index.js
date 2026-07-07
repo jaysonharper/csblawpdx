@@ -5,6 +5,8 @@
 import "./flow-button.js";
 import "./flow-alert.js";
 import "./flow-attorney-card.js";
+import "./flow-service-card.js";
+import "./flow-testimonial-card.js";
 
 // Layout Components (Page structure)
 import "./flow-navbar.js";
@@ -21,6 +23,8 @@ import "./flow-floating-call-button.js";
 // UI Components
 export { FlowButton } from "./flow-button.js";
 export { FlowAlert } from "./flow-alert.js";
+export { FlowServiceCard } from "./flow-service-card.js";
+export { FlowTestimonialCard } from "./flow-testimonial-card.js";
 
 // Layout Components
 export { FlowNavbar } from "./flow-navbar.js";

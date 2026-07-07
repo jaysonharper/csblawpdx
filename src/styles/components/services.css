@@ -1,165 +1,50 @@
 @layer components {
-  /* Service Highlights */
+  /* Service Highlights — intrinsic auto-fit grid (no breakpoints).
+     Cards are <flow-service-card> elements rendered from src/data/services.js;
+     their internal styles live in that component Shadow DOM. */
   .service-highlights {
-    @apply grid gap-6 grid-cols-1 sm:grid-cols-2;
-    grid-auto-rows: 1fr;
-    /* Cross-browser grid support */
-    grid-template-rows: auto;
-    /* Ensure consistent rendering */
-    will-change: auto;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(var(--card-min-service), 100%), 1fr)
+    );
+    align-items: stretch;
   }
 
-  @media (min-width: 900px) {
-    .service-highlights {
-      grid-template-columns: repeat(3, minmax(250px, 1fr));
-      -ms-grid-columns: (minmax(250px, 1fr)) [3];
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .service-highlights {
-      grid-template-columns: repeat(4, minmax(200px, 1fr));
-      -ms-grid-columns: (minmax(200px, 1fr)) [4];
-    }
-  }
-
-  @media (min-width: 1400px) {
-    .service-highlights {
-      grid-template-columns: repeat(4, minmax(280px, 1fr));
-      -ms-grid-columns: (minmax(280px, 1fr)) [4];
-    }
-  }
-
-  .highlight-item {
-    @apply text-center p-4 md:p-6 rounded-xl flex flex-col;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s ease;
-    min-height: 160px;
-    position: relative;
-    overflow: visible;
-    /* Cross-browser rendering consistency */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    /* Prevent layout shifts */
-    contain: layout style;
-    will-change: auto;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-  }
-
-  .highlight-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-    border-color: var(--subsection-card-hover);
-  }
-
-  /* Flash highlight effect for clicked specialty tags */
-  .highlight-item.highlight-flash {
-    animation: highlightFlash 2s ease-out;
-  }
-
-  @keyframes highlightFlash {
-    0% {
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3);
-      border-color: #1d4ed8;
-    }
-    25% {
-      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-      transform: translateY(-6px) scale(1.01);
-    }
-    50% {
-      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-      transform: translateY(-2px);
-    }
-    100% {
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      border-color: #3b82f6;
-    }
-  }
-
+  /* Shared subsection scaffolding (used by the Why-Us list, light DOM) */
   .highlight-content {
     @apply w-full h-full flex flex-col;
     position: relative;
   }
 
   .title-row {
-    @apply mb-2 md:mb-3;
+    @apply mb-2;
     flex-shrink: 0;
   }
 
-  .highlight-item h3 {
-    @apply text-lg md:text-xl font-bold;
-    color: var(--subsection-text-title);
-    line-height: 1.3;
-    flex-shrink: 0;
-    margin: 0;
-  }
-
-  .highlight-summary {
-    @apply text-gray-600 text-sm md:text-base font-semibold;
-    line-height: 1.4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0;
-    height: 5rem;
-    flex-shrink: 0;
-  }
-
-  .highlight-details {
-    @apply text-left pt-4 mt-3;
-    border-top: 3px solid #e5e7eb;
-    border-image: var(--subsection-divider);
-    max-height: none;
-    opacity: 1;
-    overflow: visible;
-    transition: none;
-    flex-grow: 1;
-  }
-
-  .highlight-details p {
-    @apply text-gray-700 text-sm md:text-base mb-4;
-    line-height: 1.5;
-  }
-
-  .service-features {
-    @apply list-none p-0 m-0 text-left;
-  }
-
-  .service-features li {
-    @apply text-gray-600 text-sm md:text-base py-1 pl-6 relative;
-    line-height: 1.4;
-  }
-
-  .service-features li::before {
-    content: "✓";
-    @apply absolute left-0 text-green-600 font-bold;
-  }
-
-  /* Why Us — staggered vertical highlight list */
+  /* Why Us — staggered vertical highlight list.
+     Container context lets the stagger collapse based on the list
+     width rather than the viewport. */
   .why-us-highlights {
-    @apply flex flex-col gap-6 mt-8;
+    @apply flex flex-col mt-8;
+    gap: var(--space-md);
+    container-type: inline-size;
   }
 
   .why-us-item {
-    @apply w-full rounded-xl p-6 md:p-8;
+    @apply w-full rounded-xl;
+    padding: var(--space-md);
     max-width: 88%;
     background: linear-gradient(
       135deg,
       var(--bg-accent-color) 0%,
       #f1f5f9 100%
     );
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s ease;
+    border: 1px solid var(--color-divider);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   /* Stagger: odd items to the left with a leading accent border */
@@ -182,18 +67,20 @@
 
   .why-us-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-card-hover);
   }
 
   .why-us-item h3 {
-    @apply text-lg md:text-xl font-bold mb-2;
+    @apply font-bold mb-2;
+    font-size: var(--font-h3);
     color: var(--subsection-text-title);
     line-height: 1.3;
     margin-top: 0;
   }
 
   .why-us-item .highlight-summary {
-    @apply text-gray-700 text-sm md:text-base font-medium;
+    @apply text-gray-700 font-medium;
+    font-size: var(--font-sm);
     display: block;
     height: auto;
     line-height: 1.6;
@@ -202,7 +89,8 @@
     align-items: flex-start;
   }
 
-  @media (max-width: 640px) {
+  /* Collapse the stagger when the list itself becomes narrow */
+  @container (max-width: 40rem) {
     .why-us-item,
     .why-us-item:nth-child(odd),
     .why-us-item:nth-child(even) {

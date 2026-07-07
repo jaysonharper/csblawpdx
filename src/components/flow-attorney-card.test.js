@@ -57,7 +57,7 @@ describe("FlowAttorneyCard", () => {
       const emailLink = element.shadowRoot.querySelector(".attorney-email a");
       expect(emailLink?.textContent.trim()).to.equal(defaultProps.email);
       expect(emailLink?.getAttribute("href")).to.equal(
-        `mailto:${defaultProps.email}`
+        `mailto:${defaultProps.email}`,
       );
     });
 
@@ -75,7 +75,7 @@ describe("FlowAttorneyCard", () => {
 
       specialtyTags.forEach((tag, index) => {
         expect(tag.textContent.trim()).to.equal(
-          defaultProps.specialties[index]
+          defaultProps.specialties[index],
         );
       });
     });
@@ -83,10 +83,10 @@ describe("FlowAttorneyCard", () => {
     it("should display education section on back", async () => {
       await element.updateComplete;
       const educationItems = element.shadowRoot.querySelectorAll(
-        ".card-back .bio-section h4"
+        ".card-back .bio-section h4",
       );
       const educationSection = Array.from(educationItems).find(
-        (h4) => h4.textContent.trim() === "Education"
+        (h4) => h4.textContent.trim() === "Education",
       );
       expect(educationSection).to.exist;
     });
@@ -94,10 +94,10 @@ describe("FlowAttorneyCard", () => {
     it("should display memberships section on back", async () => {
       await element.updateComplete;
       const membershipItems = element.shadowRoot.querySelectorAll(
-        ".card-back .bio-section h4"
+        ".card-back .bio-section h4",
       );
       const membershipSection = Array.from(membershipItems).find(
-        (h4) => h4.textContent.trim() === "Professional Memberships"
+        (h4) => h4.textContent.trim() === "Professional Memberships",
       );
       expect(membershipSection).to.exist;
     });
@@ -105,19 +105,27 @@ describe("FlowAttorneyCard", () => {
     it("should display admissions section on back", async () => {
       await element.updateComplete;
       const admissionItems = element.shadowRoot.querySelectorAll(
-        ".card-back .bio-section h4"
+        ".card-back .bio-section h4",
       );
       const admissionSection = Array.from(admissionItems).find(
-        (h4) => h4.textContent.trim() === "Bar Admissions"
+        (h4) => h4.textContent.trim() === "Bar Admissions",
       );
       expect(admissionSection).to.exist;
     });
 
-    it("should display biography section on back", () => {
-      const biography = element.shadowRoot.querySelector(
-        ".card-back .bio-section:last-child p"
+    it("should display biography section on back", async () => {
+      await element.updateComplete;
+      const sections = element.shadowRoot.querySelectorAll(
+        ".card-back .bio-section",
       );
-      expect(biography.textContent).to.equal(defaultProps.biography);
+      const biographySection = Array.from(sections).find(
+        (section) =>
+          section.querySelector("h4")?.textContent.trim() === "Biography",
+      );
+      expect(biographySection).to.exist;
+      expect(biographySection.querySelector("p").textContent).to.equal(
+        defaultProps.biography,
+      );
     });
   });
 
@@ -241,7 +249,7 @@ describe("FlowAttorneyCard", () => {
         element.shadowRoot.querySelectorAll(".flip-indicator");
       flipIndicators.forEach((indicator) => {
         expect(indicator.getAttribute("title")).to.match(
-          /(Show front|Show back)/
+          /(Show front|Show back)/,
         );
       });
     });
@@ -279,7 +287,7 @@ describe("FlowAttorneyCard", () => {
 
     it("should handle container overflow properly", () => {
       const specialtiesContainer = element.shadowRoot.querySelector(
-        ".attorney-specialties"
+        ".attorney-specialties",
       );
       const styles = getComputedStyle(specialtiesContainer);
       expect(styles.maxWidth).to.equal("100%");
@@ -362,7 +370,7 @@ describe("FlowAttorneyCard", () => {
       await element.updateComplete;
 
       const educationSection = element.shadowRoot.querySelector(
-        ".card-back .bio-section:nth-child(2)"
+        ".card-back .bio-section:nth-child(2)",
       );
       expect(educationSection).to.not.exist;
     });
@@ -372,7 +380,7 @@ describe("FlowAttorneyCard", () => {
       await element.updateComplete;
 
       const biographySection = element.shadowRoot.querySelector(
-        ".card-back .bio-section:last-child"
+        ".card-back .bio-section:last-child",
       );
       expect(biographySection.textContent).to.not.include("Biography");
     });

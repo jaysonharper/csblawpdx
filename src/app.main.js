@@ -4,6 +4,11 @@ import "./styles/main.css";
 // Import our component library
 import "./components/index.js";
 
+// Content data (edit these lists to update page content)
+import { services } from "./data/services.js";
+import { testimonials } from "./data/testimonials.js";
+import { attorneys } from "./data/attorneys.js";
+
 // Debug browser session differences (development only)
 if (typeof import.meta !== "undefined" && import.meta.env?.DEV) {
   console.log("Browser info:", {
@@ -55,8 +60,13 @@ function initializeApp() {
     console.log("Initializing app at:", new Date().toISOString());
   }
 
-  // Setup attorney cards with data
-  setupAttorneyCards();
+  // Render data-driven sections from content arrays
+  renderServices();
+  renderTestimonials();
+  renderAttorneys();
+
+  // Expose the fixed navbar's height so the hero can offset below it
+  setupNavbarHeightVar();
 
   // Setup smooth scrolling for navigation links
   setupSmoothScrolling();
@@ -91,90 +101,46 @@ function initializeApp() {
   setupDemoButtonToggle();
 }
 
-function setupAttorneyCards() {
-  // Attorney data
-  const attorneyData = {
-    "Brett S. Carson": {
-      specialties: [
-        "Estate Plans",
-        "Real Estate",
-        "Business Law",
-        "Elder Law",
-        "Conservatorships",
-        "Guardianships",
-        "Personal Injury",
-      ],
-      education: [
-        "B.S., Colorado College and University of Oregon (1976)",
-        "J.D., cum laude, Gonzaga University (1979)",
-      ],
-      memberships: [
-        "Multnomah County Bar Association",
-        "Oregon State Bar",
-        "Realtors Joint Committee (1991-1993): Real Estate, Land Use, Business, Corporate and Debtor-Creditor Sections",
-      ],
-      admissions: ["Oregon and U.S. District Court, District of Oregon (1979)"],
-      biography:
-        "Director, Oregon State Council for Senior Citizens, 1989-1999. Multnomah Bar Association Senior Law Project Volunteer of the Year, 1986 & 2004; NE Family YMCA Board of Directors, 1986-1989; Hollywood Booster Board of Directors, 1986-2000; Hollywood Booster President, 1988; Hollywood Senior Center Board of Directors, 1986-2002; President, Hollywood Senior Center, 1993-1995; Lincoln High School Freshman Basketball coach, 1998-2003; Benson High School Assistant Varsity Basketball coach, 2003-present.",
-    },
-    "Randall H. Baker": {
-      specialties: [
-        "Litigation",
-        "Collections",
-        "Business Law",
-        "Family Law",
-        "Real Estate",
-        "Personal Injury",
-      ],
-      education: [
-        "University of Oregon Law School, Eugene, Oregon J.D.; Managing Board Editor, Oregon Law Review (1990)",
-        "Lewis and Clark College, Portland, Oregon B.A. Economics; Four-Year Varsity Soccer (1981)",
-      ],
-      memberships: [
-        "Oregon State Bar",
-        "Washington State Bar",
-        "Multnomah County Bar Association",
-        "Oregon Trial Lawyers Association",
-      ],
-      admissions: [
-        "Oregon",
-        "Washington",
-        "U.S. District Court, District of Oregon",
-      ],
-      biography:
-        "Managing Board Editor, University of Oregon Law Review (1989-1990).",
-    },
-    "Jakob Seegmuller": {
-      specialties: [
-        "Estate Plans",
-        "Estate Settlement",
-        "Conservatorships",
-        "Real Estate",
-      ],
-      education: [
-        "Southern Oregon University B.A. Cum Laude",
-        "Seattle University School of Law J.D.",
-      ],
-      memberships: [
-        "Multnomah Bar Association",
-        "Clark County Bar Association",
-      ],
-      admissions: [
-        "Oregon State Bar Association",
-        "Washington State Bar Association",
-      ],
-      biography:
-        "Jakob Seegmuller helps individuals and families plan for the future and navigate the loss of a loved one through thoughtful estate planning and administration. He began his legal career in Vancouver, Washington, focusing on probate and estate settlement before expanding his practice to include estate planning. Today, he serves clients throughout Oregon and Washington from his hometown of Portland. The most rewarding part of Jakob’s practice is helping families move through difficult transitions with clarity and confidence rather than confusion and frustration. He believes estate settlement and planning is ultimately about people, values, and the stories that connect generations. Outside the office, Jakob and his wife, Alexandra, enjoy traveling to destinations near and far, from Italy to Vietnam to Peru. Whenever he’s near the water, he’s likely searching for a local SCUBA shop and the next dive opportunity. At home, he enjoys gathering with friends for Dungeons & Dragons or settling in for an episode—or two—of Star Trek. His love of storytelling serves him well in helping clients shape estate plans that reflect their unique family histories, goals, and legacies.",
-    },
-  };
+function renderServices() {
+  const container = document.querySelector(".service-highlights");
+  if (!container) return;
+  container.replaceChildren(
+    ...services.map((service) => {
+      const card = document.createElement("flow-service-card");
+      card.id = service.id;
+      card.title = service.title;
+      card.summary = service.summary;
+      card.description = service.description;
+      card.features = service.features;
+      return card;
+    }),
+  );
+}
 
-  // Find and populate attorney cards
-  const attorneyCards = document.querySelectorAll("flow-attorney-card");
-  attorneyCards.forEach((card) => {
-    const name = card.getAttribute("name");
-    const data = attorneyData[name];
+function renderTestimonials() {
+  const container = document.querySelector(".testimonial-preview");
+  if (!container) return;
+  container.replaceChildren(
+    ...testimonials.map((t) => {
+      const card = document.createElement("flow-testimonial-card");
+      card.quote = t.quote;
+      card.cite = t.cite;
+      return card;
+    }),
+  );
+}
 
-    if (data) {
+function renderAttorneys() {
+  const container = document.querySelector(".attorney-preview");
+  if (!container) return;
+  container.replaceChildren(
+    ...attorneys.map((data) => {
+      const card = document.createElement("flow-attorney-card");
+      card.setAttribute("name", data.name);
+      card.setAttribute("image", data.image);
+      card.setAttribute("image-alt", data.imageAlt);
+      card.setAttribute("image-class", data.imageClass);
+      if (data.email) card.setAttribute("email", data.email);
       card.specialties = data.specialties;
       card.education = data.education;
       card.memberships = data.memberships;
@@ -183,8 +149,9 @@ function setupAttorneyCards() {
 
       // Add event listeners using the reusable function
       setupAttorneyCardListeners(card, data);
-    }
-  });
+      return card;
+    }),
+  );
 }
 
 function setupAttorneyCardListeners(card) {
@@ -211,6 +178,30 @@ function setupAttorneyCardListeners(card) {
       specialty: specialty,
     });
   });
+}
+
+// Measure the fixed navbar and publish its height as --nav-height so the hero
+// section can offset its content below the navbar on any screen size. A
+// ResizeObserver keeps it accurate across web-font load, resizes and breakpoints.
+function setupNavbarHeightVar() {
+  const navbar = document.querySelector("flow-navbar");
+  if (!navbar) return;
+
+  const apply = () => {
+    const height = navbar.offsetHeight;
+    if (height) {
+      document.documentElement.style.setProperty("--nav-height", `${height}px`);
+    }
+  };
+
+  apply();
+
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(apply).observe(navbar);
+  } else {
+    window.addEventListener("resize", apply);
+    window.addEventListener("load", apply);
+  }
 }
 
 function setupSmoothScrolling() {

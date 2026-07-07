@@ -1,39 +1,22 @@
 @layer components {
-  /* Attorney Preview - Container for web components */
+  /* Attorney Preview — intrinsic auto-fit grid (no breakpoints).
+     Cards are <flow-attorney-card> elements rendered from
+     src/data/attorneys.js. */
   .attorney-preview {
-    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-8;
-    /* Remove any default padding/margin that might interfere */
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(var(--card-min-attorney), 100%), 1fr)
+    );
     padding: 0;
     margin: 0;
   }
 
-  /* Ensure web components fit properly in the grid */
+  /* Let the card component size itself; its internal min-height governs. */
   .attorney-preview flow-attorney-card {
     display: block;
     width: 100%;
     height: auto;
-    min-height: 450px;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 767px) {
-    .attorney-preview {
-      @apply gap-6;
-    }
-
-    .attorney-preview flow-attorney-card {
-      min-height: 400px;
-    }
-  }
-
-  /* Enhanced mobile layout */
-  @media (max-width: 480px) {
-    .attorney-preview {
-      @apply grid-cols-1 gap-4;
-    }
-
-    .attorney-preview flow-attorney-card {
-      min-height: 350px;
-    }
   }
 }

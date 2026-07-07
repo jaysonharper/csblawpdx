@@ -1,31 +1,111 @@
-/* Theme color palette */
+/* =========================================================================
+   Design Tokens
+   -------------------------------------------------------------------------
+   Tier 1: Primitives  — raw values (colors, gradients, shadows, radii,
+                          fluid type/space, layout). No component meaning.
+   Tier 2: Semantic     — role/component tokens that REFERENCE primitives.
+                          Consumed by CSS and (via inheritance) Lit Shadow DOM.
+   ========================================================================= */
+
 :root {
-  /* Base Palette */
+  /* ===================================================================== */
+  /* TIER 1 — PRIMITIVES                                                    */
+  /* ===================================================================== */
 
-  --primary-color: steelblue;
-  --accent-color: #1e537e;
-  --bg-color: #4d5561;
-  --bg-accent-color: #e2e8f0;
+  /* --- Color palette -------------------------------------------------- */
+  --color-primary: #4682b4; /* steelblue */
+  --color-accent: #1e537e;
+  --color-bg: #4d5561;
+  --color-bg-accent: #e2e8f0;
+  --color-white: #ffffff;
+  --color-ink: #000000;
+  --color-divider: #e5e7eb;
 
-  /* ---------------------- */
-  /* Navbar colors          */
-  /* ---------------------- */
-
-  --nav-bg: linear-gradient(
+  /* --- Shared gradients ----------------------------------------------- */
+  --gradient-brand: linear-gradient(
     0deg,
-    var(--accent-color) 0%,
-    var(--primary-color) 90%
+    var(--color-accent) 0%,
+    var(--color-primary) 90%
   );
-  --nav-logo-text: white;
-  --nav-logo-text-hover: white;
+  --gradient-brand-diag: linear-gradient(
+    135deg,
+    var(--color-accent) 0%,
+    var(--color-primary) 100%
+  );
+  --gradient-brand-diag-rev: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  --gradient-section: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    var(--color-bg-accent) 100%
+  );
+  --gradient-surface: linear-gradient(
+    135deg,
+    #f8fafc 0%,
+    var(--color-bg-accent) 100%
+  );
+
+  /* --- Shared shadows ------------------------------------------------- */
+  --shadow-btn: 0 4px 12px rgba(186 189 194 / 30%);
+  --shadow-btn-hover: 0 8px 20px rgba(34 35 36 / 40%);
+  --shadow-btn-focus: 0 8px 20px rgba(255 255 255 / 82%);
+  --shadow-card: 0 2px 8px rgba(0 0 0 / 5%);
+  --shadow-card-hover: 0 10px 25px rgba(0 0 0 / 10%);
+
+  /* --- Radii ---------------------------------------------------------- */
+  --radius-card: 0.75rem; /* 12px */
+  --radius-lg: 1rem; /* 16px */
+
+  /* --- Fluid type scale (clamp: min, preferred, max) ------------------ */
+  --font-h1: clamp(2.25rem, 1.2rem + 4vw, 4.5rem);
+  --font-h2: clamp(1.875rem, 1.3rem + 2vw, 3rem);
+  --font-h3: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+  --font-lead: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+  --font-body: clamp(0.9375rem, 0.9rem + 0.3vw, 1rem);
+  --font-sm: clamp(0.875rem, 0.82rem + 0.25vw, 1rem);
+
+  /* --- Fluid spacing scale -------------------------------------------- */
+  --space-3xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --space-2xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);
+  --space-xs: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
+  --space-sm: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  --space-md: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --space-lg: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --space-xl: clamp(3rem, 2.4rem + 3vw, 4rem);
+  --space-2xl: clamp(4rem, 3rem + 5vw, 6rem);
+
+  /* --- Layout --------------------------------------------------------- */
+  --content-max: 72rem; /* matches Tailwind max-w-6xl */
+  --card-min-service: 16rem; /* intrinsic auto-fit column floor */
+  --card-min-attorney: 18rem;
+  --grid-gap: var(--space-md);
+
+  /* ===================================================================== */
+  /* TIER 2 — SEMANTIC / COMPONENT TOKENS                                   */
+  /* ===================================================================== */
+
+  /* Backwards-compatible aliases for legacy palette names */
+  --primary-color: var(--color-primary);
+  --accent-color: var(--color-accent);
+  --bg-color: var(--color-bg);
+  --bg-accent-color: var(--color-bg-accent);
 
   /* ---------------------- */
-  /* Nav Link colors        */
+  /* Navbar                 */
   /* ---------------------- */
+  --nav-bg: var(--gradient-brand);
+  --nav-logo-text: var(--color-white);
+  --nav-logo-text-hover: var(--color-white);
 
-  --navlink-text: white;
-  --navlink-text-hover: var(--primary-color);
-  --navlink-text-border: 1px solid var(--primary-color);
+  /* ---------------------- */
+  /* Nav Links              */
+  /* ---------------------- */
+  --navlink-text: var(--color-white);
+  --navlink-text-hover: var(--color-primary);
+  --navlink-text-border: 1px solid var(--color-primary);
   --navlink-before: linear-gradient(
     90deg,
     transparent,
@@ -34,100 +114,67 @@
   );
 
   /* ---------------------- */
-  /* Hero colors            */
+  /* Hero                   */
   /* ---------------------- */
-
-  --hero-text-title: white;
-  --hero-call-btn-bg: linear-gradient(
-    0deg,
-    var(--accent-color) 0%,
-    var(--primary-color) 90%
-  );
-  --hero-call-btn-hover: var(--primary-color);
+  --hero-text-title: var(--color-white);
+  --hero-call-btn-bg: var(--gradient-brand);
+  --hero-call-btn-hover: var(--color-primary);
 
   /* ---------------------- */
-  /* Section colors         */
+  /* Section                */
   /* ---------------------- */
-
-  --section-bg: linear-gradient(
+  --section-bg: var(--gradient-section);
+  --section-bg-alt: var(--gradient-section);
+  --section-text-title: linear-gradient(
     180deg,
-    var(--bg-color) 0%,
-    var(--bg-accent-color) 100%
+    var(--color-white) 0%,
+    var(--color-white) 100%
   );
-  --section-bg-alt: linear-gradient(
-    180deg,
-    var(--bg-color) 0%,
-    var(--bg-accent-color) 100%
-  );
-  --section-text-title: linear-gradient(180deg, white 0%, white 100%);
   --section-card-border: linear-gradient(
     90deg,
-    white 0%,
-    var(--primary-color) 100%
+    var(--color-white) 0%,
+    var(--color-primary) 100%
   );
 
   /* ---------------------- */
-  /* Subsection colors      */
+  /* Subsection             */
   /* ---------------------- */
-
-  --subsection-text-title: black;
+  --subsection-text-title: var(--color-ink);
   --subsection-divider: linear-gradient(
       90deg,
-      var(--primary-color) 0%,
-      #e5e7eb 50%,
-      var(--primary-color) 100%
+      var(--color-primary) 0%,
+      var(--color-divider) 50%,
+      var(--color-primary) 100%
     )
     1;
-  --subsection-text-subtitle: var(--primary-color);
-  --subsection-card-hover: var(--primary-color);
-  --subsection-border-left: var(--primary-color);
-  --subsection-links: var(--primary-color);
-  --subsection-links-hover: var(--primary-color);
-  --subsection-flip-indicator: var(--primary-color);
-  --subsection-image-hover: var(--primary-color);
-  --subsection-tag: linear-gradient(
-    0deg,
-    var(--accent-color) 0%,
-    var(--primary-color) 90%
-  );
-  --subsection-tag-hover: var(--primary-color);
-  --subsection-cite: var(--primary-color);
+  --subsection-text-subtitle: var(--color-primary);
+  --subsection-card-hover: var(--color-primary);
+  --subsection-border-left: var(--color-primary);
+  --subsection-links: var(--color-primary);
+  --subsection-links-hover: var(--color-primary);
+  --subsection-flip-indicator: var(--color-primary);
+  --subsection-image-hover: var(--color-primary);
+  --subsection-tag: var(--gradient-brand);
+  --subsection-tag-hover: var(--color-primary);
+  --subsection-cite: var(--color-primary);
 
   /* ---------------------- */
-  /* Scroll Top Button      */
+  /* Scroll-to-Top Button   */
   /* ---------------------- */
-
-  --scroll-top-btn-bg: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    var(--primary-color) 100%
-  );
-  --scroll-top-btn-shadow: 0 4px 12px rgba(186 189 194 / 30%);
-  --scroll-top-btn-hover: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--accent-color) 100%
-  );
-  --scroll-top-btn-hover-shadow: 0 8px 20px rgba(34, 35, 36, 0.4);
-  --scroll-top-btn-focus-shadow: 0 8px 20px rgba(255, 255, 255, 0.82);
-  --scroll-top-btn-pulse-shadow: 0 8px 20px rgba(255, 255, 255, 0.6);
+  --scroll-top-btn-bg: var(--gradient-brand-diag);
+  --scroll-top-btn-shadow: var(--shadow-btn);
+  --scroll-top-btn-hover: var(--gradient-brand-diag-rev);
+  --scroll-top-btn-hover-shadow: var(--shadow-btn-hover);
+  --scroll-top-btn-focus-shadow: var(--shadow-btn-focus);
+  --scroll-top-btn-pulse-shadow: 0 8px 20px rgba(255 255 255 / 60%);
 
   /* ---------------------- */
   /* Floating Call Button   */
   /* ---------------------- */
-
-  --float-call-btn-bg: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    var(--primary-color) 100%
-  );
-  --float-call-btn-shadow: 0 4px 12px rgba(186 189 194 / 30%);
-  --float-call-btn-hover: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--accent-color) 100%
-  );
-  --float-call-btn-hover-shadow: 0 8px 20px rgba(34, 35, 36, 0.4);
-  --float-call-btn-focus-shadow: 0 8px 20px rgba(255, 255, 255, 0.82);
-  --float-call-btn-pulse-shadow: 0 8px 20px rgba(255, 255, 255, 0.82);
+  --float-call-btn-bg: var(--gradient-brand-diag);
+  --float-call-btn-shadow: var(--shadow-btn);
+  --float-call-btn-hover: var(--gradient-brand-diag-rev);
+  --float-call-btn-hover-shadow: var(--shadow-btn-hover);
+  --float-call-btn-focus-shadow: var(--shadow-btn-focus);
+  --float-call-btn-pulse-shadow: var(--shadow-btn-focus);
 }

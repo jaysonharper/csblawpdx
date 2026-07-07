@@ -1,7 +1,11 @@
 @layer components {
   /* Contact Info Layout */
   .contact-info {
-    @apply flex flex-col gap-8;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    /* Container context: the contact layout responds to its own width. */
+    container-type: inline-size;
   }
 
   .contact-image {
@@ -15,13 +19,15 @@
 
   .contact-map iframe {
     @apply w-full block;
-    height: 300px;
+    /* Fluid height relative to the container inline size. */
+    height: clamp(300px, 40cqi, 400px);
     border: none;
   }
 
   /* Contact details container */
   .contact-details {
-    @apply flex flex-col gap-6;
+    @apply flex flex-col;
+    gap: var(--space-md);
   }
 
   .contact-item {
@@ -49,33 +55,15 @@
     text-decoration: underline;
   }
 
-  /* Tablet responsiveness */
-  @media (min-width: 640px) {
-    .contact-map iframe {
-      height: 350px;
-    }
-
+  /* Row layout once the contact block itself is wide enough. */
+  @container (min-width: 40rem) {
     .contact-details {
-      @apply flex-row gap-8;
+      flex-direction: row;
+      gap: var(--space-lg);
     }
 
     .contact-item {
-      @apply flex-1;
-    }
-  }
-
-  /* Desktop responsiveness */
-  @media (min-width: 1024px) {
-    .contact-info {
-      @apply gap-12;
-    }
-
-    .contact-map iframe {
-      height: 400px;
-    }
-
-    .contact-details {
-      @apply gap-16;
+      flex: 1;
     }
   }
 }

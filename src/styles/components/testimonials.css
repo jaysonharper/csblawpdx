@@ -1,21 +1,11 @@
 @layer components {
-  /* Testimonials */
+  /* Testimonials — intrinsic auto-fit grid (no breakpoints).
+     Cards are <flow-testimonial-card> elements rendered from
+     src/data/testimonials.js; their styles live in the component. */
   .testimonial-preview {
-    @apply grid md:grid-cols-2 gap-8;
-  }
-
-  .testimonial-item {
-    @apply p-6 rounded-xl border-l-4;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    border-left-color: var(--subsection-border-left);
-  }
-
-  .testimonial-item p {
-    @apply text-lg italic mb-4 text-gray-700;
-  }
-
-  .testimonial-item cite {
-    @apply text-sm font-semibold;
-    color: var(--subsection-cite);
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+    align-items: stretch;
   }
 }

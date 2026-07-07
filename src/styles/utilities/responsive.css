@@ -1,38 +1,5 @@
-/* Responsive Improvements */
-@media (max-width: 640px) {
-  .hero-title {
-    @apply text-4xl;
-  }
-
-  .section-title {
-    @apply text-3xl;
-  }
-
-  .section-card {
-    @apply p-6;
-  }
-
-  .highlight-item[aria-expanded="true"] {
-    margin-bottom: 1rem;
-  }
-
-  .highlight-item {
-    min-height: auto;
-    /* Mobile-specific cross-browser fixes */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  .highlight-summary {
-    height: 6rem;
-    /* Ensure consistent mobile text rendering */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .service-features li {
-    @apply py-2;
-  }
-}
+/* Responsive utilities.
+   Responsiveness is now handled by fluid design tokens (clamp) in
+   base/variables.css and intrinsic auto-fit grids in the component styles,
+   so viewport breakpoints here are intentionally minimal. Add targeted
+   overrides below only when a fluid/intrinsic approach cannot express them. */

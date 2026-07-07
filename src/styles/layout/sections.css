@@ -1,7 +1,7 @@
 @layer components {
   /* Content Sections */
   .content-section {
-    @apply py-20;
+    padding-block: var(--space-2xl);
     position: relative;
     background: var(--section-bg);
   }
@@ -15,7 +15,8 @@
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl font-bold text-center mb-12;
+    @apply font-bold text-center mb-12;
+    font-size: var(--font-h2);
     background: var(--section-text-title);
     background-clip: text;
     -webkit-background-clip: text;
@@ -23,9 +24,12 @@
   }
 
   .section-card {
-    @apply bg-white rounded-2xl p-8 md:p-12;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    @apply bg-white rounded-2xl;
+    padding: var(--space-lg);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
     border: 1px solid #e5e7eb;
     position: relative;
     overflow: hidden;
@@ -42,7 +46,8 @@
   }
 
   .section-description {
-    @apply text-lg md:text-xl leading-relaxed text-gray-700 mb-8;
+    @apply leading-relaxed text-gray-700 mb-8;
+    font-size: var(--font-lead);
     text-align: center;
   }
 }

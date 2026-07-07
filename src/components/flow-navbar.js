@@ -408,8 +408,12 @@ export class FlowNavbar extends LitElement {
   }
 
   _handleNavClick(e) {
+    // Prevent the browser's default hash jump (which ignores the fixed navbar
+    // and races/overrides the smooth scroll below). This is the same guard the
+    // footer/anchor handler uses, so nav links now land consistently.
+    e.preventDefault();
     this.mobileMenuOpen = false; // Close menu when link is clicked
-    this._smoothScroll(e.target.getAttribute("href"));
+    this._smoothScroll(e.currentTarget.getAttribute("href"));
   }
 
   _smoothScroll(target) {

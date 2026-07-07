@@ -1,6 +1,11 @@
 import { describe, test, expect, beforeAll, afterAll } from "vitest";
 import { chromium } from "playwright";
 
+// NOTE: This Playwright suite targets a running dev server (localhost:5174)
+// and is intentionally NOT registered in vitest.config.js (neither the node
+// nor browser project includes it), so it does not run in `npm run test`.
+// It is kept for manual/local integration checks. Selectors below reflect the
+// current fluid/intrinsic architecture (auto-fit grids, <flow-service-card>).
 describe("CSS Integration Tests", () => {
   let browser;
   let page;
@@ -84,11 +89,11 @@ describe("CSS Integration Tests", () => {
       };
     });
 
-    // On mobile, hero title should be smaller (text-4xl instead of text-5xl+)
+    // On mobile, the fluid hero title clamps to its minimum end.
     const fontSize = parseFloat(titleStyles.fontSize);
     expect(fontSize).toBeLessThan(60); // Less than desktop size
 
-    // Check that service highlights adjusts to mobile grid
+    // Check that service highlights collapse to a single column on mobile
     const serviceHighlights = page.locator(".service-highlights");
     const mobileGridStyles = await serviceHighlights.evaluate((el) => {
       const styles = window.getComputedStyle(el);
@@ -97,8 +102,12 @@ describe("CSS Integration Tests", () => {
       };
     });
 
-    // Should be single column on mobile
-    expect(mobileGridStyles.gridTemplateColumns).toContain("1fr");
+    // Intrinsic auto-fit grid resolves to a single column track on narrow
+    // viewports (computed value is a single length, no additional tracks).
+    const columnCount = mobileGridStyles.gridTemplateColumns
+      .trim()
+      .split(/\s+/).length;
+    expect(columnCount).toBe(1);
   });
 
   test("CSS animations should be working", async () => {
@@ -106,22 +115,25 @@ describe("CSS Integration Tests", () => {
     await page.goto("http://localhost:5174");
     await page.waitForLoadState("networkidle");
 
-    // Check that highlight items have hover effects
-    const highlightItem = page.locator(".highlight-item").first();
-    await expect(highlightItem).toBeVisible();
+    // Check that service cards have hover effects (transform on the inner
+    // card element, which lives in the component's Shadow DOM).
+    const serviceCard = page.locator("flow-service-card").first();
+    await expect(serviceCard).toBeVisible();
 
-    // Get initial transform
-    const initialTransform = await highlightItem.evaluate((el) => {
-      return window.getComputedStyle(el).transform;
+    // Get initial transform of the inner card
+    const initialTransform = await serviceCard.evaluate((el) => {
+      const card = el.shadowRoot.querySelector(".card");
+      return window.getComputedStyle(card).transform;
     });
 
-    // Hover over the element
-    await highlightItem.hover();
+    // Hover over the card
+    await serviceCard.hover();
 
     // Check that transform changed (hover effect applied)
     await page.waitForTimeout(100); // Wait for transition
-    const hoverTransform = await highlightItem.evaluate((el) => {
-      return window.getComputedStyle(el).transform;
+    const hoverTransform = await serviceCard.evaluate((el) => {
+      const card = el.shadowRoot.querySelector(".card");
+      return window.getComputedStyle(card).transform;
     });
 
     expect(hoverTransform).not.toBe(initialTransform);
