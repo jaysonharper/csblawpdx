@@ -1,9 +1,13 @@
 import { LitElement, html, css } from "lit";
 
 export class FlowAttorneyCard extends LitElement {
+  static specialtySlotCount = 7;
+  static instances = new Set();
+  static sharedFrontHeight = 0;
+  static resizeHandlerAttached = false;
+
   static properties = {
     name: { type: String },
-    email: { type: String },
     image: { type: String },
     imageAlt: { type: String, attribute: "image-alt" },
     imageClass: { type: String, attribute: "image-class" },
@@ -21,13 +25,15 @@ export class FlowAttorneyCard extends LitElement {
       perspective: 1000px;
       width: 100%;
       height: 100%;
+      --attorney-card-front-height: 475px;
+      --attorney-specialties-bottom-gap: 16px;
     }
 
     .card-container {
       position: relative;
       width: 100%;
-      height: 100%;
-      min-height: 475px;
+      height: var(--attorney-card-front-height);
+      min-height: var(--attorney-card-front-height);
       transform-style: preserve-3d;
       transition: transform 0.6s ease-in-out;
       cursor: pointer;
@@ -60,7 +66,12 @@ export class FlowAttorneyCard extends LitElement {
 
     .card-front {
       text-align: center;
-      justify-content: center;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 56px;
+      padding-bottom: var(--attorney-specialties-bottom-gap);
+      overflow-x: hidden;
+      overflow-y: visible;
     }
 
     .card-back {
@@ -73,12 +84,16 @@ export class FlowAttorneyCard extends LitElement {
     .attorney-image {
       width: 175px;
       height: 175px;
+      min-width: 175px;
+      min-height: 175px;
       border-radius: 50%;
-      margin: 0 auto;
+      margin: 0;
       object-fit: cover;
       border: 3px solid #e5e7eb;
       transition: all 0.3s ease;
       display: block;
+      aspect-ratio: 1 / 1;
+      flex: 0 0 auto;
     }
 
     /* Specific positioning adjustments for individual attorneys */
@@ -104,65 +119,101 @@ export class FlowAttorneyCard extends LitElement {
       font-size: 1.25rem;
       font-weight: bold;
       color: var(--subsection-text-title, #0d1117);
-      margin-bottom: 1px;
+      margin: 16px 0 0;
       line-height: 1.3;
     }
 
-    .attorney-email {
-      margin-bottom: 20px;
-    }
-
-    .attorney-email a {
-      color: var(--subsection-links);
-      font-weight: 500;
-      font-size: 0.875rem;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .attorney-email a:hover {
-      color: var(--subsection-links-hover);
-      text-decoration: underline;
+    .flip-hint {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--subsection-text-subtitle, #2563eb);
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px dashed rgba(37, 99, 235, 0.35);
+      border-radius: 999px;
+      padding: 4px 10px;
     }
 
     .attorney-specialties {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr;
       justify-content: center;
-      gap: 8px;
-      margin-top: 12px;
-      /* Ensure container doesn't overflow */
+      justify-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      width: 100%;
       max-width: 100%;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      padding: 2px 2px 0;
+      box-sizing: border-box;
+      align-content: start;
+      flex: 0 0 auto;
     }
 
     .specialty-tag {
       display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px 12px;
-      border-radius: 5px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      background: var(--subsection-tag);
-      color: white;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: relative;
+      padding: 7px 28px 7px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      color: #1f3a5f;
       transition: all 0.2s ease;
-      border: 1px solid transparent;
+      border: 1px solid rgba(37, 99, 235, 0.4);
       cursor: pointer;
       user-select: none;
-      width: 140px;
-      max-width: calc(50% - 4px);
-      text-align: center;
+      width: 22ch;
+      max-width: 100%;
+      text-align: left;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      /* Ensure tags shrink if needed */
-      flex-shrink: 1;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+    }
+
+    .specialty-slot-empty {
+      width: 22ch;
+      max-width: 100%;
+      height: 31px;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .specialty-tag::after {
+      content: ">";
+      position: absolute;
+      right: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 0.95rem;
+      pointer-events: none;
     }
 
     .specialty-tag:hover {
       transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.23);
+      border-color: rgba(37, 99, 235, 0.65);
+      background: linear-gradient(180deg, #ffffff 0%, #eef4ff 100%);
+    }
+
+    .specialty-tag:focus-visible {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+      border-color: #1d4ed8;
+    }
+
+    .specialty-tag:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
     }
 
     .flip-indicator {
@@ -238,9 +289,8 @@ export class FlowAttorneyCard extends LitElement {
         padding: 16px;
       }
 
-      .attorney-image {
-        width: 112px;
-        height: 112px;
+      .card-front {
+        padding-top: 52px;
       }
 
       .attorney-name {
@@ -248,14 +298,12 @@ export class FlowAttorneyCard extends LitElement {
       }
 
       .attorney-specialties {
-        gap: 6px;
+        gap: 8px;
       }
 
       .specialty-tag {
-        width: 105px;
-        max-width: calc(50% - 3px);
-        font-size: 0.7rem;
-        padding: 3px 6px;
+        font-size: 0.72rem;
+        padding: 6px 28px 6px 10px;
       }
     }
 
@@ -265,17 +313,18 @@ export class FlowAttorneyCard extends LitElement {
         padding: 14px;
       }
 
+      .card-front {
+        padding-top: 50px;
+      }
+
       .attorney-specialties {
-        gap: 4px;
+        gap: 6px;
         margin-top: 8px;
       }
 
       .specialty-tag {
-        width: 85px;
-        max-width: calc(50% - 2px);
-        font-size: 0.65rem;
-        padding: 2px 4px;
-        border-radius: 4px;
+        font-size: 0.68rem;
+        padding: 5px 24px 5px 9px;
       }
     }
 
@@ -285,15 +334,17 @@ export class FlowAttorneyCard extends LitElement {
         padding: 12px;
       }
 
+      .card-front {
+        padding-top: 46px;
+      }
+
       .attorney-specialties {
-        gap: 3px;
+        gap: 5px;
       }
 
       .specialty-tag {
-        width: 75px;
-        max-width: calc(50% - 1.5px);
-        font-size: 0.6rem;
-        padding: 2px 3px;
+        font-size: 0.64rem;
+        padding: 4px 22px 4px 8px;
       }
     }
   `;
@@ -301,7 +352,6 @@ export class FlowAttorneyCard extends LitElement {
   constructor() {
     super();
     this.name = "";
-    this.email = "";
     this.image = "";
     this.imageAlt = "";
     this.imageClass = "";
@@ -311,6 +361,82 @@ export class FlowAttorneyCard extends LitElement {
     this.admissions = [];
     this.biography = "";
     this.isFlipped = false;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    FlowAttorneyCard.instances.add(this);
+
+    if (!FlowAttorneyCard.resizeHandlerAttached) {
+      window.addEventListener("resize", FlowAttorneyCard.handleViewportChange);
+      FlowAttorneyCard.resizeHandlerAttached = true;
+    }
+  }
+
+  disconnectedCallback() {
+    FlowAttorneyCard.instances.delete(this);
+
+    if (
+      FlowAttorneyCard.resizeHandlerAttached &&
+      FlowAttorneyCard.instances.size === 0
+    ) {
+      window.removeEventListener(
+        "resize",
+        FlowAttorneyCard.handleViewportChange,
+      );
+      FlowAttorneyCard.resizeHandlerAttached = false;
+      FlowAttorneyCard.sharedFrontHeight = 0;
+    }
+
+    super.disconnectedCallback();
+  }
+
+  firstUpdated() {
+    this.scheduleFrontHeightSync();
+  }
+
+  updated(changedProperties) {
+    if (
+      changedProperties.has("specialties") ||
+      changedProperties.has("name") ||
+      changedProperties.has("image") ||
+      changedProperties.has("imageClass")
+    ) {
+      this.scheduleFrontHeightSync();
+    }
+  }
+
+  static handleViewportChange() {
+    FlowAttorneyCard.sharedFrontHeight = 0;
+    FlowAttorneyCard.instances.forEach((card) => {
+      card.scheduleFrontHeightSync();
+    });
+  }
+
+  scheduleFrontHeightSync() {
+    requestAnimationFrame(() => {
+      this.syncSharedFrontHeight();
+    });
+  }
+
+  syncSharedFrontHeight() {
+    const frontFace = this.shadowRoot?.querySelector(".card-front");
+    if (!frontFace) return;
+
+    const requiredHeight = Math.ceil(frontFace.scrollHeight) + 2;
+    if (!requiredHeight) return;
+
+    FlowAttorneyCard.sharedFrontHeight = Math.max(
+      FlowAttorneyCard.sharedFrontHeight,
+      requiredHeight,
+    );
+
+    FlowAttorneyCard.instances.forEach((card) => {
+      card.style.setProperty(
+        "--attorney-card-front-height",
+        `${FlowAttorneyCard.sharedFrontHeight}px`,
+      );
+    });
   }
 
   flipCard() {
@@ -330,6 +456,30 @@ export class FlowAttorneyCard extends LitElement {
     );
   }
 
+  handleCardContainerClick(event) {
+    const interactiveTarget = event.target.closest(
+      "a, button, input, select, textarea",
+    );
+
+    if (interactiveTarget) {
+      return;
+    }
+
+    this.flipCard();
+  }
+
+  handleFlipControlClick(event) {
+    event.stopPropagation();
+    this.flipCard();
+  }
+
+  handleCardKeydown(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      this.flipCard();
+    }
+  }
+
   handleSpecialtyClick(event, specialty) {
     event.stopPropagation(); // Prevent card flip
 
@@ -347,17 +497,41 @@ export class FlowAttorneyCard extends LitElement {
     );
   }
 
+  getSpecialtySlots() {
+    const specialties = Array.isArray(this.specialties) ? this.specialties : [];
+    const slots = specialties.slice(0, FlowAttorneyCard.specialtySlotCount);
+
+    while (slots.length < FlowAttorneyCard.specialtySlotCount) {
+      slots.push(null);
+    }
+
+    return slots;
+  }
+
   render() {
+    const specialtySlots = this.getSpecialtySlots();
+
     return html`
       <div
         class="card-container ${this.isFlipped ? "flipped" : ""}"
-        @click="${this.flipCard}"
+        tabindex="0"
+        role="button"
+        aria-label="${this.isFlipped
+          ? "Show front of attorney card"
+          : "Show back of attorney card"}"
+        @click="${this.handleCardContainerClick}"
+        @keydown="${this.handleCardKeydown}"
       >
         <!-- Front of card -->
         <div class="card-face card-front">
           <div
             class="flip-indicator"
             title="${this.isFlipped ? "Show front" : "Show back"}"
+            role="button"
+            tabindex="0"
+            aria-label="${this.isFlipped ? "Show front" : "Show back"}"
+            @click="${this.handleFlipControlClick}"
+            @keydown="${this.handleCardKeydown}"
           >
             ${this.isFlipped ? "↻" : "↻"}
           </div>
@@ -371,27 +545,26 @@ export class FlowAttorneyCard extends LitElement {
 
           <h3 class="attorney-name">${this.name}</h3>
 
-          <div class="attorney-email">
-            <a
-              href="mailto:${this.email}"
-              @click="${(e) => e.stopPropagation()}"
-            >
-              ${this.email}
-            </a>
-          </div>
+          <p class="flip-hint">Biography</p>
 
           <div class="attorney-specialties">
-            ${this.specialties?.map(
-              (specialty) => html`
-                <span
-                  class="specialty-tag"
-                  @click="${(e) => this.handleSpecialtyClick(e, specialty)}"
-                  title="Click to view ${specialty} services"
-                >
-                  ${specialty}
-                </span>
-              `,
-            ) || ""}
+            ${specialtySlots.map((specialty) =>
+              specialty
+                ? html`
+                    <button
+                      type="button"
+                      class="specialty-tag"
+                      @click="${(e) => this.handleSpecialtyClick(e, specialty)}"
+                      title="Click to view ${specialty} services"
+                    >
+                      ${specialty}
+                    </button>
+                  `
+                : html`<span
+                    class="specialty-slot-empty"
+                    aria-hidden="true"
+                  ></span>`,
+            )}
           </div>
         </div>
 
@@ -400,6 +573,11 @@ export class FlowAttorneyCard extends LitElement {
           <div
             class="flip-indicator"
             title="${this.isFlipped ? "Show front" : "Show back"}"
+            role="button"
+            tabindex="0"
+            aria-label="${this.isFlipped ? "Show front" : "Show back"}"
+            @click="${this.handleFlipControlClick}"
+            @keydown="${this.handleCardKeydown}"
           >
             ${this.isFlipped ? "↻" : "↻"}
           </div>

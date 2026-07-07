@@ -32,6 +32,9 @@ coverage/
 test-results/
 test-report.html
 
+# Browser test screenshot artifacts
+src/components/__screenshots__/
+
 # Storybook
 *storybook.log
 chromatic-*.log

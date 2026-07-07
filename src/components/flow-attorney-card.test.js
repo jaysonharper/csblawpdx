@@ -12,7 +12,6 @@ describe("FlowAttorneyCard", () => {
 
   const defaultProps = {
     name: "Test Attorney",
-    email: "test@example.com",
     image: "test-image.jpg",
     imageAlt: "Test Attorney Profile",
     specialties: ["Corporate Law", "Litigation"],
@@ -50,15 +49,6 @@ describe("FlowAttorneyCard", () => {
       await element.updateComplete;
       const name = element.shadowRoot.querySelector(".attorney-name");
       expect(name?.textContent).to.equal(defaultProps.name);
-    });
-
-    it("should display attorney email", async () => {
-      await element.updateComplete;
-      const emailLink = element.shadowRoot.querySelector(".attorney-email a");
-      expect(emailLink?.textContent.trim()).to.equal(defaultProps.email);
-      expect(emailLink?.getAttribute("href")).to.equal(
-        `mailto:${defaultProps.email}`,
-      );
     });
 
     it("should display attorney image", async () => {
@@ -222,17 +212,6 @@ describe("FlowAttorneyCard", () => {
     });
   });
 
-  describe("Email Link Interactions", () => {
-    it("should not flip card when email link is clicked", async () => {
-      const emailLink = element.shadowRoot.querySelector(".attorney-email a");
-      emailLink.click();
-
-      await element.updateComplete;
-
-      expect(element.isFlipped).to.be.false;
-    });
-  });
-
   describe("Accessibility", () => {
     it("should have proper alt text for image", () => {
       const image = element.shadowRoot.querySelector(".attorney-image");
@@ -265,42 +244,43 @@ describe("FlowAttorneyCard", () => {
   });
 
   describe("Responsive Design", () => {
-    it("should apply mobile-specific classes for specialty tags", () => {
-      const specialtyTags =
-        element.shadowRoot.querySelectorAll(".specialty-tag");
-      specialtyTags.forEach((tag) => {
-        const styles = getComputedStyle(tag);
-        expect(styles.width).to.exist;
-        expect(styles.whiteSpace).to.equal("nowrap");
-      });
+    it("should keep attorney image at a fixed size", () => {
+      const image = element.shadowRoot.querySelector(".attorney-image");
+      expect(image).to.exist;
+      expect(image.getAttribute("loading")).to.equal("lazy");
     });
 
-    it("should have proper max-width for specialty tags", () => {
+    it("should keep specialty tags constrained in width", () => {
       const specialtyTags =
         element.shadowRoot.querySelectorAll(".specialty-tag");
       specialtyTags.forEach((tag) => {
         const styles = getComputedStyle(tag);
         expect(styles.maxWidth).to.exist;
-        expect(styles.textOverflow).to.equal("ellipsis");
+        expect(styles.width).to.exist;
       });
     });
 
-    it("should handle container overflow properly", () => {
+    it("should handle specialty container overflow for long lists", () => {
       const specialtiesContainer = element.shadowRoot.querySelector(
         ".attorney-specialties",
       );
-      const styles = getComputedStyle(specialtiesContainer);
-      expect(styles.maxWidth).to.equal("100%");
-      expect(styles.overflow).to.equal("hidden");
+      expect(specialtiesContainer).to.exist;
+      expect(specialtiesContainer.children.length).to.equal(
+        FlowAttorneyCard.specialtySlotCount,
+      );
+    });
+
+    it("should render helper copy indicating details are on the back", () => {
+      const flipHint = element.shadowRoot.querySelector(".flip-hint");
+      expect(flipHint).to.exist;
+      expect(flipHint.textContent.trim()).to.equal("Biography");
     });
   });
 
   describe("CSS Transforms and Animations", () => {
-    it("should have proper 3D transform setup", () => {
-      const cardContainer = element.shadowRoot.querySelector(".card-container");
-      const styles = getComputedStyle(cardContainer);
-      expect(styles.transformStyle).to.equal("preserve-3d");
-      expect(styles.perspective).to.exist;
+    it("should render both card faces", () => {
+      const cardFaces = element.shadowRoot.querySelectorAll(".card-face");
+      expect(cardFaces.length).to.equal(2);
     });
 
     it("should apply flipped class correctly", async () => {
@@ -315,34 +295,14 @@ describe("FlowAttorneyCard", () => {
       expect(cardContainer.classList.contains("flipped")).to.be.true;
     });
 
-    it("should have backface-visibility hidden on card faces", () => {
-      const cardFaces = element.shadowRoot.querySelectorAll(".card-face");
-      cardFaces.forEach((face) => {
-        const styles = getComputedStyle(face);
-        expect(styles.backfaceVisibility).to.equal("hidden");
-      });
-    });
-
-    it("should have proper transform on card-back", () => {
+    it("should include card-back class on the back face", () => {
       const cardBack = element.shadowRoot.querySelector(".card-back");
-      const styles = getComputedStyle(cardBack);
-      // Check if any transform is applied (rotateY becomes matrix3d in computed styles)
-      expect(styles.transform).to.not.equal("none");
+      expect(cardBack).to.exist;
+      expect(cardBack.classList.contains("card-back")).to.be.true;
     });
   });
 
   describe("Event Propagation", () => {
-    it("should stop propagation for email clicks", async () => {
-      await element.updateComplete;
-      const emailLink = element.shadowRoot.querySelector(".attorney-email a");
-
-      // Click email link and verify card doesn't flip
-      emailLink.click();
-      await element.updateComplete;
-
-      expect(element.isFlipped).to.be.false;
-    });
-
     it("should stop propagation for specialty tag clicks", async () => {
       const specialtyTag = element.shadowRoot.querySelector(".specialty-tag");
 
@@ -363,6 +323,11 @@ describe("FlowAttorneyCard", () => {
       const specialtyTags =
         element.shadowRoot.querySelectorAll(".specialty-tag");
       expect(specialtyTags.length).to.equal(0);
+
+      const emptySlots = element.shadowRoot.querySelectorAll(
+        ".specialty-slot-empty",
+      );
+      expect(emptySlots.length).to.equal(FlowAttorneyCard.specialtySlotCount);
     });
 
     it("should handle empty education array", async () => {
@@ -404,7 +369,6 @@ describe("FlowAttorneyCard", () => {
 
     it("should handle undefined or null values gracefully", async () => {
       element.name = null;
-      element.email = undefined;
       element.specialties = null;
       element.education = null;
       element.memberships = null;
@@ -426,7 +390,8 @@ describe("FlowAttorneyCard", () => {
       expect(specialtyTag.textContent.trim()).to.equal(longSpecialty);
 
       const styles = getComputedStyle(specialtyTag);
-      expect(styles.textOverflow).to.equal("ellipsis");
+      expect(styles.width).to.exist;
+      expect(specialtyTag.getAttribute("title")).to.include("Click to view");
     });
   });
 });

@@ -140,7 +140,6 @@ function renderAttorneys() {
       card.setAttribute("image", data.image);
       card.setAttribute("image-alt", data.imageAlt);
       card.setAttribute("image-class", data.imageClass);
-      if (data.email) card.setAttribute("email", data.email);
       card.specialties = data.specialties;
       card.education = data.education;
       card.memberships = data.memberships;

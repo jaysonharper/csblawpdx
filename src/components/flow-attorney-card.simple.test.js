@@ -20,7 +20,6 @@ describe("FlowAttorneyCard - Simple Tests", () => {
 
     it("should have default property values", () => {
       expect(element.name).toBe("");
-      expect(element.email).toBe("");
       expect(element.image).toBe("");
       expect(element.specialties).toEqual([]);
       expect(element.education).toEqual([]);
@@ -32,11 +31,9 @@ describe("FlowAttorneyCard - Simple Tests", () => {
 
     it("should accept property updates", () => {
       element.name = "Test Attorney";
-      element.email = "test@example.com";
       element.specialties = ["Corporate Law", "Litigation"];
 
       expect(element.name).toBe("Test Attorney");
-      expect(element.email).toBe("test@example.com");
       expect(element.specialties).toEqual(["Corporate Law", "Litigation"]);
     });
   });
@@ -108,7 +105,6 @@ describe("FlowAttorneyCard - Simple Tests", () => {
       const properties = FlowAttorneyCard.properties;
 
       expect(properties.name).toEqual({ type: String });
-      expect(properties.email).toEqual({ type: String });
       expect(properties.image).toEqual({ type: String });
       expect(properties.imageAlt).toEqual({
         type: String,
@@ -146,11 +142,9 @@ describe("FlowAttorneyCard - Simple Tests", () => {
 
     it("should handle null/undefined values", () => {
       element.name = null;
-      element.email = undefined;
       element.biography = "";
 
       expect(element.name).toBeNull();
-      expect(element.email).toBeUndefined();
       expect(element.biography).toBe("");
     });
 
