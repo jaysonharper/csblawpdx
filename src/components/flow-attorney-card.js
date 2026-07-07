@@ -91,7 +91,7 @@ export class FlowAttorneyCard extends LitElement {
     }
 
     .attorney-image.jakob {
-      object-position: center 0%;
+      object-position: 10% 0%; /* Shifts subject right within the frame */
     }
 
     .attorney-image:hover {
