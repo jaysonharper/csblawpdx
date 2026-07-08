@@ -26,6 +26,24 @@ export class FlowTestimonialCard extends LitElement {
       background: var(--gradient-surface);
     }
 
+    .quote-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      margin: 0 0 var(--space-xs);
+      border-radius: 9999px;
+      color: var(--subsection-cite, #4682b4);
+      background: rgba(70, 130, 180, 0.12);
+    }
+
+    .quote-icon svg {
+      width: 1rem;
+      height: 1rem;
+      display: block;
+    }
+
     p {
       margin: 0 0 var(--space-sm);
       font-size: var(--font-lead);
@@ -51,6 +69,13 @@ export class FlowTestimonialCard extends LitElement {
   render() {
     return html`
       <blockquote>
+        <span class="quote-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" role="presentation">
+            <path
+              d="M10.2 6.6c-2.5 1.3-4 3.6-4.2 7h3.1c0 2.2-1.2 3.7-3.3 4.6l1 2.1c3.6-1.4 5.6-4.2 5.6-8V6.6h-2.2Zm8.6 0c-2.5 1.3-4 3.6-4.2 7h3.1c0 2.2-1.2 3.7-3.3 4.6l1 2.1c3.6-1.4 5.6-4.2 5.6-8V6.6h-2.2Z"
+            ></path>
+          </svg>
+        </span>
         <p>${this.quote}</p>
         <cite>${this.cite}</cite>
       </blockquote>

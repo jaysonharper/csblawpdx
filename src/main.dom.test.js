@@ -3,6 +3,7 @@
  */
 
 import { describe, it, expect, vi } from "vitest";
+import { testimonials } from "./data/testimonials.js";
 
 describe("click behavior (DOM)", () => {
   it("toggles app-active class and button text on click", async () => {
@@ -35,5 +36,30 @@ describe("click behavior (DOM)", () => {
     expect(app.classList.contains("scale-99")).toBe(false);
     expect(app.classList.contains("transition-transform")).toBe(false);
     expect(btn.textContent).toBe("Click me");
+  });
+
+  it("renders two testimonials and rotates by one every 5 seconds", async () => {
+    vi.useFakeTimers();
+
+    document.body.innerHTML = `
+      <div class="testimonial-preview"></div>
+    `;
+
+    await vi.resetModules();
+    const mod = await import("./app.main.js");
+    mod.initializeApp();
+
+    const container = document.querySelector(".testimonial-preview");
+    expect(container.children).toHaveLength(2);
+
+    const firstPair = [...container.children].map((card) => card.quote);
+    expect(firstPair).toEqual([testimonials[0].quote, testimonials[1].quote]);
+
+    vi.advanceTimersByTime(5000);
+
+    const secondPair = [...container.children].map((card) => card.quote);
+    expect(secondPair).toEqual([testimonials[1].quote, testimonials[2].quote]);
+
+    vi.useRealTimers();
   });
 });

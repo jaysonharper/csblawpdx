@@ -26,6 +26,10 @@ describe("FlowTestimonialCard", () => {
     expect(text).toContain("Fantastic at his craft.");
     expect(text).toContain("— Joe S.");
 
+    const icon = el.shadowRoot.querySelector(".quote-icon");
+    expect(icon).toBeTruthy();
+    expect(icon.getAttribute("aria-hidden")).toBe("true");
+
     el.remove();
   });
 });

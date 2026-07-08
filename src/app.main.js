@@ -9,6 +9,8 @@ import { services } from "./data/services.js";
 import { testimonials } from "./data/testimonials.js";
 import { attorneys } from "./data/attorneys.js";
 
+let testimonialRotationTimer = null;
+
 // Debug browser session differences (development only)
 if (typeof import.meta !== "undefined" && import.meta.env?.DEV) {
   console.log("Browser info:", {
@@ -118,16 +120,51 @@ function renderServices() {
 }
 
 function renderTestimonials() {
+  if (testimonialRotationTimer) {
+    clearInterval(testimonialRotationTimer);
+    testimonialRotationTimer = null;
+  }
+
   const container = document.querySelector(".testimonial-preview");
   if (!container) return;
-  container.replaceChildren(
-    ...testimonials.map((t) => {
-      const card = document.createElement("flow-testimonial-card");
-      card.quote = t.quote;
-      card.cite = t.cite;
-      return card;
-    }),
-  );
+
+  const total = testimonials.length;
+  if (total === 0) {
+    container.replaceChildren();
+    return;
+  }
+
+  const renderCards = (items) => {
+    container.replaceChildren(
+      ...items.map((t) => {
+        const card = document.createElement("flow-testimonial-card");
+        card.quote = t.quote;
+        card.cite = t.cite;
+        return card;
+      }),
+    );
+  };
+
+  if (total <= 2) {
+    renderCards(testimonials.slice(0, 2));
+    return;
+  }
+
+  let startIndex = 0;
+  const renderVisiblePair = () => {
+    const visible = [
+      testimonials[startIndex],
+      testimonials[(startIndex + 1) % total],
+    ];
+    renderCards(visible);
+  };
+
+  renderVisiblePair();
+
+  testimonialRotationTimer = setInterval(() => {
+    startIndex = (startIndex + 1) % total;
+    renderVisiblePair();
+  }, 5000);
 }
 
 function renderAttorneys() {

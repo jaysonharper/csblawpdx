@@ -15,6 +15,11 @@ export const testimonials = [
       "Jakob is thorough, patient, and knowledgeable, the exact combination we wanted in the attorney helping us shape our estate plan. We now feel much more secure in our family's future.",
     cite: "— Kelli B.",
   },
+  {
+    quote:
+      "Brett, Randy and Jake provide a friendly atmosphere and are easy to work with.",
+    cite: "— Jayson H.",
+  },
 ];
 
 export default testimonials;
