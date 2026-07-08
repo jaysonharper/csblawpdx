@@ -10,6 +10,10 @@ import { testimonials } from "./data/testimonials.js";
 import { attorneys } from "./data/attorneys.js";
 
 let testimonialRotationTimer = null;
+let testimonialResizeDebounceTimer = null;
+let testimonialResizeListenerAttached = false;
+let testimonialFixedCardHeight = 0;
+let testimonialRenderToken = 0;
 
 // Debug browser session differences (development only)
 if (typeof import.meta !== "undefined" && import.meta.env?.DEV) {
@@ -125,8 +129,23 @@ function renderTestimonials() {
     testimonialRotationTimer = null;
   }
 
+  if (!testimonialResizeListenerAttached && typeof window !== "undefined") {
+    testimonialResizeListenerAttached = true;
+    window.addEventListener("resize", () => {
+      if (testimonialResizeDebounceTimer) {
+        clearTimeout(testimonialResizeDebounceTimer);
+      }
+
+      testimonialResizeDebounceTimer = setTimeout(() => {
+        renderTestimonials();
+      }, 150);
+    });
+  }
+
   const container = document.querySelector(".testimonial-preview");
   if (!container) return;
+
+  const renderToken = ++testimonialRenderToken;
 
   const total = testimonials.length;
   if (total === 0) {
@@ -140,13 +159,28 @@ function renderTestimonials() {
         const card = document.createElement("flow-testimonial-card");
         card.quote = t.quote;
         card.cite = t.cite;
+        if (testimonialFixedCardHeight > 0) {
+          card.style.height = `${testimonialFixedCardHeight}px`;
+        }
         return card;
       }),
     );
   };
 
+  const updateUniformHeight = async (rerender) => {
+    const measuredHeight = await calculateMaxTestimonialCardHeight(container);
+    if (renderToken !== testimonialRenderToken) return;
+    if (measuredHeight > 0 && measuredHeight !== testimonialFixedCardHeight) {
+      testimonialFixedCardHeight = measuredHeight;
+      rerender();
+    }
+  };
+
   if (total <= 2) {
     renderCards(testimonials.slice(0, 2));
+    void updateUniformHeight(() => {
+      renderCards(testimonials.slice(0, 2));
+    });
     return;
   }
 
@@ -160,11 +194,56 @@ function renderTestimonials() {
   };
 
   renderVisiblePair();
+  void updateUniformHeight(renderVisiblePair);
 
   testimonialRotationTimer = setInterval(() => {
     startIndex = (startIndex + 1) % total;
     renderVisiblePair();
   }, 5000);
+}
+
+function getWordCount(text = "") {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+async function calculateMaxTestimonialCardHeight(container) {
+  if (!container || testimonials.length === 0) return 0;
+
+  const longestByWords = testimonials.reduce((longest, current) => {
+    return getWordCount(current.quote) > getWordCount(longest.quote)
+      ? current
+      : longest;
+  }, testimonials[0]);
+
+  const existingCard = container.querySelector("flow-testimonial-card");
+  const measuredWidth = existingCard?.getBoundingClientRect().width;
+  const fallbackWidth = container.getBoundingClientRect().width;
+
+  const probe = document.createElement("flow-testimonial-card");
+  probe.quote = longestByWords.quote;
+  probe.cite = longestByWords.cite;
+  probe.style.position = "absolute";
+  probe.style.visibility = "hidden";
+  probe.style.pointerEvents = "none";
+  probe.style.top = "0";
+  probe.style.left = "-99999px";
+  probe.style.zIndex = "-1";
+  const probeWidth =
+    measuredWidth && measuredWidth > 0 ? measuredWidth : fallbackWidth;
+  if (probeWidth && probeWidth > 0) {
+    probe.style.width = `${probeWidth}px`;
+  }
+
+  document.body.appendChild(probe);
+
+  try {
+    if (typeof probe.updateComplete?.then === "function") {
+      await probe.updateComplete;
+    }
+    return Math.ceil(probe.getBoundingClientRect().height);
+  } finally {
+    probe.remove();
+  }
 }
 
 function renderAttorneys() {
