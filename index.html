@@ -14,15 +14,16 @@
     <!-- Disable browser extensions affecting layout -->
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-config" content="none" />
-    <meta name="theme-color" content="#f8fafc" />
+    <meta name="theme-color" content="#182955" />
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=4" />
-    <!-- Google Fonts: Poppins (global availability, works with Shadow DOM) -->
+    <!-- Google Fonts: Playfair Display (display/headings) + Montserrat (body/UI).
+         Loaded globally so they are available inside component Shadow DOM. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <!-- Styles are imported via JavaScript entry (app.main.js) for bundling -->
@@ -35,6 +36,7 @@
         -moz-osx-font-smoothing: grayscale !important;
         text-rendering: optimizeLegibility !important;
         font-family:
+          "Montserrat",
           ui-sans-serif,
           system-ui,
           -apple-system,
@@ -272,7 +274,11 @@
 
     <!-- Footer Section -->
     <footer
-      class="relative bg-gradient-to-r from-gray-900 to-gray-800 text-white border-t border-gray-700"
+      class="relative text-white border-t"
+      style="
+        background: linear-gradient(135deg, #101d3d 0%, #182955 100%);
+        border-color: #b7a760;
+      "
     >
       <div class="max-w-6xl mx-auto px-4">
         <!-- Desktop/Tablet Footer (md and up) -->
@@ -282,7 +288,9 @@
             <h3 class="text-2xl font-bold text-white mb-2">
               Law Offices of Carson, Seegmuller & Baker LLP
             </h3>
-            <p class="text-gray-300 text-sm">Professional Legal Services</p>
+            <p class="text-sm" style="color: #b7a760">
+              Professional Legal Services
+            </p>
           </div>
 
           <!-- Navigation Links -->
@@ -290,31 +298,31 @@
             <nav class="flex flex-wrap justify-center gap-6 md:gap-8">
               <a
                 href="#why-us"
-                class="text-gray-300 hover:text-white transition-colors duration-200 text-base"
+                class="text-gray-200 hover:text-[#b7a760] transition-colors duration-200 text-base"
               >
                 Why Us?
               </a>
               <a
                 href="#attorneys"
-                class="text-gray-300 hover:text-white transition-colors duration-200 text-base"
+                class="text-gray-200 hover:text-[#b7a760] transition-colors duration-200 text-base"
               >
                 Attorneys
               </a>
               <a
                 href="#services"
-                class="text-gray-300 hover:text-white transition-colors duration-200 text-base"
+                class="text-gray-200 hover:text-[#b7a760] transition-colors duration-200 text-base"
               >
                 Services
               </a>
               <a
                 href="#testimonials"
-                class="text-gray-300 hover:text-white transition-colors duration-200 text-base"
+                class="text-gray-200 hover:text-[#b7a760] transition-colors duration-200 text-base"
               >
                 Testimonials
               </a>
               <a
                 href="#find-us"
-                class="text-gray-300 hover:text-white transition-colors duration-200 text-base"
+                class="text-gray-200 hover:text-[#b7a760] transition-colors duration-200 text-base"
               >
                 Find Us
               </a>
@@ -322,8 +330,11 @@
           </div>
 
           <!-- Copyright -->
-          <div class="text-center pt-6 border-t border-gray-700">
-            <p class="text-gray-400 text-sm">
+          <div
+            class="text-center pt-6 border-t"
+            style="border-color: rgba(183, 167, 96, 0.35)"
+          >
+            <p class="text-gray-300 text-sm">
               &copy; 2026 Law Offices of Carson, Seegmuller & Baker LLP. All
               rights reserved.
             </p>
@@ -335,7 +346,7 @@
           <h4 class="text-lg font-semibold text-white mb-2">
             Law Offices of Carson, Seegmuller & Baker LLP
           </h4>
-          <p class="text-gray-400 text-xs">&copy; 2026 All rights reserved.</p>
+          <p class="text-gray-300 text-xs">&copy; 2026 All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -69,7 +69,7 @@ export class FlowFloatingCallButton extends LitElement {
       background: var(--float-call-btn-hover);
       transform: translateY(-2px) scale(1.05);
       box-shadow: var(--float-call-btn-hover-shadow);
-      border-color: rgba(168, 85, 247, 0.5);
+      border-color: rgba(183, 167, 96, 0.5);
       color: white;
     }
 
@@ -264,7 +264,7 @@ export class FlowFloatingCallButton extends LitElement {
             root: null,
             rootMargin: "0px",
             threshold: 0.1,
-          }
+          },
         );
 
         this._intersectionObserver.observe(this._heroElement);
@@ -289,7 +289,7 @@ export class FlowFloatingCallButton extends LitElement {
             root: null,
             rootMargin: "0px",
             threshold: 0.1,
-          }
+          },
         );
 
         this._footerObserver.observe(this._footerElement);
@@ -308,7 +308,7 @@ export class FlowFloatingCallButton extends LitElement {
         },
         bubbles: true,
         composed: true,
-      })
+      }),
     );
   }
 

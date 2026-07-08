@@ -50,7 +50,7 @@ export class FlowAttorneyCard extends LitElement {
       backface-visibility: hidden;
       border-radius: 12px;
       padding: 20px;
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
       border: 1px solid #e5e7eb;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       display: flex;
@@ -61,7 +61,7 @@ export class FlowAttorneyCard extends LitElement {
 
     .card-face:hover {
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      border-color: var(--subsection-card-hover, #2563eb);
+      border-color: var(--subsection-card-hover, #b7a760);
     }
 
     .card-front {
@@ -111,14 +111,14 @@ export class FlowAttorneyCard extends LitElement {
 
     .attorney-image:hover {
       transform: scale(1.05);
-      border-color: var(--subsection-image-hover, #2563eb);
+      border-color: var(--subsection-image-hover, #b7a760);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .attorney-name {
       font-size: 1.25rem;
       font-weight: bold;
-      color: var(--subsection-text-title, #0d1117);
+      color: var(--subsection-text-title, #182955);
       margin: 16px 0 0;
       line-height: 1.3;
     }
@@ -128,9 +128,9 @@ export class FlowAttorneyCard extends LitElement {
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.01em;
-      color: var(--subsection-text-subtitle, #2563eb);
+      color: var(--subsection-text-subtitle, #9a8b4e);
       background: rgba(255, 255, 255, 0.75);
-      border: 1px dashed rgba(37, 99, 235, 0.35);
+      border: 1px dashed rgba(183, 167, 96, 0.45);
       border-radius: 999px;
       padding: 4px 10px;
     }
@@ -163,10 +163,10 @@ export class FlowAttorneyCard extends LitElement {
       font-weight: 600;
       line-height: 1.25;
       letter-spacing: 0.01em;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      color: #1f3a5f;
+      background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+      color: #182955;
       transition: all 0.2s ease;
-      border: 1px solid rgba(37, 99, 235, 0.4);
+      border: 1px solid rgba(183, 167, 96, 0.5);
       cursor: pointer;
       user-select: none;
       width: 22ch;
@@ -192,7 +192,7 @@ export class FlowAttorneyCard extends LitElement {
       right: 11px;
       top: 50%;
       transform: translateY(-50%);
-      color: #2563eb;
+      color: #9a8b4e;
       font-weight: 700;
       font-size: 0.95rem;
       pointer-events: none;
@@ -200,20 +200,20 @@ export class FlowAttorneyCard extends LitElement {
 
     .specialty-tag:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.23);
-      border-color: rgba(37, 99, 235, 0.65);
-      background: linear-gradient(180deg, #ffffff 0%, #eef4ff 100%);
+      box-shadow: 0 4px 10px rgba(183, 167, 96, 0.28);
+      border-color: rgba(183, 167, 96, 0.75);
+      background: linear-gradient(180deg, #ffffff 0%, #faf7ec 100%);
     }
 
     .specialty-tag:focus-visible {
-      outline: 2px solid #1d4ed8;
+      outline: 2px solid #9a8b4e;
       outline-offset: 2px;
-      border-color: #1d4ed8;
+      border-color: #9a8b4e;
     }
 
     .specialty-tag:active {
       transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 2px 6px rgba(183, 167, 96, 0.25);
     }
 
     .flip-indicator {
@@ -222,19 +222,19 @@ export class FlowAttorneyCard extends LitElement {
       right: 12px;
       width: 24px;
       height: 24px;
-      background: rgba(37, 99, 235, 0.1);
+      background: rgba(183, 167, 96, 0.12);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px;
-      color: var(--subsection-flip-indicator, #2563eb);
-      border: 1px solid rgba(37, 99, 235, 0.2);
+      color: var(--subsection-flip-indicator, #9a8b4e);
+      border: 1px solid rgba(183, 167, 96, 0.25);
       transition: all 0.3s ease;
     }
 
     .flip-indicator:hover {
-      background: rgba(37, 99, 235, 0.2);
+      background: rgba(183, 167, 96, 0.22);
       transform: scale(1.1);
     }
 
@@ -248,7 +248,7 @@ export class FlowAttorneyCard extends LitElement {
     .back-header h3 {
       font-size: 1.25rem;
       font-weight: bold;
-      color: var(--subsection-text-title, #0d1117);
+      color: var(--subsection-text-title, #182955);
       margin: 0;
     }
 
@@ -259,7 +259,7 @@ export class FlowAttorneyCard extends LitElement {
     .bio-section h4 {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--subsection-text-subtitle, #2563eb);
+      color: var(--subsection-text-subtitle, #9a8b4e);
       margin: 0 0 8px 0;
       padding-bottom: 4px;
       border-bottom: 1px solid #e5e7eb;

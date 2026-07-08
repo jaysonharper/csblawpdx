@@ -44,8 +44,8 @@ export class FlowServiceCard extends LitElement {
     :host(:hover) .card {
       transform: translateY(-4px);
       box-shadow: var(--shadow-card-hover);
-      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-      border-color: var(--subsection-card-hover, #4682b4);
+      background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+      border-color: var(--subsection-card-hover, #b7a760);
     }
 
     /* Flash effect triggered from the host (attorney specialty deep-link). */
@@ -63,7 +63,7 @@ export class FlowServiceCard extends LitElement {
       font-size: var(--font-h3);
       font-weight: 700;
       line-height: 1.3;
-      color: var(--subsection-text-title, #000);
+      color: var(--subsection-text-title, #182955);
     }
 
     .summary {
@@ -111,28 +111,28 @@ export class FlowServiceCard extends LitElement {
       position: absolute;
       left: 0;
       font-weight: 700;
-      color: #16a34a;
+      color: var(--color-gold-dark, #9a8b4e);
     }
 
     @keyframes highlightFlash {
       0% {
-        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        background: linear-gradient(135deg, #26396b 0%, #101d3d 100%);
         transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3);
-        border-color: #1d4ed8;
+        box-shadow: 0 15px 35px rgba(24, 41, 85, 0.3);
+        border-color: var(--color-gold, #b7a760);
       }
       25% {
-        background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        background: linear-gradient(135deg, #b7a760 0%, #9a8b4e 100%);
         transform: translateY(-6px) scale(1.01);
       }
       50% {
-        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        background: linear-gradient(135deg, #faf7ec 0%, #f0ead2 100%);
         transform: translateY(-2px);
       }
       100% {
         transform: translateY(-4px);
         box-shadow: var(--shadow-card-hover);
-        border-color: #3b82f6;
+        border-color: var(--color-gold, #b7a760);
       }
     }
   `;

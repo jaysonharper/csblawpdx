@@ -2,7 +2,27 @@
   /* Hero Section */
   .hero-section {
     @apply min-h-screen flex flex-col items-center;
-    background-image: url("/images/dark-office.jpeg");
+    /* Placeholder brand background. Swap the --hero-image variable (or replace
+       this block) with a real photo later, e.g.:
+       background-image: url("/images/your-photo.jpg"); */
+    background-color: var(--color-navy, #182955);
+    background-image:
+      radial-gradient(
+        circle at 20% 20%,
+        rgba(183, 167, 96, 0.18) 0%,
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 80% 0%,
+        rgba(38, 57, 107, 0.55) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        160deg,
+        var(--color-navy-dark, #101d3d) 0%,
+        var(--color-navy, #182955) 55%,
+        var(--color-navy-light, #26396b) 100%
+      );
     background-size: cover; /* Ensures the image covers the section */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat;

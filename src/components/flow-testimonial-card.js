@@ -22,7 +22,7 @@ export class FlowTestimonialCard extends LitElement {
       margin: 0;
       padding: var(--space-sm);
       border-radius: var(--radius-card);
-      border-left: 4px solid var(--subsection-border-left, #4682b4);
+      border-left: 4px solid var(--subsection-border-left, #b7a760);
       background: var(--gradient-surface);
     }
 
@@ -34,8 +34,8 @@ export class FlowTestimonialCard extends LitElement {
       height: 2rem;
       margin: 0 0 var(--space-xs);
       border-radius: 9999px;
-      color: var(--subsection-cite, #4682b4);
-      background: rgba(70, 130, 180, 0.12);
+      color: var(--subsection-cite, #9a8b4e);
+      background: rgba(183, 167, 96, 0.14);
     }
 
     .quote-icon svg {
@@ -56,7 +56,7 @@ export class FlowTestimonialCard extends LitElement {
       font-size: var(--font-sm);
       font-weight: 600;
       font-style: normal;
-      color: var(--subsection-cite, #4682b4);
+      color: var(--subsection-cite, #9a8b4e);
     }
   `;
 

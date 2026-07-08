@@ -12,48 +12,70 @@
   /* TIER 1 — PRIMITIVES                                                    */
   /* ===================================================================== */
 
-  /* --- Color palette -------------------------------------------------- */
-  --color-primary: #4682b4; /* steelblue */
-  --color-accent: #1e537e;
-  --color-bg: #4d5561;
-  --color-bg-accent: #e2e8f0;
+  /* --- Brand color palette -------------------------------------------- */
+  /* Core brand colors (from designer guidelines):
+     Navy  #182955  •  Gold #B7A760  •  Light #F5F5F5 */
+  --color-navy: #182955;
+  --color-navy-dark: #101d3d;
+  --color-navy-light: #26396b;
+  --color-gold: #b7a760;
+  --color-gold-dark: #9a8b4e;
+  --color-gold-light: #cbbd83;
+  --color-light: #f5f5f5;
+
+  /* Role primitives (referenced by semantic tokens below).
+     primary = gold accent, accent = navy brand base. */
+  --color-primary: var(--color-gold);
+  --color-accent: var(--color-navy);
+  --color-bg: var(--color-navy);
+  --color-bg-accent: var(--color-light);
   --color-white: #ffffff;
-  --color-ink: #000000;
+  --color-ink: var(--color-navy);
   --color-divider: #e5e7eb;
 
   /* --- Shared gradients ----------------------------------------------- */
   --gradient-brand: linear-gradient(
     0deg,
-    var(--color-accent) 0%,
-    var(--color-primary) 90%
+    var(--color-navy-dark) 0%,
+    var(--color-navy-light) 100%
   );
   --gradient-brand-diag: linear-gradient(
     135deg,
-    var(--color-accent) 0%,
-    var(--color-primary) 100%
+    var(--color-navy-light) 0%,
+    var(--color-navy-dark) 100%
   );
   --gradient-brand-diag-rev: linear-gradient(
     135deg,
-    var(--color-primary) 0%,
-    var(--color-accent) 100%
+    var(--color-navy-dark) 0%,
+    var(--color-navy-light) 100%
+  );
+  --gradient-gold: linear-gradient(
+    135deg,
+    var(--color-gold-light) 0%,
+    var(--color-gold-dark) 100%
   );
   --gradient-section: linear-gradient(
     180deg,
-    var(--color-bg) 0%,
-    var(--color-bg-accent) 100%
+    var(--color-white) 0%,
+    var(--color-light) 100%
+  );
+  --gradient-section-alt: linear-gradient(
+    180deg,
+    var(--color-light) 0%,
+    #ececec 100%
   );
   --gradient-surface: linear-gradient(
     135deg,
-    #f8fafc 0%,
-    var(--color-bg-accent) 100%
+    #ffffff 0%,
+    var(--color-light) 100%
   );
 
   /* --- Shared shadows ------------------------------------------------- */
-  --shadow-btn: 0 4px 12px rgba(186 189 194 / 30%);
-  --shadow-btn-hover: 0 8px 20px rgba(34 35 36 / 40%);
-  --shadow-btn-focus: 0 8px 20px rgba(255 255 255 / 82%);
+  --shadow-btn: 0 4px 12px rgba(24 41 85 / 25%);
+  --shadow-btn-hover: 0 8px 20px rgba(24 41 85 / 40%);
+  --shadow-btn-focus: 0 0 0 3px rgba(183 167 96 / 55%);
   --shadow-card: 0 2px 8px rgba(0 0 0 / 5%);
-  --shadow-card-hover: 0 10px 25px rgba(0 0 0 / 10%);
+  --shadow-card-hover: 0 10px 25px rgba(24 41 85 / 12%);
 
   /* --- Radii ---------------------------------------------------------- */
   --radius-card: 0.75rem; /* 12px */
@@ -66,6 +88,13 @@
   --font-lead: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
   --font-body: clamp(0.9375rem, 0.9rem + 0.3vw, 1rem);
   --font-sm: clamp(0.875rem, 0.82rem + 0.25vw, 1rem);
+
+  /* --- Type families -------------------------------------------------- */
+  --font-family-display:
+    "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+  --font-family-body:
+    "Montserrat", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* --- Fluid spacing scale -------------------------------------------- */
   --space-3xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
@@ -98,65 +127,69 @@
   /* ---------------------- */
   --nav-bg: var(--gradient-brand);
   --nav-logo-text: var(--color-white);
-  --nav-logo-text-hover: var(--color-white);
+  --nav-logo-text-hover: var(--color-gold);
 
   /* ---------------------- */
   /* Nav Links              */
   /* ---------------------- */
   --navlink-text: var(--color-white);
-  --navlink-text-hover: var(--color-primary);
-  --navlink-text-border: 1px solid var(--color-primary);
+  --navlink-text-hover: var(--color-gold);
+  --navlink-text-border: 1px solid var(--color-gold);
   --navlink-before: linear-gradient(
     90deg,
     transparent,
-    rgba(30 83 126 / 10%),
+    rgba(183 167 96 / 15%),
     transparent
   );
 
   /* ---------------------- */
   /* Hero                   */
   /* ---------------------- */
-  --hero-text-title: var(--color-white);
+  --hero-text-title: linear-gradient(
+    180deg,
+    var(--color-white) 0%,
+    var(--color-light) 100%
+  );
   --hero-call-btn-bg: var(--gradient-brand);
-  --hero-call-btn-hover: var(--color-primary);
+  --hero-call-btn-hover: var(--color-gold);
 
   /* ---------------------- */
   /* Section                */
   /* ---------------------- */
   --section-bg: var(--gradient-section);
-  --section-bg-alt: var(--gradient-section);
+  --section-bg-alt: var(--gradient-section-alt);
   --section-text-title: linear-gradient(
     180deg,
-    var(--color-white) 0%,
-    var(--color-white) 100%
+    var(--color-navy-light) 0%,
+    var(--color-navy) 100%
   );
   --section-card-border: linear-gradient(
     90deg,
-    var(--color-white) 0%,
-    var(--color-primary) 100%
+    var(--color-navy) 0%,
+    var(--color-gold) 100%
   );
 
   /* ---------------------- */
   /* Subsection             */
   /* ---------------------- */
-  --subsection-text-title: var(--color-ink);
+  --subsection-text-title: var(--color-navy);
   --subsection-divider: linear-gradient(
       90deg,
-      var(--color-primary) 0%,
+      var(--color-gold) 0%,
       var(--color-divider) 50%,
-      var(--color-primary) 100%
+      var(--color-gold) 100%
     )
     1;
-  --subsection-text-subtitle: var(--color-primary);
-  --subsection-card-hover: var(--color-primary);
-  --subsection-border-left: var(--color-primary);
-  --subsection-links: var(--color-primary);
-  --subsection-links-hover: var(--color-primary);
-  --subsection-flip-indicator: var(--color-primary);
-  --subsection-image-hover: var(--color-primary);
+  --subsection-text-subtitle: var(--color-gold-dark);
+  --subsection-card-hover: var(--color-gold);
+  --subsection-border-left: var(--color-gold);
+  --subsection-links: var(--color-navy);
+  --subsection-links-hover: var(--color-gold-dark);
+  --subsection-flip-indicator: var(--color-gold-dark);
+  --subsection-image-hover: var(--color-gold);
   --subsection-tag: var(--gradient-brand);
-  --subsection-tag-hover: var(--color-primary);
-  --subsection-cite: var(--color-primary);
+  --subsection-tag-hover: var(--color-gold);
+  --subsection-cite: var(--color-gold-dark);
 
   /* ---------------------- */
   /* Scroll-to-Top Button   */
@@ -166,7 +199,7 @@
   --scroll-top-btn-hover: var(--gradient-brand-diag-rev);
   --scroll-top-btn-hover-shadow: var(--shadow-btn-hover);
   --scroll-top-btn-focus-shadow: var(--shadow-btn-focus);
-  --scroll-top-btn-pulse-shadow: 0 8px 20px rgba(255 255 255 / 60%);
+  --scroll-top-btn-pulse-shadow: 0 8px 20px rgba(183 167 96 / 55%);
 
   /* ---------------------- */
   /* Floating Call Button   */

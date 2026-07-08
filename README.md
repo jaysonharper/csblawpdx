@@ -167,7 +167,7 @@ If you need a template for distribution, you can recreate one manually (e.g. `cp
 <flow-navbar></flow-navbar>
 ```
 
-Fixed top navigation with hamburger menu, company logo (click to scroll to top), Scales of Justice icon with tooltip, and section navigation links.
+Fixed top navigation with a hamburger menu pinned to the top-left corner, a centered company logo (click to scroll to top), and section navigation links.
 
 ---
 

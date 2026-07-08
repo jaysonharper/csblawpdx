@@ -13,24 +13,30 @@ export class FlowCallButton extends LitElement {
     .call-button {
       display: flex;
       align-items: center;
-      background: steelblue;
-      color: #f0f6fc;
+      background: var(
+        --gradient-brand,
+        linear-gradient(135deg, #26396b 0%, #101d3d 100%)
+      );
+      color: #f5f5f5;
       padding: 0.5rem 1rem;
       border-radius: 5px;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.875rem;
       transition: all 0.2s ease;
-      border: 1px solid #2ea043;
+      border: 1px solid var(--color-gold, #b7a760);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       cursor: pointer;
       white-space: nowrap;
     }
 
     .call-button:hover {
-      background: linear-gradient(135deg, #2ea043 0%, #46954a 100%);
+      background: var(
+        --gradient-gold,
+        linear-gradient(135deg, #cbbd83 0%, #9a8b4e 100%)
+      );
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-      color: #f0f6fc;
+      color: #182955;
     }
 
     .call-button:active {
@@ -40,7 +46,7 @@ export class FlowCallButton extends LitElement {
 
     .call-button:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(46, 160, 67, 0.3);
+      box-shadow: 0 0 0 3px rgba(183, 167, 96, 0.4);
     }
 
     .phone-icon {
@@ -125,27 +131,34 @@ export class FlowCallButton extends LitElement {
 
     /* Theme Variants */
     :host([variant="primary"]) .call-button {
-      background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
-      border-color: #2ea043;
+      background: var(
+        --gradient-brand,
+        linear-gradient(135deg, #26396b 0%, #101d3d 100%)
+      );
+      border-color: var(--color-gold, #b7a760);
     }
 
     :host([variant="primary"]) .call-button:hover {
-      background: linear-gradient(135deg, #2ea043 0%, #46954a 100%);
+      background: var(
+        --gradient-gold,
+        linear-gradient(135deg, #cbbd83 0%, #9a8b4e 100%)
+      );
+      color: #182955;
     }
 
     :host([variant="secondary"]) .call-button {
-      background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-      border-color: #30363d;
+      background: linear-gradient(135deg, #101d3d 0%, #182955 100%);
+      border-color: var(--color-gold, #b7a760);
     }
 
     :host([variant="secondary"]) .call-button:hover {
-      background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
-      border-color: #7c3aed;
+      background: linear-gradient(135deg, #182955 0%, #26396b 100%);
+      border-color: var(--color-gold-light, #cbbd83);
     }
 
     :host([variant="hero"]) .call-button {
       background: var(--hero-call-btn-bg);
-      border-color: #000000b8;
+      border-color: var(--color-gold, #b7a760);
       font-size: 2rem;
       padding: 0.75rem 1.5rem;
       box-shadow: 0 4px 12px rgb(0 0 0);
@@ -153,7 +166,12 @@ export class FlowCallButton extends LitElement {
     }
 
     :host([variant="hero"]) .call-button:hover {
-      border: 2px, solid, white;
+      border-color: var(--color-gold-light, #cbbd83);
+      background: var(
+        --gradient-gold,
+        linear-gradient(135deg, #cbbd83 0%, #9a8b4e 100%)
+      );
+      color: #182955;
     }
 
     :host([variant="hero"]) .phone-icon {
@@ -164,14 +182,21 @@ export class FlowCallButton extends LitElement {
 
     /* Navbar Variant - Same styling as hero but semantically separate */
     :host([variant="navbar"]) .call-button {
-      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-      border-color: #2563eb;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      background: var(
+        --gradient-brand,
+        linear-gradient(135deg, #26396b 0%, #101d3d 100%)
+      );
+      border-color: var(--color-gold, #b7a760);
+      box-shadow: 0 4px 12px rgba(24, 41, 85, 0.3);
     }
 
     :host([variant="navbar"]) .call-button:hover {
-      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
-      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+      background: var(
+        --gradient-gold,
+        linear-gradient(135deg, #cbbd83 0%, #9a8b4e 100%)
+      );
+      color: #182955;
+      box-shadow: 0 8px 20px rgba(183, 167, 96, 0.4);
     }
 
     /* Disabled State */
@@ -266,7 +291,7 @@ export class FlowCallButton extends LitElement {
     const cleaned = phone.replace(/^\+?1?/, "").replace(/\D/g, "");
     if (cleaned.length === 10) {
       return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(
-        6
+        6,
       )}`;
     }
     return phone; // Return original if can't format
@@ -288,7 +313,7 @@ export class FlowCallButton extends LitElement {
           originalEvent: e,
         },
         bubbles: true,
-      })
+      }),
     );
 
     // Track the call attempt (development only)

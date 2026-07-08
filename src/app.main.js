@@ -475,8 +475,6 @@ function setupComponentEvents() {
     // Note: Scroll confirmation alerts can be added explicitly when needed
   });
 
-  // Note: Scales icon events removed (component replaced with static SVG)
-
   // Listen for floating call button events
   document.addEventListener("flow-floating-call-click", (e) => {
     // Track floating call button usage

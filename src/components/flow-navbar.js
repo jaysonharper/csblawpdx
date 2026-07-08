@@ -14,11 +14,11 @@ export class FlowNavbar extends LitElement {
       right: 0;
       z-index: 1000;
       background: var(--nav-bg);
-      border-bottom: 1px solid #30363d;
+      border-bottom: 1px solid var(--color-gold, #b7a760);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      /* Ensure Poppins is used inside Shadow DOM when available */
+      /* Body/UI typeface inside Shadow DOM when available */
       font-family:
-        "Poppins",
+        "Montserrat",
         ui-sans-serif,
         system-ui,
         -apple-system,
@@ -34,14 +34,15 @@ export class FlowNavbar extends LitElement {
     .navbar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1rem;
+      justify-content: center;
+      padding: 0.25rem 1rem;
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
+      min-height: 88px;
     }
 
-    /* Menu Toggle - Always visible */
+    /* Menu Toggle - Pinned to the top-left corner above the logo */
     .menu-toggle {
       display: flex;
       flex-direction: column;
@@ -49,17 +50,21 @@ export class FlowNavbar extends LitElement {
       padding: 0.5rem;
       border-radius: 0.375rem;
       transition: background-color 0.2s ease;
-      transform: scale(1.5);
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%) scale(1.2);
+      z-index: 2;
     }
 
     .menu-toggle:hover {
-      background-color: #21262d;
+      background-color: rgba(183, 167, 96, 0.15);
     }
 
     .menu-toggle span {
       width: 1.5rem;
       height: 2px;
-      background-color: #f0f6fc;
+      background-color: var(--color-gold, #b7a760);
       margin: 2px 0;
       transition: all 0.3s ease;
       border-radius: 1px;
@@ -77,94 +82,38 @@ export class FlowNavbar extends LitElement {
       transform: rotate(-45deg) translate(7px, -6px);
     }
 
-    /* Logo Container */
+    /* Logo Container - fills the navbar, centered, clearing the burger */
     .logo-container {
       display: flex;
-      flex-direction: column;
-      align-items: center; /* Centers the text horizontally */
-      text-align: center; /* fallback for older browsers */
-      font-family: inherit;
-      color: #333; /* A dark, professional gray */
-    }
-
-    .logo-container:hover {
-      transform: translateY(-1px);
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 80px;
+      /* Clear the burger on the left; mirror on the right to stay centered */
+      padding: 0 3.5rem;
+      box-sizing: border-box;
+      background: transparent;
+      border: none;
       cursor: pointer;
       transition: transform 0.2s ease;
     }
 
-    .logo-text {
-      font-size: 1.75em;
-      background: var(--hero-text-title);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))
-        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))
-        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    .logo-container:hover {
+      transform: translateY(-1px);
     }
 
-    .logo-container:hover .logo-text {
-      text-shadow: 0 0 40px var(--nav-logo-text-hover);
+    .logo-container:focus-visible {
+      outline: 2px solid var(--color-gold, #b7a760);
+      outline-offset: 4px;
+      border-radius: 0.375rem;
     }
 
-    /* Justice Icon Container for Tooltip */
-    .justice-icon-container {
-      position: relative;
-      display: inline-block;
-      margin-left: 0.5rem;
-    }
-
-    /* Static Scales of Justice Icon */
-    .justice-icon {
-      /* Mobile: smaller */
-      width: 48px;
-      height: 48px;
-      flex-shrink: 0;
+    .logo-image {
       display: block;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    /* Tooltip element */
-    .tooltip {
-      position: absolute;
-      bottom: -35px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      padding: 6px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      white-space: nowrap;
-      opacity: 0;
-      visibility: hidden;
-      transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
-      pointer-events: none;
-      z-index: 1001;
-    }
-
-    /* Tooltip arrow */
-    .tooltip::before {
-      content: "";
-      position: absolute;
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 5px solid rgba(0, 0, 0, 0.9);
-    }
-
-    /* Show tooltip on hover */
-    .justice-icon-container:hover .tooltip {
-      opacity: 1;
-      visibility: visible;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
     }
 
     /* Navigation Menu */
@@ -173,8 +122,11 @@ export class FlowNavbar extends LitElement {
       top: 100%;
       left: 0;
       right: 0;
-      background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-      border-bottom: 1px solid #30363d;
+      background: var(
+        --gradient-brand-diag,
+        linear-gradient(135deg, #101d3d 0%, #26396b 100%)
+      );
+      border-bottom: 1px solid var(--color-gold, #b7a760);
       transform: translateY(-100%);
       opacity: 0;
       visibility: hidden;
@@ -224,7 +176,7 @@ export class FlowNavbar extends LitElement {
 
     .nav-link:hover {
       color: var(--navlink-text-hover);
-      background-color: #21262d;
+      background-color: rgba(183, 167, 96, 0.12);
       transform: translateY(-1px);
     }
 
@@ -232,11 +184,15 @@ export class FlowNavbar extends LitElement {
       left: 100%;
     }
 
-    /* Responsive Design - Scale icons and text */
+    /* Responsive Design - scale the logo up on larger screens */
     @media (min-width: 768px) {
+      .navbar {
+        min-height: 112px;
+      }
+
       .menu-toggle {
-        padding: 0.6rem;
-        transform: scale(2);
+        left: 1rem;
+        transform: translateY(-50%) scale(1.5);
       }
 
       .menu-toggle span {
@@ -244,25 +200,21 @@ export class FlowNavbar extends LitElement {
         height: 2.2px;
       }
 
-      .logo-text {
-        font-size: 2rem;
-      }
-
-      .justice-icon {
-        /* Tablet: medium */
-        width: 72px;
-        height: 72px;
+      .logo-container {
+        height: 104px;
+        padding: 0 4rem;
       }
     }
 
     @media (min-width: 1024px) {
       .navbar {
-        padding: 1rem 2rem;
+        padding: 0.25rem 2rem;
+        min-height: 132px;
       }
 
       .menu-toggle {
-        padding: 0.7rem;
-        transform: scale(2);
+        left: 1.5rem;
+        transform: translateY(-50%) scale(1.6);
       }
 
       .menu-toggle span {
@@ -270,8 +222,9 @@ export class FlowNavbar extends LitElement {
         height: 2.5px;
       }
 
-      .logo-text {
-        font-size: 2.5rem;
+      .logo-container {
+        height: 124px;
+        padding: 0 4.5rem;
       }
     }
   `;
@@ -288,17 +241,22 @@ export class FlowNavbar extends LitElement {
   render() {
     return html`
       <nav class="navbar">
-        <!-- Menu Toggle - Always visible -->
+        <!-- Menu Toggle - Pinned top-left -->
         <div
           class="menu-toggle ${this.mobileMenuOpen ? "active" : ""}"
           @click="${this._toggleMobileMenu}"
+          role="button"
+          tabindex="0"
+          aria-label="Toggle navigation menu"
+          aria-expanded="${this.mobileMenuOpen ? "true" : "false"}"
+          @keydown="${this._handleMenuToggleKeydown}"
         >
           <span></span>
           <span></span>
           <span></span>
         </div>
 
-        <!-- Company Name -->
+        <!-- Company Logo (centered) -->
         <div
           class="logo-container"
           @click="${this._scrollToTop}"
@@ -307,67 +265,13 @@ export class FlowNavbar extends LitElement {
           aria-label="Law Offices of Carson, Seegmuller & Baker LLP - Home"
           @keydown="${this._handleCompanyNameKeydown}"
         >
-          <span class="logo-text">Carson, Seegmuller & Baker LLP</span>
-        </div>
-
-        <!-- Scales of Justice Icon with tooltip container -->
-        <div class="justice-icon-container">
-          <svg
-            class="justice-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 120 120"
-            fill="currentColor"
-            role="img"
-            aria-label="Justice Scales"
-          >
-            <!-- Base pedestal -->
-            <rect x="54" y="95" width="12" height="20" rx="2" />
-            <rect x="40" y="112" width="40" height="6" rx="3" />
-
-            <!-- Main vertical post -->
-            <rect x="58" y="25" width="4" height="70" rx="1" />
-
-            <!-- Top horizontal beam -->
-            <rect x="25" y="26" width="70" height="4" rx="2" />
-
-            <!-- Left chain -->
-            <g stroke="currentColor" stroke-width="1.5" fill="none">
-              <line x1="35" y1="30" x2="35" y2="48" />
-              <line x1="37" y1="30" x2="37" y2="48" />
-            </g>
-
-            <!-- Right chain -->
-            <g stroke="currentColor" stroke-width="1.5" fill="none">
-              <line x1="83" y1="30" x2="83" y2="48" />
-              <line x1="85" y1="30" x2="85" y2="48" />
-            </g>
-
-            <!-- Left scale pan (balanced position) -->
-            <ellipse cx="36" cy="55" rx="16" ry="3" fill="currentColor" />
-            <path
-              d="M20 55 Q20 59 24 61 L48 61 Q52 59 52 55"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            />
-
-            <!-- Right scale pan (balanced position) -->
-            <ellipse cx="84" cy="55" rx="16" ry="3" fill="currentColor" />
-            <path
-              d="M68 55 Q68 59 72 61 L96 61 Q100 59 100 55"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            />
-
-            <!-- Scale pan connection points -->
-            <circle cx="36" cy="48" r="2" fill="currentColor" />
-            <circle cx="84" cy="48" r="2" fill="currentColor" />
-
-            <!-- Decorative balance indicator on top -->
-            <circle cx="60" cy="24" r="3" fill="currentColor" opacity="0.8" />
-          </svg>
-          <div class="tooltip">Justice Scales</div>
+          <img
+            class="logo-image"
+            src="/images/csb-logo-transparent.svg"
+            alt="Carson, Seegmuller & Baker LLP - Attorneys at Law"
+            width="500"
+            height="154"
+          />
         </div>
 
         <!-- Navigation Menu -->
@@ -438,6 +342,13 @@ export class FlowNavbar extends LitElement {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       this._scrollToTop();
+    }
+  }
+
+  _handleMenuToggleKeydown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      this._toggleMobileMenu();
     }
   }
 }
