@@ -42,7 +42,6 @@ export const attorneys = [
     imageClass: "randall",
     specialties: [
       "Litigation",
-      "Collections",
       "Business Law",
       "Family Law",
       "Real Estate",

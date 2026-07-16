@@ -138,19 +138,6 @@ export const services = [
       "Appeals Process",
     ],
   },
-  {
-    id: "service-collections",
-    title: "Collections",
-    summary: "Debt recovery and collection services",
-    description:
-      "Recover outstanding debts efficiently and legally through our collections practice. We represent creditors in debt recovery efforts, judgment enforcement, asset recovery, and bankruptcy proceedings while ensuring compliance with consumer protection laws.",
-    features: [
-      "Debt Recovery",
-      "Judgment Enforcement",
-      "Asset Recovery",
-      "Bankruptcy Proceedings",
-    ],
-  },
 ];
 
 export default services;
