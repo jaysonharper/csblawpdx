@@ -91,7 +91,7 @@ export const services = [
     title: "Litigation",
     summary: "Court representation and dispute resolution",
     description:
-      "When disputes cannot be resolved through negotiation, our experienced litigators provide aggressive representation in court. We handle civil litigation, commercial disputes, contract breaches, and appeal processes with strategic precision.",
+      "When disputes cannot be resolved through negotiation, our experienced litigators provide aggressive representation in court. We handle civil litigation, commercial disputes, contract breaches, judgment enforcement and collection, and appeal processes with strategic precision.",
     features: [
       "Civil Litigation",
       "Commercial Disputes",
