@@ -39,7 +39,7 @@ export class FlowNavbar extends LitElement {
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
-      min-height: 88px;
+      min-height: 100px;
     }
 
     /* Menu Toggle - Pinned to the top-left corner above the logo */
@@ -88,7 +88,7 @@ export class FlowNavbar extends LitElement {
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: 80px;
+      height: 92px;
       /* Clear the burger on the left; mirror on the right to stay centered */
       padding: 0 3.5rem;
       box-sizing: border-box;
@@ -187,7 +187,7 @@ export class FlowNavbar extends LitElement {
     /* Responsive Design - scale the logo up on larger screens */
     @media (min-width: 768px) {
       .navbar {
-        min-height: 112px;
+        min-height: 126px;
       }
 
       .menu-toggle {
@@ -201,7 +201,7 @@ export class FlowNavbar extends LitElement {
       }
 
       .logo-container {
-        height: 104px;
+        height: 118px;
         padding: 0 4rem;
       }
     }
@@ -209,7 +209,7 @@ export class FlowNavbar extends LitElement {
     @media (min-width: 1024px) {
       .navbar {
         padding: 0.25rem 2rem;
-        min-height: 132px;
+        min-height: 148px;
       }
 
       .menu-toggle {
@@ -223,7 +223,7 @@ export class FlowNavbar extends LitElement {
       }
 
       .logo-container {
-        height: 124px;
+        height: 140px;
         padding: 0 4.5rem;
       }
     }
