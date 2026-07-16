@@ -2,6 +2,10 @@ import { LitElement, html, css } from "lit";
 
 export class FlowAttorneyCard extends LitElement {
   static specialtySlotCount = 7;
+  static specialtyServiceMap = {
+    "Elder Care Planning": "service-elder-care-planning",
+    "Real Estate | Business": "service-real-estate-business",
+  };
   static instances = new Set();
   static sharedFrontHeight = 0;
   static resizeHandlerAttached = false;
@@ -157,7 +161,7 @@ export class FlowAttorneyCard extends LitElement {
       align-items: flex-start;
       justify-content: flex-start;
       position: relative;
-      padding: 7px 28px 7px 12px;
+      padding: 7px 30px 7px 10px;
       border-radius: 999px;
       font-size: 0.74rem;
       font-weight: 600;
@@ -169,7 +173,7 @@ export class FlowAttorneyCard extends LitElement {
       border: 1px solid rgba(183, 167, 96, 0.5);
       cursor: pointer;
       user-select: none;
-      width: 22ch;
+      width: 26ch;
       max-width: 100%;
       text-align: left;
       white-space: nowrap;
@@ -179,7 +183,7 @@ export class FlowAttorneyCard extends LitElement {
     }
 
     .specialty-slot-empty {
-      width: 22ch;
+      width: 26ch;
       max-width: 100%;
       height: 31px;
       visibility: hidden;
@@ -303,7 +307,7 @@ export class FlowAttorneyCard extends LitElement {
 
       .specialty-tag {
         font-size: 0.72rem;
-        padding: 6px 28px 6px 10px;
+        padding: 6px 28px 6px 9px;
       }
     }
 
@@ -324,7 +328,7 @@ export class FlowAttorneyCard extends LitElement {
 
       .specialty-tag {
         font-size: 0.68rem;
-        padding: 5px 24px 5px 9px;
+        padding: 5px 26px 5px 8px;
       }
     }
 
@@ -344,7 +348,7 @@ export class FlowAttorneyCard extends LitElement {
 
       .specialty-tag {
         font-size: 0.64rem;
-        padding: 4px 22px 4px 8px;
+        padding: 4px 24px 4px 7px;
       }
     }
   `;
@@ -483,13 +487,17 @@ export class FlowAttorneyCard extends LitElement {
   handleSpecialtyClick(event, specialty) {
     event.stopPropagation(); // Prevent card flip
 
+    const serviceId =
+      FlowAttorneyCard.specialtyServiceMap[specialty] ??
+      `service-${specialty.toLowerCase().replace(/\s+/g, "-")}`;
+
     // Dispatch custom event for specialty navigation
     this.dispatchEvent(
       new CustomEvent("specialty-click", {
         detail: {
           specialty,
           attorneyName: this.name,
-          serviceId: `service-${specialty.toLowerCase().replace(/\s+/g, "-")}`,
+          serviceId,
         },
         bubbles: true,
         composed: true,

@@ -14,7 +14,7 @@ describe("FlowAttorneyCard", () => {
     name: "Test Attorney",
     image: "test-image.jpg",
     imageAlt: "Test Attorney Profile",
-    specialties: ["Corporate Law", "Litigation"],
+    specialties: ["Elder Care Planning", "Litigation"],
     education: ["J.D., Test University"],
     memberships: ["Test Bar Association"],
     admissions: ["Test State Bar"],
@@ -182,7 +182,7 @@ describe("FlowAttorneyCard", () => {
       expect(eventSpy.mock.calls[0][0].detail).toMatchObject({
         specialty: defaultProps.specialties[0],
         attorneyName: defaultProps.name,
-        serviceId: "service-corporate-law",
+        serviceId: "service-elder-care-planning",
       });
     });
 
@@ -198,15 +198,21 @@ describe("FlowAttorneyCard", () => {
 
     it("should generate correct service ID from specialty name", () => {
       const testCases = [
-        { specialty: "Corporate Law", expected: "service-corporate-law" },
+        {
+          specialty: "Real Estate | Business",
+          expected: "service-real-estate-business",
+        },
+        {
+          specialty: "Elder Care Planning",
+          expected: "service-elder-care-planning",
+        },
         { specialty: "Personal Injury", expected: "service-personal-injury" },
-        { specialty: "Estate Plans", expected: "service-estate-plans" },
       ];
 
       testCases.forEach(({ specialty, expected }) => {
-        const serviceId = `service-${specialty
-          .toLowerCase()
-          .replace(/\s+/g, "-")}`;
+        const serviceId =
+          FlowAttorneyCard.specialtyServiceMap[specialty] ??
+          `service-${specialty.toLowerCase().replace(/\s+/g, "-")}`;
         expect(serviceId).to.equal(expected);
       });
     });

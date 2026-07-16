@@ -69,15 +69,21 @@ describe("FlowAttorneyCard - Simple Tests", () => {
   describe("Specialty Tag Interactions", () => {
     it("should generate correct service ID from specialty name", () => {
       const testCases = [
-        { specialty: "Corporate Law", expected: "service-corporate-law" },
+        {
+          specialty: "Real Estate | Business",
+          expected: "service-real-estate-business",
+        },
+        {
+          specialty: "Elder Care Planning",
+          expected: "service-elder-care-planning",
+        },
         { specialty: "Personal Injury", expected: "service-personal-injury" },
-        { specialty: "Estate Plans", expected: "service-estate-plans" },
       ];
 
       testCases.forEach(({ specialty, expected }) => {
-        const serviceId = `service-${specialty
-          .toLowerCase()
-          .replace(/\s+/g, "-")}`;
+        const serviceId =
+          FlowAttorneyCard.specialtyServiceMap[specialty] ??
+          `service-${specialty.toLowerCase().replace(/\s+/g, "-")}`;
         expect(serviceId).toBe(expected);
       });
     });
@@ -88,14 +94,14 @@ describe("FlowAttorneyCard - Simple Tests", () => {
 
       const mockEvent = { stopPropagation: vi.fn() };
       element.name = "Test Attorney";
-      element.handleSpecialtyClick(mockEvent, "Corporate Law");
+      element.handleSpecialtyClick(mockEvent, "Elder Care Planning");
 
       expect(mockEvent.stopPropagation).toHaveBeenCalled();
       expect(eventSpy).toHaveBeenCalledOnce();
       expect(eventSpy.mock.calls[0][0].detail).toMatchObject({
-        specialty: "Corporate Law",
+        specialty: "Elder Care Planning",
         attorneyName: "Test Attorney",
-        serviceId: "service-corporate-law",
+        serviceId: "service-elder-care-planning",
       });
     });
   });

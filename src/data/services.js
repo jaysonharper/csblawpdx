@@ -61,68 +61,29 @@ export const services = [
     ],
   },
   {
-    id: "service-elder-law",
-    title: "Elder Law",
-    summary: "Senior care planning and elder rights protection",
+    id: "service-elder-care-planning",
+    title: "Elder Care Planning",
+    summary: "Elder law, conservatorships, and guardianship planning",
     description:
-      "Our elder law practice focuses on the unique legal needs of seniors and their families. We assist with long-term care planning, Medicare and Medicaid guidance, age discrimination issues, and protecting seniors from financial exploitation.",
+      "Our elder care planning practice combines elder law, conservatorships, and guardianships to protect vulnerable adults and families. We help clients plan for long-term care, establish legal protections, and navigate court processes with practical guidance and compassion.",
     features: [
       "Long-term Care Planning",
-      "Medicare & Medicaid Guidance",
-      "Elder Abuse Protection",
-      "Age Discrimination Cases",
-    ],
-  },
-  {
-    id: "service-business-law",
-    title: "Business Law",
-    summary: "Commercial transactions and business operations",
-    description:
-      "Support your business operations with our comprehensive business law services. We handle commercial transactions, employment law, intellectual property protection, and business disputes to help your company thrive in competitive markets.",
-    features: [
-      "Commercial Transactions",
-      "Employment Law",
-      "Intellectual Property",
-      "Business Disputes",
-    ],
-  },
-  {
-    id: "service-real-estate",
-    title: "Real Estate",
-    summary: "Property transactions and real estate law",
-    description:
-      "Navigate complex real estate transactions with confidence. Our real estate practice covers residential and commercial property sales, lease agreements, title issues, zoning matters, and real estate development projects.",
-    features: [
-      "Residential & Commercial Sales",
-      "Lease Agreements",
-      "Title & Zoning Issues",
-      "Property Development",
-    ],
-  },
-  {
-    id: "service-conservatorships",
-    title: "Conservatorships",
-    summary: "Legal guardianship for incapacitated adults",
-    description:
-      "When adults become unable to manage their own affairs, conservatorships provide essential protection. We guide families through the legal process of establishing conservatorships and ensure the ongoing protection of vulnerable adults' rights and interests.",
-    features: [
       "Conservatorship Establishment",
-      "Court Representation",
-      "Asset Protection",
-      "Ongoing Compliance",
+      "Guardianship Appointments",
+      "Court Representation and Compliance",
     ],
   },
   {
-    id: "service-guardianships",
-    title: "Guardianships",
-    summary: "Legal protection for minors and dependents",
+    id: "service-real-estate-business",
+    title: "Real Estate | Business",
+    summary: "Property and business counsel for transactions and disputes",
     description:
-      "Protect minors and dependent adults through proper guardianship arrangements. We assist with guardianship appointments, court proceedings, and ongoing responsibilities to ensure the safety and well-being of those who cannot care for themselves.",
+      "Our integrated real estate and business practice supports clients through property transactions, contracts, operations, and disputes. We provide coordinated counsel across residential and commercial matters so you can move forward with confidence.",
     features: [
-      "Minor Guardianship",
-      "Dependent Adult Protection",
-      "Court Proceedings",
-      "Guardian Responsibilities",
+      "Residential and Commercial Transactions",
+      "Contract Drafting and Negotiation",
+      "Business Operations and Compliance",
+      "Property and Commercial Dispute Support",
     ],
   },
   {

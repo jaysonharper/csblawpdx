@@ -14,11 +14,8 @@ export const attorneys = [
     imageClass: "brett",
     specialties: [
       "Estate Plans",
-      "Real Estate",
-      "Business Law",
-      "Elder Law",
-      "Conservatorships",
-      "Guardianships",
+      "Real Estate | Business",
+      "Elder Care Planning",
       "Personal Injury",
     ],
     education: [
@@ -42,9 +39,8 @@ export const attorneys = [
     imageClass: "randall",
     specialties: [
       "Litigation",
-      "Business Law",
       "Family Law",
-      "Real Estate",
+      "Real Estate | Business",
       "Personal Injury",
     ],
     education: [
@@ -74,8 +70,8 @@ export const attorneys = [
     specialties: [
       "Estate Plans",
       "Estate Settlement",
-      "Conservatorships",
-      "Real Estate",
+      "Elder Care Planning",
+      "Real Estate | Business",
     ],
     education: [
       "Southern Oregon University B.A. Cum Laude",
