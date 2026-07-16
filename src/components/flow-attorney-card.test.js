@@ -346,6 +346,24 @@ describe("FlowAttorneyCard", () => {
       expect(educationSection).to.not.exist;
     });
 
+    it("should show biography-only back content when credential arrays are empty", async () => {
+      element.specialties = [];
+      element.education = [];
+      element.memberships = [];
+      element.admissions = [];
+      element.biography = "Team member biography";
+      await element.updateComplete;
+
+      const headings = Array.from(
+        element.shadowRoot.querySelectorAll(".card-back .bio-section h4"),
+      ).map((heading) => heading.textContent.trim());
+
+      expect(headings).toContain("Biography");
+      expect(headings).not.toContain("Bar Admissions");
+      expect(headings).not.toContain("Professional Memberships");
+      expect(headings).not.toContain("Education");
+    });
+
     it("should handle missing biography", async () => {
       element.biography = "";
       await element.updateComplete;

@@ -8,6 +8,7 @@ import "./components/index.js";
 import { services } from "./data/services.js";
 import { testimonials } from "./data/testimonials.js";
 import { attorneys } from "./data/attorneys.js";
+import { teamMembers } from "./data/team-members.js";
 
 let testimonialRotationTimer = null;
 let testimonialResizeDebounceTimer = null;
@@ -70,6 +71,7 @@ function initializeApp() {
   renderServices();
   renderTestimonials();
   renderAttorneys();
+  renderTeamMembers();
 
   // Expose the fixed navbar's height so the hero can offset below it
   setupNavbarHeightVar();
@@ -264,6 +266,26 @@ function renderAttorneys() {
 
       // Add event listeners using the reusable function
       setupAttorneyCardListeners(card, data);
+      return card;
+    }),
+  );
+}
+
+function renderTeamMembers() {
+  const container = document.querySelector(".team-preview");
+  if (!container) return;
+  container.replaceChildren(
+    ...teamMembers.map((data) => {
+      const card = document.createElement("flow-attorney-card");
+      card.setAttribute("name", data.name);
+      card.setAttribute("image", data.image);
+      card.setAttribute("image-alt", data.imageAlt);
+      card.setAttribute("image-class", data.imageClass);
+      card.specialties = data.specialties ?? [];
+      card.education = data.education ?? [];
+      card.memberships = data.memberships ?? [];
+      card.admissions = data.admissions ?? [];
+      card.biography = data.biography;
       return card;
     }),
   );

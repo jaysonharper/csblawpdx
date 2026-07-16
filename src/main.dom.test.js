@@ -4,6 +4,7 @@
 
 import { describe, it, expect, vi } from "vitest";
 import { testimonials } from "./data/testimonials.js";
+import { teamMembers } from "./data/team-members.js";
 
 describe("click behavior (DOM)", () => {
   it("toggles app-active class and button text on click", async () => {
@@ -61,5 +62,24 @@ describe("click behavior (DOM)", () => {
     expect(secondPair).toEqual([testimonials[1].quote, testimonials[2].quote]);
 
     vi.useRealTimers();
+  });
+
+  it("renders all team cards into the Meet Our Team container", async () => {
+    document.body.innerHTML = `
+      <div class="team-preview"></div>
+    `;
+
+    await vi.resetModules();
+    const mod = await import("./app.main.js");
+    mod.initializeApp();
+
+    const container = document.querySelector(".team-preview");
+    expect(container).toBeTruthy();
+    expect(container.children).toHaveLength(teamMembers.length);
+
+    const renderedNames = [...container.children].map((card) =>
+      card.getAttribute("name"),
+    );
+    expect(renderedNames).toEqual(teamMembers.map((member) => member.name));
   });
 });

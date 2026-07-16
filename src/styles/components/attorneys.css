@@ -2,7 +2,8 @@
   /* Attorney Preview — intrinsic auto-fit grid (no breakpoints).
      Cards are <flow-attorney-card> elements rendered from
      src/data/attorneys.js. */
-  .attorney-preview {
+  .attorney-preview,
+  .team-preview {
     display: grid;
     gap: var(--grid-gap);
     grid-template-columns: repeat(
@@ -14,7 +15,8 @@
   }
 
   /* Let the card component size itself; its internal min-height governs. */
-  .attorney-preview flow-attorney-card {
+  .attorney-preview flow-attorney-card,
+  .team-preview flow-attorney-card {
     display: block;
     width: 100%;
     height: auto;
