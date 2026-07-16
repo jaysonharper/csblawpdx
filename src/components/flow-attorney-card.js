@@ -3,6 +3,7 @@ import { LitElement, html, css } from "lit";
 export class FlowAttorneyCard extends LitElement {
   static specialtySlotCount = 7;
   static specialtyServiceMap = {
+    "Estate Planning": "service-estate-plans",
     "Elder Care Planning": "service-elder-care-planning",
     "Real Estate | Business": "service-real-estate-business",
   };

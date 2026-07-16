@@ -8,6 +8,32 @@
 
 export const services = [
   {
+    id: "service-estate-plans",
+    title: "Estate Planning",
+    summary: "Wills, trusts, and comprehensive tax strategies",
+    description:
+      "Protect your legacy and minimize tax burdens with our comprehensive estate planning services. We create customized strategies including wills, trusts, tax planning, and succession planning to ensure your assets are distributed according to your wishes.",
+    features: [
+      "Wills & Testament Drafting",
+      "Trust Creation & Management",
+      "Tax Optimization Strategies",
+      "Succession Planning",
+    ],
+  },
+  {
+    id: "service-litigation",
+    title: "Litigation",
+    summary: "Court representation and dispute resolution",
+    description:
+      "When disputes cannot be resolved through negotiation, our experienced litigators provide aggressive representation in court. We handle civil litigation, commercial disputes, contract breaches, judgment enforcement and collection, and appeal processes with strategic precision.",
+    features: [
+      "Civil Litigation",
+      "Commercial Disputes",
+      "Contract Breaches",
+      "Appeals Process",
+    ],
+  },
+  {
     id: "service-personal-injury",
     title: "Personal Injury",
     summary: "Accident claims and compensation cases",
@@ -18,32 +44,6 @@ export const services = [
       "Slip & Fall Cases",
       "Medical Malpractice",
       "Wrongful Death Claims",
-    ],
-  },
-  {
-    id: "service-family-law",
-    title: "Family Law",
-    summary: "Divorce, custody, and family legal matters",
-    description:
-      "Our family law attorneys handle sensitive family matters with compassion and expertise. We provide guidance through divorce proceedings, child custody arrangements, adoption processes, and domestic relations issues while prioritizing the best interests of all family members.",
-    features: [
-      "Divorce & Separation",
-      "Child Custody & Support",
-      "Adoption Services",
-      "Domestic Relations",
-    ],
-  },
-  {
-    id: "service-estate-plans",
-    title: "Estate Plans",
-    summary: "Wills, trusts, and comprehensive tax strategies",
-    description:
-      "Protect your legacy and minimize tax burdens with our comprehensive estate planning services. We create customized strategies including wills, trusts, tax planning, and succession planning to ensure your assets are distributed according to your wishes.",
-    features: [
-      "Wills & Testament Drafting",
-      "Trust Creation & Management",
-      "Tax Optimization Strategies",
-      "Succession Planning",
     ],
   },
   {
@@ -58,6 +58,19 @@ export const services = [
       "Trust Administration",
       "Estate Tax Strategy Implementation",
       "Mediation, Dispute Resolution, and Trial Advocacy",
+    ],
+  },
+  {
+    id: "service-family-law",
+    title: "Family Law",
+    summary: "Divorce, custody, and family legal matters",
+    description:
+      "Our family law attorneys handle sensitive family matters with compassion and expertise. We provide guidance through divorce proceedings, child custody arrangements, adoption processes, and domestic relations issues while prioritizing the best interests of all family members.",
+    features: [
+      "Divorce & Separation",
+      "Child Custody & Support",
+      "Adoption Services",
+      "Domestic Relations",
     ],
   },
   {
@@ -84,19 +97,6 @@ export const services = [
       "Contract Drafting and Negotiation",
       "Business Operations and Compliance",
       "Property and Commercial Dispute Support",
-    ],
-  },
-  {
-    id: "service-litigation",
-    title: "Litigation",
-    summary: "Court representation and dispute resolution",
-    description:
-      "When disputes cannot be resolved through negotiation, our experienced litigators provide aggressive representation in court. We handle civil litigation, commercial disputes, contract breaches, judgment enforcement and collection, and appeal processes with strategic precision.",
-    features: [
-      "Civil Litigation",
-      "Commercial Disputes",
-      "Contract Breaches",
-      "Appeals Process",
     ],
   },
 ];

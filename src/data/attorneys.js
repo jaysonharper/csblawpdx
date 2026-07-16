@@ -13,10 +13,10 @@ export const attorneys = [
     imageAlt: "Brett S. Carson Profile",
     imageClass: "brett",
     specialties: [
-      "Estate Plans",
-      "Real Estate | Business",
-      "Elder Care Planning",
+      "Estate Planning",
       "Personal Injury",
+      "Elder Care Planning",
+      "Real Estate | Business",
     ],
     education: [
       "B.S., Colorado College and University of Oregon (1976)",
@@ -39,9 +39,9 @@ export const attorneys = [
     imageClass: "randall",
     specialties: [
       "Litigation",
+      "Personal Injury",
       "Family Law",
       "Real Estate | Business",
-      "Personal Injury",
     ],
     education: [
       "University of Oregon Law School, Eugene, Oregon J.D.; Managing Board Editor, Oregon Law Review (1990)",
@@ -68,7 +68,7 @@ export const attorneys = [
     imageAlt: "Jakob Seegmuller Profile",
     imageClass: "jakob",
     specialties: [
-      "Estate Plans",
+      "Estate Planning",
       "Estate Settlement",
       "Elder Care Planning",
       "Real Estate | Business",
