@@ -1,0 +1,31 @@
+Here is a format guide so our Bar Admissions, Professional Memberships, and Education all look consistent.
+
+ 
+
+Bar Admissions:
+
+Oregon [All]
+Washington [Randy and Jakob]
+U.S. District Court, District of Oregon [Brett and Randy]
+ 
+
+Professional Memberships
+
+Oregon State Bar [All]
+Washington State Bar Association [Randy and Jakob]
+Multnomah Bar Association [All]
+Clark County Bar Association (Jakob)
+Oregon Trial Lawyers Association [Randy]
+Estate Planning and Administration Section [Brett and Jakob]
+ 
+
+Education
+
+B.A. OR B.S. in [SUBJECT],  [UNDERGRADUATE SCHOOL NAME WITHOUT CITY], [HONORS/ACTIVIITES]
+J.D., [LAW SCHOOL NAME], [HONORS/ACTIVITIES]
+ 
+
+Jakob Education [Example]:
+
+B.A., History and Political Science, Southern Oregon University, Cum Laude
+J.D., Seattle University School of Law, CALI Award for Indian Trusts & Estates Clinic
