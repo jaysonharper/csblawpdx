@@ -70,12 +70,12 @@ describe("FlowAttorneyCard - Simple Tests", () => {
     it("should generate correct service ID from specialty name", () => {
       const testCases = [
         {
-          specialty: "Real Estate | Business",
+          specialty: "Real Estate & Business",
           expected: "service-real-estate-business",
         },
         {
-          specialty: "Elder Care Planning",
-          expected: "service-elder-care-planning",
+          specialty: "Civil Litigation",
+          expected: "service-litigation",
         },
         { specialty: "Personal Injury", expected: "service-personal-injury" },
       ];

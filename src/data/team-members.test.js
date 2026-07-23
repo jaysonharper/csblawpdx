@@ -9,9 +9,9 @@ describe("team members data", () => {
 
   it("uses the expected names", () => {
     expect(teamMembers.map((member) => member.name)).toEqual([
-      "Barb",
-      "Karen",
-      "Tamara",
+      "Barbara Carson",
+      "Karen Campbell",
+      "Tamara King",
     ]);
   });
 

@@ -15,8 +15,10 @@ export const attorneys = [
     specialties: [
       "Estate Planning",
       "Personal Injury",
-      "Elder Care Planning",
-      "Real Estate | Business",
+      "Elder Law",
+      "Conservatorships",
+      "Guardianships",
+      "Real Estate & Business",
     ],
     education: [
       "B.S., Colorado College and University of Oregon (1976)",
@@ -40,10 +42,12 @@ export const attorneys = [
     imageAlt: "Randall H. Baker Profile",
     imageClass: "randall",
     specialties: [
-      "Litigation",
+      "Estate Planning",
+      "Civil Litigation",
       "Personal Injury",
+      "Estate Settlement",
       "Family Law",
-      "Real Estate | Business",
+      "Real Estate & Business",
     ],
     education: [
       "University of Oregon Law School, Eugene, Oregon J.D.; Managing Board Editor, Oregon Law Review (1990)",
@@ -73,8 +77,10 @@ export const attorneys = [
     specialties: [
       "Estate Planning",
       "Estate Settlement",
-      "Elder Care Planning",
-      "Real Estate | Business",
+      "Elder Law",
+      "Conservatorships",
+      "Guardianships",
+      "Real Estate & Business",
     ],
     education: [
       "Southern Oregon University B.A. Cum Laude",

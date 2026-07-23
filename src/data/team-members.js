@@ -3,9 +3,9 @@
 
 export const teamMembers = [
   {
-    name: "Barb",
+    name: "Barbara Carson",
     image: "./images/attorney-placeholder.svg",
-    imageAlt: "Barb profile placeholder",
+    imageAlt: "Barbara Carson profile placeholder",
     imageClass: "",
     specialties: [],
     education: [],
@@ -15,9 +15,9 @@ export const teamMembers = [
       "Barb supports day-to-day client communications, scheduling, and file coordination. She helps clients stay informed throughout each stage of their matter and works closely with the legal team to keep details organized and timelines on track.",
   },
   {
-    name: "Karen",
+    name: "Karen Campbell",
     image: "./images/attorney-placeholder.svg",
-    imageAlt: "Karen profile placeholder",
+    imageAlt: "Karen Campbell profile placeholder",
     imageClass: "",
     specialties: [],
     education: [],
@@ -27,9 +27,9 @@ export const teamMembers = [
       "Karen assists with intake, document preparation, and follow-up so clients know what to expect at every step. She is focused on clear communication and helping ensure each matter moves forward efficiently and thoughtfully.",
   },
   {
-    name: "Tamara",
+    name: "Tamara King",
     image: "./images/attorney-placeholder.svg",
-    imageAlt: "Tamara profile placeholder",
+    imageAlt: "Tamara King profile placeholder",
     imageClass: "",
     specialties: [],
     education: [],

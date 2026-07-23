@@ -14,7 +14,7 @@ describe("FlowAttorneyCard", () => {
     name: "Test Attorney",
     image: "test-image.jpg",
     imageAlt: "Test Attorney Profile",
-    specialties: ["Elder Care Planning", "Litigation"],
+    specialties: ["Civil Litigation", "Personal Injury"],
     education: ["J.D., Test University"],
     memberships: ["Test Bar Association"],
     admissions: ["Test State Bar"],
@@ -200,7 +200,7 @@ describe("FlowAttorneyCard", () => {
       expect(eventSpy.mock.calls[0][0].detail).toMatchObject({
         specialty: defaultProps.specialties[0],
         attorneyName: defaultProps.name,
-        serviceId: "service-elder-care-planning",
+        serviceId: "service-litigation",
       });
     });
 
@@ -217,12 +217,12 @@ describe("FlowAttorneyCard", () => {
     it("should generate correct service ID from specialty name", () => {
       const testCases = [
         {
-          specialty: "Real Estate | Business",
+          specialty: "Real Estate & Business",
           expected: "service-real-estate-business",
         },
         {
-          specialty: "Elder Care Planning",
-          expected: "service-elder-care-planning",
+          specialty: "Civil Litigation",
+          expected: "service-litigation",
         },
         { specialty: "Personal Injury", expected: "service-personal-injury" },
       ];

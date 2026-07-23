@@ -12,20 +12,20 @@ export const services = [
     title: "Estate Planning",
     summary: "Wills, trusts, and comprehensive tax strategies",
     description:
-      "Protect your legacy and minimize tax burdens with our comprehensive estate planning services. We create customized strategies including wills, trusts, tax planning, and succession planning to ensure your assets are distributed according to your wishes.",
+      "Create a plan that protects your family, preserves your assets, and reflects your wishes. We help individuals and families develop wills, trusts, powers of attorney, tax-conscious planning, and succession strategies designed to provide clarity and peace of mind.",
     features: [
-      "Wills & Testament Drafting",
-      "Trust Creation & Management",
+      "Wills, Trusts, and Powers of Attorney",
+      "Trust Formation and Maintenance",
       "Tax Optimization Strategies",
       "Succession Planning",
     ],
   },
   {
     id: "service-litigation",
-    title: "Litigation",
+    title: "Civil Litigation",
     summary: "Court representation and dispute resolution",
     description:
-      "When disputes cannot be resolved through negotiation, our experienced litigators provide aggressive representation in court. We handle civil litigation, commercial disputes, contract breaches, judgment enforcement and collection, and appeal processes with strategic precision.",
+      "When a dispute cannot be resolved outside of court, we provide skilled and strategic representation. We handle civil and business disputes, contract claims, judgment collection, and appeals while working to achieve the best possible outcome for our clients.",
     features: [
       "Civil Litigation",
       "Commercial Disputes",
@@ -38,10 +38,10 @@ export const services = [
     title: "Personal Injury",
     summary: "Accident claims and compensation cases",
     description:
-      "We advocate for individuals who have been injured due to negligence or wrongful acts. Our personal injury practice covers auto accidents, slip and fall cases, medical malpractice, and wrongful death claims. We work on a contingency basis to ensure access to justice.",
+      "We advocate for individuals who have been injured due to negligence or wrongful acts. Our personal injury practice covers auto accidents, slip and fall cases, medical malpractice, and wrongful death claims. We often work on a contingency basis to ensure access to justice.",
     features: [
-      "Auto & Motorcycle Accidents",
-      "Slip & Fall Cases",
+      "Auto and Motorcycle Accidents",
+      "Slip and Fall Cases",
       "Medical Malpractice",
       "Wrongful Death Claims",
     ],
@@ -49,13 +49,12 @@ export const services = [
   {
     id: "service-estate-settlement",
     title: "Estate Settlement",
-    summary:
-      "Probate and Trust Administration, Beneficiary Advocacy, and Dispute Resolution",
+    summary: "Probate, trust administration, and estate disputes",
     description:
-      "Honor your loved one's legacy and minimize the frustration of navigating complex legal proceedings with our comprehensive estate settlement services. We provide you with a proven and effective roadmap for administering a loved one's estate with attentive guidance and support. If a dispute arises, our attorneys are here to help you reach a resolution that honors your loved one's wishes.",
+      "Settling a loved one's estate can feel overwhelming. We guide personal representatives, trustees, and beneficiaries through probate and trust administration, helping ensure estates are handled with confidence, efficiency and in keeping with the decedent's wishes.",
     features: [
       "Probate Services in Oregon and Washington",
-      "Trust Administration",
+      "Trust Administration Services in Oregon and Washington",
       "Estate Tax Strategy Implementation",
       "Mediation, Dispute Resolution, and Trial Advocacy",
     ],
@@ -63,40 +62,66 @@ export const services = [
   {
     id: "service-family-law",
     title: "Family Law",
-    summary: "Divorce, custody, and family legal matters",
+    summary: "Divorce, separation, and family disputes",
     description:
-      "Our family law attorneys handle sensitive family matters with compassion and expertise. We provide guidance through divorce proceedings, child custody arrangements, adoption processes, and domestic relations issues while prioritizing the best interests of all family members.",
+      "Family law issues can be emotionally and financially challenging. We provide practical guidance and effective representation in divorce, separation, post-separation estate planning, and other family-related legal matters.",
     features: [
-      "Divorce & Separation",
-      "Child Custody & Support",
-      "Adoption Services",
+      "Divorce and Separation",
       "Domestic Relations",
+      "Enforcement of Judgments",
+      "Post Dissolution Estate Planning",
     ],
   },
   {
-    id: "service-elder-care-planning",
-    title: "Elder Care Planning",
-    summary: "Elder law, conservatorships, and guardianship planning",
+    id: "service-elder-law",
+    title: "Elder Law",
+    summary: "Senior care planning and elder rights protection",
     description:
-      "Our elder care planning practice combines elder law, conservatorships, and guardianships to protect vulnerable adults and families. We help clients plan for long-term care, establish legal protections, and navigate court processes with practical guidance and compassion.",
+      "We help older adults and their families navigate legal issues related to aging, healthcare, long-term care, and asset protection. Our goal is to provide solutions that support independence, dignity, and peace of mind.",
     features: [
       "Long-term Care Planning",
-      "Conservatorship Establishment",
-      "Guardianship Appointments",
-      "Court Representation and Compliance",
+      "Medicare and Medicaid Guidance",
+      "Elder Abuse Protection",
+      "Age Discrimination Claims",
+    ],
+  },
+  {
+    id: "service-conservatorships",
+    title: "Conservatorships",
+    summary: "Care and protection for financially vulnerable individuals",
+    description:
+      "When adults become unable to manage their own affairs, conservatorships provide essential protection. We guide families through the legal process of establishing conservatorships and ensure the ongoing protection of vulnerable adults' rights and interests.",
+    features: [
+      "Conservatorship for Minors and Adults",
+      "Court Proceedings",
+      "Asset Preservation",
+      "Compliance and Reporting",
+    ],
+  },
+  {
+    id: "service-guardianships",
+    title: "Guardianships",
+    summary: "Care and protection for personally vulnerable individuals",
+    description:
+      "We assist families seeking guardianships for minors or adults who are unable to care for themselves. From the initial court process through ongoing responsibilities, we provide guidance to help ensure the vulnerable person's safety, well-being, and best interests.",
+    features: [
+      "Guardianship for Minors and Adults",
+      "Court Proceedings",
+      "Dependent Adult Protection",
+      "Compliance and Reporting",
     ],
   },
   {
     id: "service-real-estate-business",
-    title: "Real Estate | Business",
-    summary: "Property and business counsel for transactions and disputes",
+    title: "Real Estate & Business",
+    summary: "Property transactions and real estate matters",
     description:
-      "Our integrated real estate and business practice supports clients through property transactions, contracts, operations, and disputes. We provide coordinated counsel across residential and commercial matters so you can move forward with confidence.",
+      "Whether you are buying, selling, leasing, or developing property, we provide practical legal guidance at every stage. We help clients navigate transactions, title concerns, entity formation, and real estate disputes with confidence.",
     features: [
-      "Residential and Commercial Transactions",
-      "Contract Drafting and Negotiation",
-      "Business Operations and Compliance",
-      "Property and Commercial Dispute Support",
+      "Residential and Commercial Sales",
+      "Lease Agreements",
+      "Real Estate Disputes",
+      "Business Entity Formation",
     ],
   },
 ];
