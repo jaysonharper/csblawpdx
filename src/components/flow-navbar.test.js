@@ -41,6 +41,18 @@ describe("FlowNavbar", () => {
     });
   });
 
+  describe("Call-to-action button", () => {
+    it("should render a navbar-variant call button on the right side", () => {
+      const cta = element.shadowRoot.querySelector(".navbar-cta");
+      expect(cta).toBeTruthy();
+
+      const callButton = cta.querySelector("flow-call-button");
+      expect(callButton).toBeTruthy();
+      expect(callButton.getAttribute("variant")).toBe("navbar");
+      expect(callButton.getAttribute("phone-number")).toBe("+15032889291");
+    });
+  });
+
   describe("Menu toggle", () => {
     it("should default to a closed mobile menu", () => {
       expect(element.mobileMenuOpen).toBe(false);

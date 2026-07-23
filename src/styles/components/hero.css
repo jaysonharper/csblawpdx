@@ -91,4 +91,12 @@
   .hero-actions {
     @apply flex flex-col sm:flex-row gap-4 justify-center items-center;
   }
+
+  /* On tablet/desktop the call button lives in the navbar instead, so hide the
+     hero call-to-action from 768px up. It remains in the DOM for mobile. */
+  @media (min-width: 768px) {
+    .hero-actions {
+      display: none;
+    }
+  }
 }

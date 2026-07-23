@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import "./flow-call-button.js";
 
 /**
  * A professional navigation bar component for Law Offices
@@ -184,6 +185,18 @@ export class FlowNavbar extends LitElement {
       left: 100%;
     }
 
+    /* Navbar Call-to-Action (right side) - Pinned like the burger, mirrored.
+       Hidden on mobile (the call button lives in the hero instead); shown from
+       the tablet breakpoint up. */
+    .navbar-cta {
+      display: none;
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
     /* Responsive Design - scale the logo up on larger screens */
     @media (min-width: 768px) {
       .navbar {
@@ -202,7 +215,14 @@ export class FlowNavbar extends LitElement {
 
       .logo-container {
         height: 118px;
-        padding: 0 4rem;
+        /* Symmetric padding keeps the logo centered while clearing the burger
+           on the left and the call button on the right. */
+        padding: 0 11rem;
+      }
+
+      .navbar-cta {
+        display: flex;
+        right: 1rem;
       }
     }
 
@@ -224,7 +244,11 @@ export class FlowNavbar extends LitElement {
 
       .logo-container {
         height: 140px;
-        padding: 0 4.5rem;
+        padding: 0 12rem;
+      }
+
+      .navbar-cta {
+        right: 1.5rem;
       }
     }
   `;
@@ -302,6 +326,15 @@ export class FlowNavbar extends LitElement {
               >Find Us</a
             >
           </div>
+        </div>
+
+        <!-- Call-to-Action (right side) - Shown on tablet/desktop only -->
+        <div class="navbar-cta">
+          <flow-call-button
+            phone-number="+15032889291"
+            variant="navbar"
+            size="md"
+          ></flow-call-button>
         </div>
       </nav>
     `;
