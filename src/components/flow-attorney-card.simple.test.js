@@ -25,7 +25,7 @@ describe("FlowAttorneyCard - Simple Tests", () => {
       expect(element.education).toEqual([]);
       expect(element.memberships).toEqual([]);
       expect(element.admissions).toEqual([]);
-      expect(element.biography).toBe("");
+      expect(element.biography).toEqual([]);
       expect(element.isFlipped).toBe(false);
     });
 
@@ -124,7 +124,7 @@ describe("FlowAttorneyCard - Simple Tests", () => {
       expect(properties.education).toEqual({ type: Array });
       expect(properties.memberships).toEqual({ type: Array });
       expect(properties.admissions).toEqual({ type: Array });
-      expect(properties.biography).toEqual({ type: String });
+      expect(properties.biography).toEqual({ type: Array });
       expect(properties.isFlipped).toEqual({
         type: Boolean,
         state: true,
@@ -148,10 +148,10 @@ describe("FlowAttorneyCard - Simple Tests", () => {
 
     it("should handle null/undefined values", () => {
       element.name = null;
-      element.biography = "";
+      element.biography = [];
 
       expect(element.name).toBeNull();
-      expect(element.biography).toBe("");
+      expect(element.biography).toEqual([]);
     });
 
     it("should handle long attorney names", () => {

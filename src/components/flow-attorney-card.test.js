@@ -18,7 +18,7 @@ describe("FlowAttorneyCard", () => {
     education: ["J.D., Test University"],
     memberships: ["Test Bar Association"],
     admissions: ["Test State Bar"],
-    biography: "Test biography text",
+    biography: ["Test biography text", "Second paragraph text"],
   };
 
   beforeEach(async () => {
@@ -113,9 +113,27 @@ describe("FlowAttorneyCard", () => {
           section.querySelector("h4")?.textContent.trim() === "Biography",
       );
       expect(biographySection).to.exist;
-      expect(biographySection.querySelector("p").textContent).to.equal(
-        defaultProps.biography,
+      const paragraphs = biographySection.querySelectorAll("p");
+      expect(paragraphs.length).to.equal(defaultProps.biography.length);
+      paragraphs.forEach((paragraph, index) => {
+        expect(paragraph.textContent).to.equal(defaultProps.biography[index]);
+      });
+    });
+
+    it("should render a legacy string biography as a single paragraph", async () => {
+      element.biography = "Single string biography";
+      await element.updateComplete;
+
+      const biographySection = Array.from(
+        element.shadowRoot.querySelectorAll(".card-back .bio-section"),
+      ).find(
+        (section) =>
+          section.querySelector("h4")?.textContent.trim() === "Biography",
       );
+
+      const paragraphs = biographySection.querySelectorAll("p");
+      expect(paragraphs.length).to.equal(1);
+      expect(paragraphs[0].textContent).to.equal("Single string biography");
     });
   });
 
@@ -351,7 +369,7 @@ describe("FlowAttorneyCard", () => {
       element.education = [];
       element.memberships = [];
       element.admissions = [];
-      element.biography = "Team member biography";
+      element.biography = ["Team member biography"];
       await element.updateComplete;
 
       const headings = Array.from(
@@ -365,7 +383,7 @@ describe("FlowAttorneyCard", () => {
     });
 
     it("should handle missing biography", async () => {
-      element.biography = "";
+      element.biography = [];
       await element.updateComplete;
 
       const biographySection = element.shadowRoot.querySelector(

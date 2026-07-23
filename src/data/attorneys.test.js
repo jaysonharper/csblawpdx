@@ -14,7 +14,6 @@ describe("attorneys data", () => {
       expect(typeof a.image).toBe("string");
       expect(typeof a.imageAlt).toBe("string");
       expect(typeof a.imageClass).toBe("string");
-      expect(typeof a.biography).toBe("string");
     });
   });
 
@@ -24,6 +23,7 @@ describe("attorneys data", () => {
       expect(Array.isArray(a.education)).toBe(true);
       expect(Array.isArray(a.memberships)).toBe(true);
       expect(Array.isArray(a.admissions)).toBe(true);
+      expect(Array.isArray(a.biography)).toBe(true);
     });
   });
 });

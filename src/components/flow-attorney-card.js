@@ -20,7 +20,7 @@ export class FlowAttorneyCard extends LitElement {
     education: { type: Array },
     memberships: { type: Array },
     admissions: { type: Array },
-    biography: { type: String },
+    biography: { type: Array },
     isFlipped: { type: Boolean, state: true, attribute: false },
   };
 
@@ -278,6 +278,10 @@ export class FlowAttorneyCard extends LitElement {
       margin: 0;
     }
 
+    .bio-section p + p {
+      margin-top: 0.75rem;
+    }
+
     .bio-section ul {
       font-size: 0.875rem;
       line-height: 1.5;
@@ -365,7 +369,7 @@ export class FlowAttorneyCard extends LitElement {
     this.education = [];
     this.memberships = [];
     this.admissions = [];
-    this.biography = "";
+    this.biography = [];
     this.isFlipped = false;
   }
 
@@ -596,14 +600,24 @@ export class FlowAttorneyCard extends LitElement {
             <h3>${this.name}</h3>
           </div>
 
-          ${this.biography
-            ? html`
-                <div class="bio-section">
-                  <h4>Biography</h4>
-                  <p>${this.biography}</p>
-                </div>
-              `
-            : ""}
+          ${(() => {
+            const biographyParagraphs = Array.isArray(this.biography)
+              ? this.biography
+              : typeof this.biography === "string" && this.biography
+                ? [this.biography]
+                : [];
+
+            return biographyParagraphs.length > 0
+              ? html`
+                  <div class="bio-section">
+                    <h4>Biography</h4>
+                    ${biographyParagraphs.map(
+                      (paragraph) => html`<p>${paragraph}</p>`,
+                    )}
+                  </div>
+                `
+              : "";
+          })()}
           ${this.admissions?.length > 0
             ? html`
                 <div class="bio-section">
