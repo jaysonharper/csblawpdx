@@ -121,6 +121,7 @@ export class FlowAttorneyCard extends LitElement {
     }
 
     .attorney-name {
+      font-family: var(--font-family-display);
       font-size: 1.25rem;
       font-weight: bold;
       color: var(--subsection-text-title, #182955);

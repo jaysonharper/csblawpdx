@@ -60,6 +60,7 @@ export class FlowServiceCard extends LitElement {
 
     h3 {
       margin: 0;
+      font-family: var(--font-family-display);
       font-size: var(--font-h3);
       font-weight: 700;
       line-height: 1.3;
