@@ -20,6 +20,11 @@ export const testimonials = [
       "Brett, Randy and Jake provide a friendly atmosphere and are easy to work with.",
     cite: "— Jayson H.",
   },
+  {
+    quote:
+      "I was fortunate to work with Randall recently on a personal injury case where I was the plaintiff. The case was complex and included multiple defendants. From our initial meeting and throughout the entire legal journey, Randall was patient, pragmatic, laser focused, and highly communicative. He took time to explain each step of the process so that I was comfortable and well informed. After much legal toiling, the case was settled before trial and I was thrilled with the result. I wouldn't hesitate to recommend Randall Baker for any and all legal cases, large or small!",
+    cite: "— Mitchall S.",
+  },
 ];
 
 export default testimonials;
