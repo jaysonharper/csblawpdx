@@ -286,13 +286,13 @@ export class FlowNavbar extends LitElement {
           @click="${this._scrollToTop}"
           role="button"
           tabindex="0"
-          aria-label="Law Offices of Carson, Seegmuller & Baker LLP - Home"
+          aria-label="Law Offices of Carson Seegmuller & Baker LLP - Home"
           @keydown="${this._handleCompanyNameKeydown}"
         >
           <img
             class="logo-image"
             src="/images/csb-logo-transparent.svg"
-            alt="Carson, Seegmuller & Baker LLP - Attorneys at Law"
+            alt="Carson Seegmuller & Baker LLP - Attorneys at Law"
             width="500"
             height="154"
           />

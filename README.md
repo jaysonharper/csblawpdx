@@ -1,6 +1,6 @@
 # WWW.CSBLAWPDX.COM
 
-> A modern, single-page, static website provided for the Law Offices of Carson, Seegmuller & Baker LLP.
+> A modern, single-page, static website provided for the Law Offices of Carson Seegmuller & Baker LLP.
 
 ## ✨ Features
 

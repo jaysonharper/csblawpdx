@@ -29,7 +29,7 @@ describe("FlowNavbar", () => {
       const logo = element.shadowRoot.querySelector("img.logo-image");
       expect(logo).toBeTruthy();
       expect(logo.getAttribute("src")).toBe("/images/csb-logo-transparent.svg");
-      expect(logo.getAttribute("alt")).toContain("Carson, Seegmuller & Baker");
+      expect(logo.getAttribute("alt")).toContain("Carson Seegmuller & Baker");
     });
 
     it("should NOT render the deprecated scales-of-justice icon", () => {

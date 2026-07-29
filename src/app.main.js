@@ -44,13 +44,13 @@ if (typeof import.meta !== "undefined" && import.meta.env?.DEV) {
     console.clear();
     console.log("🧹 Console cleared!");
     console.log(
-      "🚀 Law Offices of Carson, Seegmuller & Baker LLP - Development Mode",
+      "🚀 Law Offices of Carson Seegmuller & Baker LLP - Development Mode",
     );
   };
   console.log("💡 Development mode: Use clearAll() to clear console");
 }
 
-// Main application entrypoint for Law Offices of Carson, Seegmuller & Baker LLP
+// Main application entrypoint for Law Offices of Carson Seegmuller & Baker LLP
 // Only run DOM wiring when `document` exists (avoid errors in Node test env)
 if (typeof document !== "undefined") {
   // Ensure DOM is fully loaded before initializing
