@@ -74,6 +74,16 @@
       drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 
+  /* On small screens the default h1 minimum (2.25rem) is too wide, forcing
+     "Neighborhood Attorneys," to wrap onto a third line. Scale the title with
+     the viewport and keep each line unbroken so both words stay together. */
+  @media (max-width: 640px) {
+    .hero-title {
+      font-size: clamp(1.15rem, 5.6vw, 2.25rem);
+      white-space: nowrap;
+    }
+  }
+
   .hero-subtitle {
     @apply font-bold mb-6;
     font-size: clamp(1.2rem, 3.6vw, 2rem);
