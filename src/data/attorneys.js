@@ -21,18 +21,18 @@ export const attorneys = [
       "Real Estate & Business",
     ],
     education: [
-      "B.S., Colorado College and University of Oregon (1976)",
-      "J.D., cum laude, Gonzaga University (1979)",
+      "B.S., Colorado College and University of Oregon",
+      "J.D., Gonzaga University, cum laude",
     ],
     memberships: [
-      "Multnomah County Bar Association",
       "Oregon State Bar",
-      "Realtors Joint Committee (1991-1993): Real Estate, Land Use, Business, Corporate and Debtor-Creditor Sections",
+      "Multnomah Bar Association",
+      "Estate Planning and Administration Section",
     ],
-    admissions: ["Oregon and U.S. District Court, District of Oregon (1979)"],
+    admissions: ["Oregon", "U.S. District Court, District of Oregon"],
     biography: [
-      "Director, Oregon State Council for Senior Citizens, 1989-1999.",
-      "Multnomah Bar Association Senior Law Project Volunteer of the Year, 1986 & 2004; NE Family YMCA Board of Directors, 1986-1989; Hollywood Booster Board of Directors, 1986-2000; Hollywood Booster President, 1988; Hollywood Senior Center Board of Directors, 1986-2002; President, Hollywood Senior Center, 1993-1995; Lincoln High School Freshman Basketball coach, 1998-2003; Benson High School Assistant Varsity Basketball coach, 2003-present.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     ],
   },
   {
@@ -50,13 +50,13 @@ export const attorneys = [
       "Real Estate & Business",
     ],
     education: [
-      "University of Oregon Law School, Eugene, Oregon J.D.; Managing Board Editor, Oregon Law Review (1990)",
-      "Lewis and Clark College, Portland, Oregon B.A. Economics; Four-Year Varsity Soccer (1981)",
+      "B.A., Economics, Lewis and Clark College, Four-Year Varsity Soccer",
+      "J.D., University of Oregon School of Law, Managing Board Editor, Oregon Law Review",
     ],
     memberships: [
       "Oregon State Bar",
-      "Washington State Bar",
-      "Multnomah County Bar Association",
+      "Washington State Bar Association",
+      "Multnomah Bar Association",
       "Oregon Trial Lawyers Association",
     ],
     admissions: [
@@ -65,7 +65,8 @@ export const attorneys = [
       "U.S. District Court, District of Oregon",
     ],
     biography: [
-      "Managing Board Editor, University of Oregon Law Review (1989-1990).",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     ],
   },
   {
@@ -83,14 +84,17 @@ export const attorneys = [
       "Real Estate & Business",
     ],
     education: [
-      "Southern Oregon University B.A. Cum Laude",
-      "Seattle University School of Law J.D.",
+      "B.A., History and Political Science, Southern Oregon University, Cum Laude",
+      "J.D., Seattle University School of Law, CALI Award for Indian Trusts & Estates Clinic",
     ],
-    memberships: ["Multnomah Bar Association", "Clark County Bar Association"],
-    admissions: [
-      "Oregon State Bar Association",
+    memberships: [
+      "Oregon State Bar",
       "Washington State Bar Association",
+      "Multnomah Bar Association",
+      "Clark County Bar Association",
+      "Estate Planning and Administration Section",
     ],
+    admissions: ["Oregon", "Washington"],
     biography: [
       "Jakob Seegmuller helps individuals and families plan for the future and navigate the loss of a loved one through thoughtful estate planning and administration. He began his legal career in Vancouver, Washington, focusing on probate and estate settlement before expanding his practice to include estate planning. Today, he serves clients throughout Oregon and Washington from his hometown of Portland.",
       "The most rewarding part of Jakob's practice is helping families move through difficult transitions with clarity and confidence rather than confusion and frustration. He believes estate settlement and planning is ultimately about people, values, and the stories that connect generations.",
