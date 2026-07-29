@@ -16,7 +16,7 @@
 
   /* Let the card component size itself; its internal min-height governs. */
   .attorney-preview flow-attorney-card,
-  .team-preview flow-attorney-card {
+  .team-preview flow-team-card {
     display: block;
     width: 100%;
     height: auto;

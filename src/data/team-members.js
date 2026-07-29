@@ -12,7 +12,7 @@ export const teamMembers = [
     memberships: [],
     admissions: [],
     biography:
-      "Barb supports day-to-day client communications, scheduling, and file coordination. She helps clients stay informed throughout each stage of their matter and works closely with the legal team to keep details organized and timelines on track.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     name: "Karen Campbell",
@@ -24,7 +24,7 @@ export const teamMembers = [
     memberships: [],
     admissions: [],
     biography:
-      "Karen assists with intake, document preparation, and follow-up so clients know what to expect at every step. She is focused on clear communication and helping ensure each matter moves forward efficiently and thoughtfully.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
     name: "Tamara King",
@@ -36,7 +36,7 @@ export const teamMembers = [
     memberships: [],
     admissions: [],
     biography:
-      "Tamara helps manage administrative workflows and client support tasks across the firm. She works with attorneys and staff to maintain consistency, respond promptly, and provide a welcoming experience for clients.",
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
   },
 ];
 

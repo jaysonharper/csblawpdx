@@ -276,15 +276,11 @@ function renderTeamMembers() {
   if (!container) return;
   container.replaceChildren(
     ...teamMembers.map((data) => {
-      const card = document.createElement("flow-attorney-card");
+      const card = document.createElement("flow-team-card");
       card.setAttribute("name", data.name);
       card.setAttribute("image", data.image);
       card.setAttribute("image-alt", data.imageAlt);
       card.setAttribute("image-class", data.imageClass);
-      card.specialties = data.specialties ?? [];
-      card.education = data.education ?? [];
-      card.memberships = data.memberships ?? [];
-      card.admissions = data.admissions ?? [];
       card.biography = data.biography;
       return card;
     }),

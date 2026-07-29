@@ -77,6 +77,11 @@ describe("click behavior (DOM)", () => {
     expect(container).toBeTruthy();
     expect(container.children).toHaveLength(teamMembers.length);
 
+    const renderedTags = [...container.children].map((card) =>
+      card.tagName.toLowerCase(),
+    );
+    expect(renderedTags).toEqual(teamMembers.map(() => "flow-team-card"));
+
     const renderedNames = [...container.children].map((card) =>
       card.getAttribute("name"),
     );
