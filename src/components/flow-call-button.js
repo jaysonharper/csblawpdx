@@ -199,6 +199,33 @@ export class FlowCallButton extends LitElement {
       box-shadow: 0 8px 20px rgba(183, 167, 96, 0.4);
     }
 
+    /* Navbar Variant - Larger presence on tablet/desktop where it appears */
+    @media (min-width: 768px) {
+      :host([variant="navbar"]) .call-button {
+        font-size: 1.0625rem;
+        padding: 0.75rem 1.5rem;
+      }
+
+      :host([variant="navbar"]) .phone-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: 0.625rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      :host([variant="navbar"]) .call-button {
+        font-size: 1.1875rem;
+        padding: 0.875rem 1.875rem;
+      }
+
+      :host([variant="navbar"]) .phone-icon {
+        width: 1.375rem;
+        height: 1.375rem;
+        margin-right: 0.75rem;
+      }
+    }
+
     /* Disabled State */
     :host([disabled]) .call-button {
       opacity: 0.5;
