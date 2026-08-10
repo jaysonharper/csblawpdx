@@ -32,11 +32,15 @@ export const teamMembers = [
     imageAlt: "Tamara King profile placeholder",
     imageClass: "",
     specialties: [],
-    education: [],
+    education: [
+      "B.A., Linguistics and Italian, University of California at Los Angeles",
+    ],
     memberships: [],
     admissions: [],
-    biography:
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    biography: [
+      "Tamara King has worked as a legal assistant and paralegal for more than four decades. She began her legal career in California as a bankruptcy paralegal, and worked in law offices in England and Italy before moving to Oregon 25 years ago. She has experience in just about every area of law and currently specializes in domestic relations, personal injury, and probate.",
+      "Outside the office, Tamara is an award-winning quilt maker who enjoys exploring color and maximalism and making message-centered word quilts. She is working on becoming a competent gardener and is an avid reader with a preference for non-fiction storytelling.",
+    ],
   },
 ];
 

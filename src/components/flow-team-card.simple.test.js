@@ -23,7 +23,9 @@ describe("FlowTeamCard - Simple Tests", () => {
       expect(element.image).toBe("");
       expect(element.imageAlt).toBe("");
       expect(element.imageClass).toBe("");
+      expect(element.education).toEqual([]);
       expect(element.biography).toEqual([]);
+      expect(element.isFlipped).toBe(false);
     });
 
     it("should accept property updates", () => {
@@ -35,10 +37,10 @@ describe("FlowTeamCard - Simple Tests", () => {
     });
   });
 
-  describe("Non-flip Behavior", () => {
-    it("should not expose flip state or flip methods", () => {
-      expect(element.isFlipped).toBeUndefined();
-      expect(element.flipCard).toBeUndefined();
+  describe("Flip Capability", () => {
+    it("should expose flip state and flip methods", () => {
+      expect(element.isFlipped).toBe(false);
+      expect(typeof element.flipCard).toBe("function");
     });
   });
 
@@ -56,17 +58,21 @@ describe("FlowTeamCard - Simple Tests", () => {
         type: String,
         attribute: "image-class",
       });
+      expect(properties.education).toEqual({ type: Array });
       expect(properties.biography).toEqual({ type: Array });
+      expect(properties.isFlipped).toEqual({
+        type: Boolean,
+        state: true,
+        attribute: false,
+      });
     });
 
     it("should not define attorney-only credential properties", () => {
       const properties = FlowTeamCard.properties;
 
       expect(properties.specialties).toBeUndefined();
-      expect(properties.education).toBeUndefined();
       expect(properties.memberships).toBeUndefined();
       expect(properties.admissions).toBeUndefined();
-      expect(properties.isFlipped).toBeUndefined();
     });
   });
 

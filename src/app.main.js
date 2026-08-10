@@ -281,6 +281,7 @@ function renderTeamMembers() {
       card.setAttribute("image", data.image);
       card.setAttribute("image-alt", data.imageAlt);
       card.setAttribute("image-class", data.imageClass);
+      card.education = data.education;
       card.biography = data.biography;
       return card;
     }),

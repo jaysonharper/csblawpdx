@@ -14,6 +14,7 @@ describe("FlowTeamCard", () => {
     name: "Test Team Member",
     image: "test-image.jpg",
     imageAlt: "Test Team Member Profile",
+    education: [],
     biography: ["First bio paragraph.", "Second bio paragraph."],
   };
 
@@ -79,15 +80,15 @@ describe("FlowTeamCard", () => {
     });
   });
 
-  describe("Non-flip Behavior", () => {
-    it("should not render any flip controls", async () => {
+  describe("Conditional Flip Behavior", () => {
+    it("should not render flip controls when education is missing", async () => {
       await element.updateComplete;
       expect(element.shadowRoot.querySelector(".flip-indicator")).to.be.null;
       expect(element.shadowRoot.querySelector(".card-back")).to.be.null;
-      expect(element.shadowRoot.querySelector(".card-front")).to.be.null;
+      expect(element.shadowRoot.querySelector(".card-front")).to.exist;
     });
 
-    it("should not emit a card-flip event when clicked", async () => {
+    it("should not emit a card-flip event when clicked without education", async () => {
       await element.updateComplete;
       const eventSpy = vi.fn();
       element.addEventListener("card-flip", eventSpy);
@@ -97,6 +98,83 @@ describe("FlowTeamCard", () => {
       await element.updateComplete;
 
       expect(eventSpy).not.toHaveBeenCalled();
+    });
+
+    it("should render flip controls and education hint when education exists", async () => {
+      element.education = ["B.A., Linguistics and Italian"];
+      await element.updateComplete;
+
+      const flipIndicators =
+        element.shadowRoot.querySelectorAll(".flip-indicator");
+      expect(flipIndicators.length).to.equal(2);
+
+      const flipHint = element.shadowRoot.querySelector(".flip-hint");
+      expect(flipHint?.textContent?.trim()).to.equal("Education");
+      expect(element.shadowRoot.querySelector(".card-back")).to.exist;
+    });
+
+    it("should flip card when clicked if education exists", async () => {
+      element.education = ["B.A., Linguistics and Italian"];
+      await element.updateComplete;
+
+      const cardContainer = element.shadowRoot.querySelector(".card-container");
+      cardContainer.click();
+      await element.updateComplete;
+
+      expect(element.isFlipped).to.be.true;
+      expect(cardContainer.classList.contains("flipped")).to.be.true;
+    });
+
+    it("should emit card-flip event when flipped", async () => {
+      element.education = ["B.A., Linguistics and Italian"];
+      await element.updateComplete;
+
+      const eventSpy = vi.fn();
+      element.addEventListener("card-flip", eventSpy);
+
+      const cardContainer = element.shadowRoot.querySelector(".card-container");
+      cardContainer.click();
+      await element.updateComplete;
+
+      expect(eventSpy).toHaveBeenCalledOnce();
+      expect(eventSpy.mock.calls[0][0].detail).toMatchObject({
+        name: defaultProps.name,
+        isFlipped: true,
+      });
+    });
+
+    it("should support keyboard flip interactions", async () => {
+      element.education = ["B.A., Linguistics and Italian"];
+      await element.updateComplete;
+
+      const cardContainer = element.shadowRoot.querySelector(".card-container");
+      cardContainer.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
+      );
+      await element.updateComplete;
+
+      expect(element.isFlipped).to.be.true;
+    });
+
+    it("should render only the Education section on the back", async () => {
+      element.education = [
+        "B.A., Linguistics and Italian, University of California at Los Angeles",
+      ];
+      await element.updateComplete;
+
+      const sectionHeadings = Array.from(
+        element.shadowRoot.querySelectorAll(".card-back .bio-section h4"),
+      ).map((heading) => heading.textContent.trim());
+
+      expect(sectionHeadings).to.deep.equal(["Education"]);
+
+      const backEducationItems = Array.from(
+        element.shadowRoot.querySelectorAll(".card-back .bio-section li"),
+      ).map((item) => item.textContent.trim());
+
+      expect(backEducationItems).to.deep.equal([
+        "B.A., Linguistics and Italian, University of California at Los Angeles",
+      ]);
     });
   });
 

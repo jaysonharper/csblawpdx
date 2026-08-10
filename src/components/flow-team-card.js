@@ -10,12 +10,15 @@ export class FlowTeamCard extends LitElement {
     image: { type: String },
     imageAlt: { type: String, attribute: "image-alt" },
     imageClass: { type: String, attribute: "image-class" },
+    education: { type: Array },
     biography: { type: Array },
+    isFlipped: { type: Boolean, state: true, attribute: false },
   };
 
   static styles = css`
     :host {
       display: block;
+      perspective: 1000px;
       width: 100%;
       height: 100%;
       --team-card-front-height: 475px;
@@ -28,8 +31,17 @@ export class FlowTeamCard extends LitElement {
       min-height: var(--team-card-front-height);
     }
 
+    .card-container.flippable {
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease-in-out;
+      cursor: pointer;
+    }
+
+    .card-container.flipped {
+      transform: rotateY(180deg);
+    }
+
     .card-face {
-      position: relative;
       width: 100%;
       height: 100%;
       border-radius: 12px;
@@ -45,6 +57,27 @@ export class FlowTeamCard extends LitElement {
       box-sizing: border-box;
       overflow-x: hidden;
       overflow-y: auto;
+    }
+
+    .card-container.flippable .card-face {
+      position: absolute;
+      backface-visibility: hidden;
+    }
+
+    .card-front {
+      position: relative;
+      justify-content: flex-start;
+    }
+
+    .card-container.flippable .card-front {
+      padding-top: 56px;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      text-align: left;
+      align-items: stretch;
+      justify-content: flex-start;
     }
 
     .card-face:hover {
@@ -82,6 +115,18 @@ export class FlowTeamCard extends LitElement {
       line-height: 1.3;
     }
 
+    .flip-hint {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--subsection-text-subtitle, #9a8b4e);
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px dashed rgba(183, 167, 96, 0.45);
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+
     .team-bio {
       margin-top: 16px;
       width: 100%;
@@ -99,9 +144,70 @@ export class FlowTeamCard extends LitElement {
       margin-top: 0.75rem;
     }
 
+    .flip-indicator {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      background: rgba(183, 167, 96, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--subsection-flip-indicator, #9a8b4e);
+      border: 1px solid rgba(183, 167, 96, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .flip-indicator:hover {
+      background: rgba(183, 167, 96, 0.22);
+      transform: scale(1.1);
+    }
+
+    .back-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    .back-header h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--subsection-text-title, #182955);
+      margin: 0;
+    }
+
+    .bio-section h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--subsection-text-subtitle, #9a8b4e);
+      margin: 0 0 8px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .bio-section ul {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: #4b5563;
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .bio-section li {
+      margin-bottom: 4px;
+    }
+
     @media (max-width: 767px) {
       .card-face {
         padding: 16px;
+      }
+
+      .card-container.flippable .card-front {
+        padding-top: 52px;
       }
 
       .team-name {
@@ -113,11 +219,19 @@ export class FlowTeamCard extends LitElement {
       .card-face {
         padding: 14px;
       }
+
+      .card-container.flippable .card-front {
+        padding-top: 50px;
+      }
     }
 
     @media (max-width: 390px) {
       .card-face {
         padding: 12px;
+      }
+
+      .card-container.flippable .card-front {
+        padding-top: 46px;
       }
     }
   `;
@@ -128,7 +242,9 @@ export class FlowTeamCard extends LitElement {
     this.image = "";
     this.imageAlt = "";
     this.imageClass = "";
+    this.education = [];
     this.biography = [];
+    this.isFlipped = false;
   }
 
   connectedCallback() {
@@ -165,7 +281,8 @@ export class FlowTeamCard extends LitElement {
       changedProperties.has("name") ||
       changedProperties.has("image") ||
       changedProperties.has("imageClass") ||
-      changedProperties.has("biography")
+      changedProperties.has("biography") ||
+      changedProperties.has("education")
     ) {
       this.scheduleFrontHeightSync();
     }
@@ -185,7 +302,7 @@ export class FlowTeamCard extends LitElement {
   }
 
   syncSharedFrontHeight() {
-    const frontFace = this.shadowRoot?.querySelector(".card-face");
+    const frontFace = this.shadowRoot?.querySelector(".card-front");
     if (!frontFace) return;
 
     const requiredHeight = Math.ceil(frontFace.scrollHeight) + 2;
@@ -204,16 +321,117 @@ export class FlowTeamCard extends LitElement {
     });
   }
 
+  getEducationItems() {
+    if (Array.isArray(this.education)) {
+      return this.education.filter((item) => typeof item === "string" && item);
+    }
+
+    if (typeof this.education === "string" && this.education) {
+      return [this.education];
+    }
+
+    return [];
+  }
+
+  getBiographyParagraphs() {
+    if (Array.isArray(this.biography)) {
+      return this.biography;
+    }
+
+    if (typeof this.biography === "string" && this.biography) {
+      return [this.biography];
+    }
+
+    return [];
+  }
+
+  get hasEducationDetails() {
+    return this.getEducationItems().length > 0;
+  }
+
+  flipCard() {
+    if (!this.hasEducationDetails) return;
+
+    this.isFlipped = !this.isFlipped;
+
+    this.dispatchEvent(
+      new CustomEvent("card-flip", {
+        detail: {
+          name: this.name,
+          isFlipped: this.isFlipped,
+          timestamp: new Date().toISOString(),
+        },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  handleCardContainerClick(event) {
+    if (!this.hasEducationDetails) return;
+
+    const interactiveTarget = event.target.closest(
+      "a, button, input, select, textarea",
+    );
+
+    if (interactiveTarget) {
+      return;
+    }
+
+    this.flipCard();
+  }
+
+  handleFlipControlClick(event) {
+    event.stopPropagation();
+    this.flipCard();
+  }
+
+  handleCardKeydown(event) {
+    if (!this.hasEducationDetails) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      this.flipCard();
+    }
+  }
+
   render() {
-    const biographyParagraphs = Array.isArray(this.biography)
-      ? this.biography
-      : typeof this.biography === "string" && this.biography
-        ? [this.biography]
-        : [];
+    const biographyParagraphs = this.getBiographyParagraphs();
+    const educationItems = this.getEducationItems();
+    const isFlippable = educationItems.length > 0;
 
     return html`
-      <div class="card-container">
-        <div class="card-face">
+      <div
+        class="card-container ${isFlippable ? "flippable" : ""} ${this.isFlipped
+          ? "flipped"
+          : ""}"
+        tabindex="${isFlippable ? "0" : "-1"}"
+        role="${isFlippable ? "button" : "presentation"}"
+        aria-label="${isFlippable
+          ? this.isFlipped
+            ? "Show front of team card"
+            : "Show back of team card"
+          : "Team member card"}"
+        @click="${this.handleCardContainerClick}"
+        @keydown="${this.handleCardKeydown}"
+      >
+        <div class="card-face card-front">
+          ${isFlippable
+            ? html`
+                <div
+                  class="flip-indicator"
+                  title="${this.isFlipped ? "Show front" : "Show back"}"
+                  role="button"
+                  tabindex="0"
+                  aria-label="${this.isFlipped ? "Show front" : "Show back"}"
+                  @click="${this.handleFlipControlClick}"
+                  @keydown="${this.handleCardKeydown}"
+                >
+                  ↻
+                </div>
+              `
+            : ""}
+
           <img
             src="${this.image}"
             alt="${this.imageAlt}"
@@ -223,6 +441,7 @@ export class FlowTeamCard extends LitElement {
 
           <h3 class="team-name">${this.name}</h3>
 
+          ${isFlippable ? html`<p class="flip-hint">Education</p>` : ""}
           ${biographyParagraphs.length > 0
             ? html`
                 <div class="team-bio">
@@ -233,6 +452,35 @@ export class FlowTeamCard extends LitElement {
               `
             : ""}
         </div>
+
+        ${isFlippable
+          ? html`
+              <div class="card-face card-back">
+                <div
+                  class="flip-indicator"
+                  title="${this.isFlipped ? "Show front" : "Show back"}"
+                  role="button"
+                  tabindex="0"
+                  aria-label="${this.isFlipped ? "Show front" : "Show back"}"
+                  @click="${this.handleFlipControlClick}"
+                  @keydown="${this.handleCardKeydown}"
+                >
+                  ↻
+                </div>
+
+                <div class="back-header">
+                  <h3>${this.name}</h3>
+                </div>
+
+                <div class="bio-section">
+                  <h4>Education</h4>
+                  <ul>
+                    ${educationItems.map((item) => html`<li>${item}</li>`)}
+                  </ul>
+                </div>
+              </div>
+            `
+          : ""}
       </div>
     `;
   }
