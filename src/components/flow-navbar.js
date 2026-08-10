@@ -292,7 +292,7 @@ export class FlowNavbar extends LitElement {
           <img
             class="logo-image"
             src="/images/csb-logo-transparent.svg"
-            alt="Carson Seegmuller & Baker LLP - Attorneys at Law"
+            alt="Logo of Carson Seegmuller & Baker LLP."
             width="500"
             height="154"
           />

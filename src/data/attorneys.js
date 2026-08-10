@@ -10,7 +10,8 @@ export const attorneys = [
     name: "Brett S. Carson",
     email: "",
     image: "./images/brettcarson.jpg",
-    imageAlt: "Brett S. Carson Profile",
+    imageAlt:
+      "Photo of Brett S. Carson, Attorney of Carson Seegmuller & Baker LLP.",
     imageClass: "brett",
     specialties: [
       "Estate Planning",
@@ -39,7 +40,8 @@ export const attorneys = [
     name: "Randall H. Baker",
     email: "",
     image: "./images/randallbaker.jpg",
-    imageAlt: "Randall H. Baker Profile",
+    imageAlt:
+      "Photo of Randall H. Baker, Attorney of Carson Seegmuller & Baker LLP.",
     imageClass: "randall",
     specialties: [
       "Estate Planning",
@@ -73,7 +75,8 @@ export const attorneys = [
     name: "Jakob O. Seegmuller",
     email: "",
     image: "./images/jakobseegmuller.jpeg",
-    imageAlt: "Jakob O. Seegmuller Profile",
+    imageAlt:
+      "Photo of Jakob O. Seegmuller, Attorney of Carson Seegmuller & Baker LLP.",
     imageClass: "jakob",
     specialties: [
       "Estate Planning",
