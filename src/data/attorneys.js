@@ -100,6 +100,9 @@ export const attorneys = [
       "Multnomah Bar Association",
       "Clark County Bar Association",
       "Estate Planning and Administration Section",
+      "Real Estate and Land Use Section",
+      "Elder Law Section",
+      "Indian Law Section",
     ],
     admissions: ["Oregon", "Washington"],
     biography: [
