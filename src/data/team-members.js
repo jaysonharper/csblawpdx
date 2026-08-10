@@ -11,8 +11,10 @@ export const teamMembers = [
     education: [],
     memberships: [],
     admissions: [],
-    biography:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    biography: [
+      "Barb Carson worked as a travel agent and toy broker before becoming the firm’s paralegal and bookkeeper in 2013. Her work as a paralegal is focused on probates, guardianships, and conservatorships.",
+      "Outside of the office, Barb enjoys globetrotting with family and friends or trips across the country with her husband.",
+    ],
   },
   {
     name: "Karen Campbell",
@@ -20,11 +22,15 @@ export const teamMembers = [
     imageAlt: "Karen Campbell profile placeholder",
     imageClass: "",
     specialties: [],
-    education: [],
+    education: [
+      "Paralegal Certificate, Portland Community College, Phi Theta Kappa",
+    ],
     memberships: [],
     admissions: [],
-    biography:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    biography: [
+      "Karen has been working as a legal assistant/paralegal since 1999, after earning her Paralegal Certificate from Portland Community College (graduating Phi Theta Kappa). The vast majority of those years have been focused on estate planning. Karen joined Carson, Seegmuller and Baker in 2021, after having worked at some of the larger firms in Portland. She enjoys the personal touch and camaraderie of a smaller, more client focused environment.",
+      "Karen enjoys spending time with her family on the Oregon coast, baking cakes, dog sitting, building Lego sets and occasionally working as an extra in local films.",
+    ],
   },
   {
     name: "Tamara King",
