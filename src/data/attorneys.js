@@ -22,18 +22,22 @@ export const attorneys = [
       "Real Estate & Business",
     ],
     education: [
-      "B.S., Colorado College and University of Oregon",
-      "J.D., Gonzaga University, cum laude",
+      "Colorado College",
+      "B.A., Economics, University of Oregon",
+      "J.D., University of Gonzaga School of Law, Cum Laude (1979)",
     ],
     memberships: [
       "Oregon State Bar",
       "Multnomah Bar Association",
       "Estate Planning and Administration Section",
+      "Real Estate and Land Use Section",
+      "Business Law Section",
     ],
     admissions: ["Oregon", "U.S. District Court, District of Oregon"],
     biography: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Brett Carson's diverse estate planning, real estate and small business practice focuses on the drafting of Wills and Trusts, probate and trust administration, real estate transactions (commercial and residential) and choice of entity and small business formations. He believes that the more his clients know, the better attorney he is and, as such, encourages his clients to ask questions so that they understand the advice he is giving them and the documents he is preparing for them. Brett has earned the AV Preeminent Rating from Martindale-Hubbell.",
+      "Brett further believes in giving back to the community and, as such, over the years has been a Director of the Oregon State Council for Senior Citizens (1989-1999), Multnomah Bar Association Senior Law Project Volunteer of the Year (1986 and 2004), Board Member of the NE Family YMCA (1986-1989), Hollywood Booster Board of Directors (1986-2000) and Booster President (1988), Hollywood Senior Center Board of Directors (1986-2002) and Board President (1994).",
+      "Brett was born in Sheridan, Wyoming and moved to Portland, Oregon at the end of his 8th grade year. In his spare time, Brett enjoys spending time with his wife, children and grandchildren, traveling (whether it be internationally, back to Sheridan, Wyoming or throughout the United States), reading and spending good quality time with his friends. In addition, he is an avid sports fan and particularly enjoys basketball. In the past, he has not only played competitive basketball and softball, but has coached basketball and baseball, both at the youth and high school levels.",
     ],
   },
   {
