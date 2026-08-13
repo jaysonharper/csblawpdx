@@ -2,7 +2,7 @@
 
 ## Overview
 
-The footer component provides a professional, responsive footer for the Law Offices of Carson Seegmuller & Baker LLP website. It features different layouts for desktop/tablet and mobile devices, ensuring optimal user experience across all screen sizes.
+The footer component provides a professional, responsive footer for the Law Offices of Carson Seegmuller & Baker website. It features different layouts for desktop/tablet and mobile devices, ensuring optimal user experience across all screen sizes.
 
 ## Features
 
@@ -34,7 +34,7 @@ The footer component provides a professional, responsive footer for the Law Offi
       <!-- Business Name -->
       <div class="text-center mb-8">
         <h3 class="text-2xl font-bold text-white mb-2">
-          Law Offices of Carson Seegmuller & Baker LLP
+          Law Offices of Carson Seegmuller & Baker
         </h3>
         <p class="text-gray-300 text-sm">Professional Legal Services</p>
       </div>
@@ -52,7 +52,7 @@ The footer component provides a professional, responsive footer for the Law Offi
       <!-- Copyright -->
       <div class="text-center pt-6 border-t border-gray-700">
         <p class="text-gray-400 text-sm">
-          &copy; 2026 Law Offices of Carson Seegmuller & Baker LLP. All rights
+          &copy; 2026 Law Offices of Carson Seegmuller & Baker. All rights
           reserved.
         </p>
       </div>
@@ -61,7 +61,7 @@ The footer component provides a professional, responsive footer for the Law Offi
     <!-- Mobile Footer (compact) -->
     <div class="md:hidden py-6 text-center">
       <h4 class="text-lg font-semibold text-white mb-2">
-        Law Offices of Carson Seegmuller & Baker LLP
+        Law Offices of Carson Seegmuller & Baker
       </h4>
       <p class="text-gray-400 text-xs">&copy; 2026 All rights reserved.</p>
     </div>

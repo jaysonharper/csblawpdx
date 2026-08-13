@@ -18,7 +18,7 @@ I have successfully implemented both requested scroll features for the Law Offic
 // Made company name clickable with hover effects
 <div class="company-name" @click="${this._scrollToTop}" role="button" tabindex="0">
   <div class="company-line-1">Law Offices of</div>
-  <div class="company-line-2">Carson Seegmuller & Baker LLP</div>
+  <div class="company-line-2">Carson Seegmuller & Baker</div>
 </div>
 ```
 

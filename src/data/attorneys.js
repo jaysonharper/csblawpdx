@@ -11,7 +11,7 @@ export const attorneys = [
     email: "",
     image: "./images/brettcarson.jpg",
     imageAlt:
-      "Photo of Brett S. Carson, Attorney of Carson Seegmuller & Baker LLP.",
+      "Photo of Brett S. Carson, Attorney of Carson Seegmuller & Baker.",
     imageClass: "brett",
     specialties: [
       "Estate Planning",
@@ -45,7 +45,7 @@ export const attorneys = [
     email: "",
     image: "./images/randallbaker.jpg",
     imageAlt:
-      "Photo of Randall H. Baker, Attorney of Carson Seegmuller & Baker LLP.",
+      "Photo of Randall H. Baker, Attorney of Carson Seegmuller & Baker.",
     imageClass: "randall",
     specialties: [
       "Estate Planning",
@@ -80,7 +80,7 @@ export const attorneys = [
     email: "",
     image: "./images/jakobseegmuller.jpeg",
     imageAlt:
-      "Photo of Jakob O. Seegmuller, Attorney of Carson Seegmuller & Baker LLP.",
+      "Photo of Jakob O. Seegmuller, Attorney of Carson Seegmuller & Baker.",
     imageClass: "jakob",
     specialties: [
       "Estate Planning",

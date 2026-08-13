@@ -1,14 +1,14 @@
 https://www.csblawpdx.com/images/csb-logo-transparent.svg
-alt=“Logo of Carson Seegmuller & Baker LLP.”
+alt=“Logo of Carson Seegmuller & Baker.”
 
 https://www.csblawpdx.com/images/brettcarson.jpg
-alt=“Photo of Brett S. Carson, Attorney of Carson Seegmuller & Baker LLP.”
+alt=“Photo of Brett S. Carson, Attorney of Carson Seegmuller & Baker.”
 
 https://www.csblawpdx.com/images/randallbaker.jpg 
-alt=“Photo of Randall H. Baker, Attorney of Carson Seegmuller & Baker LLP.”
+alt=“Photo of Randall H. Baker, Attorney of Carson Seegmuller & Baker.”
 
 https://www.csblawpdx.com/images/jakobseegmuller.jpeg 
-alt=“Photo of Jakob O. Seegmuller, Attorney of Carson Seegmuller & Baker LLP.”
+alt=“Photo of Jakob O. Seegmuller, Attorney of Carson Seegmuller & Baker.”
 
 https://www.csblawpdx.com/images/office.JPEG
-alt="Photo of Carson Seegmuller & Baker LLP's office building located on the corner of 42nd Avenue and Tillamook Street in Portland Oregon. It is a craftsman style home with blue siding and white trim.
+alt="Photo of Carson Seegmuller & Baker's office building located on the corner of 42nd Avenue and Tillamook Street in Portland Oregon. It is a craftsman style home with blue siding and white trim.

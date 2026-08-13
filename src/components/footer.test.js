@@ -16,7 +16,7 @@ beforeEach(() => {
         <!-- Desktop/Tablet Footer (md and up) -->
         <div class="hidden md:block py-12">
           <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold text-white mb-2">Law Offices of Carson Seegmuller & Baker LLP</h3>
+            <h3 class="text-2xl font-bold text-white mb-2">Law Offices of Carson Seegmuller & Baker</h3>
             <p class="text-gray-300 text-sm">Professional Legal Services</p>
           </div>
           <div class="flex justify-center mb-8">
@@ -29,13 +29,13 @@ beforeEach(() => {
             </nav>
           </div>
           <div class="text-center pt-6 border-t border-gray-700">
-            <p class="text-gray-400 text-sm">&copy; 2026 Law Offices of Carson Seegmuller & Baker LLP. All rights reserved.</p>
+            <p class="text-gray-400 text-sm">&copy; 2026 Law Offices of Carson Seegmuller & Baker. All rights reserved.</p>
           </div>
         </div>
         <!-- Mobile Footer (compact) -->
         <div class="md:hidden py-6 text-center">
-          <h4 class="text-lg font-semibold text-white mb-2">Law Offices of Carson Seegmuller & Baker LLP</h4>
-          <p class="text-gray-400 text-xs">&copy; 2026 Law Offices of Carson Seegmuller & Baker LLP. All rights reserved.</p>
+          <h4 class="text-lg font-semibold text-white mb-2">Law Offices of Carson Seegmuller & Baker</h4>
+          <p class="text-gray-400 text-xs">&copy; 2026 Law Offices of Carson Seegmuller & Baker. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -62,7 +62,7 @@ describe("Footer Structure and Content", () => {
 
     const businessName = desktopFooter.querySelector("h3");
     expect(businessName.textContent).toBe(
-      "Law Offices of Carson Seegmuller & Baker LLP",
+      "Law Offices of Carson Seegmuller & Baker",
     );
     expect(businessName.classList.contains("text-2xl")).toBe(true);
     expect(businessName.classList.contains("font-bold")).toBe(true);
@@ -74,7 +74,7 @@ describe("Footer Structure and Content", () => {
 
     const businessName = mobileFooter.querySelector("h4");
     expect(businessName.textContent).toBe(
-      "Law Offices of Carson Seegmuller & Baker LLP",
+      "Law Offices of Carson Seegmuller & Baker",
     );
     expect(businessName.classList.contains("text-lg")).toBe(true);
     expect(businessName.classList.contains("font-semibold")).toBe(true);
@@ -121,7 +121,7 @@ describe("Footer Structure and Content", () => {
       ".hidden.md\\:block .text-gray-400",
     );
     expect(desktopCopyright.textContent).toContain(
-      "© 2026 Law Offices of Carson Seegmuller & Baker LLP. All rights reserved.",
+      "© 2026 Law Offices of Carson Seegmuller & Baker. All rights reserved.",
     );
 
     // Mobile copyright
@@ -129,7 +129,7 @@ describe("Footer Structure and Content", () => {
       ".md\\:hidden .text-gray-400",
     );
     expect(mobileCopyright.textContent).toContain(
-      "© 2026 Law Offices of Carson Seegmuller & Baker LLP. All rights reserved.",
+      "© 2026 Law Offices of Carson Seegmuller & Baker. All rights reserved.",
     );
   });
 

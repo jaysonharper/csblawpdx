@@ -2,7 +2,7 @@
 
 ## ✅ Implementation Complete
 
-I have successfully implemented the navigation bar feature for Law Offices of Carson Seegmuller & Baker LLP based on the GitHub issue requirements:
+I have successfully implemented the navigation bar feature for Law Offices of Carson Seegmuller & Baker based on the GitHub issue requirements:
 
 ### 🎯 Features Implemented
 
@@ -14,7 +14,7 @@ I have successfully implemented the navigation bar feature for Law Offices of Ca
 
 #### ✅ Company Name Display
 
-- **Two-line company name**: "Law Offices of" / "Carson Seegmuller & Baker LLP"
+- **Two-line company name**: "Law Offices of" / "Carson Seegmuller & Baker"
 - **Professional styling** with gradient text effects and subtle glow
 - **Responsive typography** that scales appropriately
 
