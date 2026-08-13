@@ -67,9 +67,6 @@ export class FlowTeamCard extends LitElement {
     .card-front {
       position: relative;
       justify-content: flex-start;
-    }
-
-    .card-container.flippable .card-front {
       padding-top: 56px;
     }
 
@@ -166,6 +163,12 @@ export class FlowTeamCard extends LitElement {
       transform: scale(1.1);
     }
 
+    .flip-indicator.placeholder,
+    .flip-hint.placeholder {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
     .back-header {
       text-align: center;
       margin-bottom: 24px;
@@ -206,7 +209,7 @@ export class FlowTeamCard extends LitElement {
         padding: 16px;
       }
 
-      .card-container.flippable .card-front {
+      .card-front {
         padding-top: 52px;
       }
 
@@ -220,7 +223,7 @@ export class FlowTeamCard extends LitElement {
         padding: 14px;
       }
 
-      .card-container.flippable .card-front {
+      .card-front {
         padding-top: 50px;
       }
     }
@@ -230,7 +233,7 @@ export class FlowTeamCard extends LitElement {
         padding: 12px;
       }
 
-      .card-container.flippable .card-front {
+      .card-front {
         padding-top: 46px;
       }
     }
@@ -416,21 +419,22 @@ export class FlowTeamCard extends LitElement {
         @keydown="${this.handleCardKeydown}"
       >
         <div class="card-face card-front">
-          ${isFlippable
-            ? html`
-                <div
-                  class="flip-indicator"
-                  title="${this.isFlipped ? "Show front" : "Show back"}"
-                  role="button"
-                  tabindex="0"
-                  aria-label="${this.isFlipped ? "Show front" : "Show back"}"
-                  @click="${this.handleFlipControlClick}"
-                  @keydown="${this.handleCardKeydown}"
-                >
-                  ↻
-                </div>
-              `
-            : ""}
+          <div
+            class="flip-indicator ${isFlippable ? "" : "placeholder"}"
+            title="${this.isFlipped ? "Show front" : "Show back"}"
+            role="${isFlippable ? "button" : "presentation"}"
+            tabindex="${isFlippable ? "0" : "-1"}"
+            aria-label="${isFlippable
+              ? this.isFlipped
+                ? "Show front"
+                : "Show back"
+              : ""}"
+            aria-hidden="${isFlippable ? "false" : "true"}"
+            @click="${this.handleFlipControlClick}"
+            @keydown="${this.handleCardKeydown}"
+          >
+            ↻
+          </div>
 
           <img
             src="${this.image}"
@@ -441,7 +445,7 @@ export class FlowTeamCard extends LitElement {
 
           <h3 class="team-name">${this.name}</h3>
 
-          ${isFlippable ? html`<p class="flip-hint">Education</p>` : ""}
+          <p class="flip-hint ${isFlippable ? "" : "placeholder"}">Education</p>
           ${biographyParagraphs.length > 0
             ? html`
                 <div class="team-bio">

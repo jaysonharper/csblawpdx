@@ -81,9 +81,20 @@ describe("FlowTeamCard", () => {
   });
 
   describe("Conditional Flip Behavior", () => {
-    it("should not render flip controls when education is missing", async () => {
+    it("should render hidden flip placeholders when education is missing", async () => {
       await element.updateComplete;
-      expect(element.shadowRoot.querySelector(".flip-indicator")).to.be.null;
+
+      const frontIndicator = element.shadowRoot.querySelector(
+        ".card-front .flip-indicator",
+      );
+      const frontHint = element.shadowRoot.querySelector(
+        ".card-front .flip-hint",
+      );
+
+      expect(frontIndicator).to.exist;
+      expect(frontIndicator?.classList.contains("placeholder")).to.be.true;
+      expect(frontHint).to.exist;
+      expect(frontHint?.classList.contains("placeholder")).to.be.true;
       expect(element.shadowRoot.querySelector(".card-back")).to.be.null;
       expect(element.shadowRoot.querySelector(".card-front")).to.exist;
     });
