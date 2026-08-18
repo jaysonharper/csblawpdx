@@ -107,7 +107,7 @@ export class FlowAttorneyCard extends LitElement {
     }
 
     .attorney-image.randall {
-      object-position: center 0%; /* Moves the image down - face will be positioned lower in the circle */
+      object-position: 50% 75%; /* Keep vertical crop, center subject horizontally */
     }
 
     .attorney-image.jakob {

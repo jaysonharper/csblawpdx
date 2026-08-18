@@ -4,9 +4,9 @@
 export const teamMembers = [
   {
     name: "Barbara Carson",
-    image: "./images/attorney-placeholder.svg",
+    image: "./images/barbcarson.jpeg",
     imageAlt: "Barbara Carson profile placeholder",
-    imageClass: "",
+    imageClass: "barb",
     specialties: [],
     education: [],
     memberships: [],
@@ -18,9 +18,9 @@ export const teamMembers = [
   },
   {
     name: "Karen Campbell",
-    image: "./images/attorney-placeholder.svg",
+    image: "./images/karencampbell.jpeg",
     imageAlt: "Karen Campbell profile placeholder",
-    imageClass: "",
+    imageClass: "karen",
     specialties: [],
     education: [
       "Paralegal Certificate, Portland Community College, Phi Theta Kappa",
@@ -34,9 +34,9 @@ export const teamMembers = [
   },
   {
     name: "Tamara King",
-    image: "./images/attorney-placeholder.svg",
+    image: "./images/tamaraking.jpeg",
     imageAlt: "Tamara King profile placeholder",
-    imageClass: "",
+    imageClass: "tamara",
     specialties: [],
     education: [
       "B.A., Linguistics and Italian, University of California at Los Angeles",

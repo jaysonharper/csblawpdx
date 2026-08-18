@@ -9,7 +9,7 @@ export const attorneys = [
   {
     name: "Brett S. Carson",
     email: "",
-    image: "./images/brettcarson.jpg",
+    image: "./images/attorney-placeholder.svg",
     imageAlt:
       "Photo of Brett S. Carson, Attorney of Carson Seegmuller & Baker.",
     imageClass: "brett",
@@ -43,7 +43,7 @@ export const attorneys = [
   {
     name: "Randall H. Baker",
     email: "",
-    image: "./images/randallbaker.jpg",
+    image: "./images/randallbaker.jpeg",
     imageAlt:
       "Photo of Randall H. Baker, Attorney of Carson Seegmuller & Baker.",
     imageClass: "randall",
