@@ -101,21 +101,15 @@ export class FlowAttorneyCard extends LitElement {
       flex: 0 0 auto;
     }
 
-    /* Specific positioning adjustments for individual attorneys */
-    .attorney-image.brett {
-      object-position: center 0%; /* Moves the image down - face will be positioned lower in the circle */
-    }
-
-    .attorney-image.randall {
-      object-position: 50% 75%; /* Keep vertical crop, center subject horizontally */
-    }
-
+    /* Positioning adjustments for attorneys */
+    .attorney-image.brett,
+    .attorney-image.randall,
     .attorney-image.jakob {
-      object-position: 10% 0%; /* Shifts subject right within the frame */
+      object-position: 0% 0%;
     }
 
     .attorney-image:hover {
-      transform: scale(1.05);
+      transform: scale(1);
       border-color: var(--subsection-image-hover, #b7a760);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }

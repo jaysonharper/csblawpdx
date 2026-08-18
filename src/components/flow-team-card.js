@@ -97,18 +97,14 @@ export class FlowTeamCard extends LitElement {
       flex: 0 0 auto;
     }
 
-    .team-image.barb {
-      object-position: 0% 75%;
-    }
-    .team-image.karen {
-      object-position: 0% 75%;
-    }
+    .team-image.barb,
+    .team-image.karen,
     .team-image.tamara {
-      object-position: 0% 75%;
+      object-position: 0% 0%; /* Adjusts the vertical position of the image within the circular frame */
     }
 
     .team-image:hover {
-      transform: scale(1.05);
+      transform: scale(1);
       border-color: var(--subsection-image-hover, #b7a760);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
