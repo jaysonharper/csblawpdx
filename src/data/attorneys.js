@@ -9,7 +9,7 @@ export const attorneys = [
   {
     name: "Brett S. Carson",
     email: "",
-    image: "./images/attorney-placeholder.svg",
+    image: "./images/brettcarson.jpeg",
     imageAlt:
       "Photo of Brett S. Carson, Attorney of Carson Seegmuller & Baker.",
     imageClass: "brett",
@@ -48,10 +48,10 @@ export const attorneys = [
       "Photo of Randall H. Baker, Attorney of Carson Seegmuller & Baker.",
     imageClass: "randall",
     specialties: [
-      "Estate Planning",
       "Civil Litigation",
       "Personal Injury",
       "Estate Settlement",
+      "Estate Planning",
       "Family Law",
       "Real Estate & Business",
     ],
@@ -70,10 +70,7 @@ export const attorneys = [
       "Washington",
       "U.S. District Court, District of Oregon",
     ],
-    biography: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    ],
+    biography: ["Coming soon..."],
   },
   {
     name: "Jakob O. Seegmuller",
