@@ -4,7 +4,7 @@
 export const teamMembers = [
   {
     name: "Barbara Carson",
-    image: "./images/barbcarson.jpeg",
+    image: "./images/barbcarson.jpg",
     imageAlt: "Barbara Carson profile placeholder",
     imageClass: "barb",
     specialties: [],
@@ -18,7 +18,7 @@ export const teamMembers = [
   },
   {
     name: "Karen Campbell",
-    image: "./images/karencampbell.jpeg",
+    image: "./images/karencampbell.jpg",
     imageAlt: "Karen Campbell profile placeholder",
     imageClass: "karen",
     specialties: [],
@@ -34,7 +34,7 @@ export const teamMembers = [
   },
   {
     name: "Tamara King",
-    image: "./images/tamaraking.jpeg",
+    image: "./images/tamaraking.jpg",
     imageAlt: "Tamara King profile placeholder",
     imageClass: "tamara",
     specialties: [],
