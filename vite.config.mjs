@@ -11,6 +11,34 @@ function normalizeBase(base) {
   return b;
 }
 
+function reviewRedirectMiddleware() {
+  return {
+    name: "review-redirect-route",
+    configureServer(server) {
+      server.middlewares.use((request, _response, next) => {
+        if (request.url === "/review" || request.url?.startsWith("/review?")) {
+          const query = request.url.includes("?")
+            ? request.url.slice(request.url.indexOf("?"))
+            : "";
+          request.url = `/review/index.html${query}`;
+        }
+        next();
+      });
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use((request, _response, next) => {
+        if (request.url === "/review" || request.url?.startsWith("/review?")) {
+          const query = request.url.includes("?")
+            ? request.url.slice(request.url.indexOf("?"))
+            : "";
+          request.url = `/review/index.html${query}`;
+        }
+        next();
+      });
+    },
+  };
+}
+
 // Export config with access to mode/env so GitHub Pages workflow can inject VITE_BASE_PATH
 export default defineConfig(({ mode }) => {
   // Load all env vars (include those without VITE_ prefix so workflow injection works either way)
@@ -44,6 +72,8 @@ export default defineConfig(({ mode }) => {
   const base = normalizeBase(derivedBase);
 
   return {
+    plugins: [reviewRedirectMiddleware()],
+
     // Dynamic base for GitHub Pages or other hosting
     base,
 
