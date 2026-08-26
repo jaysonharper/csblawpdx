@@ -10,13 +10,14 @@ The footer component provides a professional, responsive footer for the Law Offi
 
 - **Business branding**: Law firm name and tagline prominently displayed
 - **Navigation links**: Quick access to main site sections
+- **Social links**: LinkedIn, Facebook, and Google review links with recognizable icons
 - **Professional styling**: Dark gradient background matching the navbar theme
 - **Copyright notice**: Full business name and rights statement
 
 ### 📱 Mobile Footer
 
 - **Compact design**: Minimal vertical space usage
-- **Essential information only**: Business name and simplified copyright
+- **Essential information**: Business name, social links, and simplified copyright
 - **No redundant navigation**: Eliminates duplicate links (hamburger menu provides navigation)
 - **Responsive typography**: Optimized font sizes for mobile screens
 
@@ -49,6 +50,11 @@ The footer component provides a professional, responsive footer for the Law Offi
         </nav>
       </div>
 
+      <!-- Social Links -->
+      <div class="flex flex-wrap justify-center gap-6 mb-8">
+        <!-- LinkedIn, Facebook, and Google review links with accessible labels -->
+      </div>
+
       <!-- Copyright -->
       <div class="text-center pt-6 border-t border-gray-700">
         <p class="text-gray-400 text-sm">
@@ -63,6 +69,7 @@ The footer component provides a professional, responsive footer for the Law Offi
       <h4 class="text-lg font-semibold text-white mb-2">
         Law Offices of Carson Seegmuller & Baker
       </h4>
+      <!-- Social links remain visible on mobile -->
       <p class="text-gray-400 text-xs">&copy; 2026 All rights reserved.</p>
     </div>
   </div>
